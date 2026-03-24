@@ -1,0 +1,57 @@
+body {
+    font-family: "SN Pro", sans-serif !important;
+}
+
+// Material Input CSS
+mat-form-field {
+    .mat-mdc-text-field-wrapper {
+        &.mdc-text-field {
+            &.mdc-text-field--outlined {
+                .mat-mdc-form-field-flex {
+                    .mdc-notched-outline {
+                        &.mdc-notched-outline--upgraded {
+                            .mat-mdc-notch-piece {
+                                &.mdc-notched-outline__notch {
+                                    border-right: unset;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Header CSS
+
+header {
+    box-shadow: 0px 20px 34px rgba(0, 0, 0, 0.0509803922);
+
+    .dropDown-menu {
+        .mega-menu {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateX(-50%) translateY(10px);
+            transition: all 0.3s ease;
+            pointer-events: none;
+        }
+
+        .fa-chevron-down {
+            transition: transform 0.3s ease-in-out;
+        }
+
+        &:hover {
+            .fa-chevron-down {
+                transform: rotate(180deg);
+                transition: transform 0.3s ease-in-out;
+            }
+            .mega-menu {
+                opacity: 1;
+                visibility: visible;
+                transform: translateX(-50%) translateY(0);
+                pointer-events: auto;
+            }
+        }
+    }
+}
