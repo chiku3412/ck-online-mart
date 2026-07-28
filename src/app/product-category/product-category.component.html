@@ -1,0 +1,27 @@
+<div class="product-category py-16">
+    <div class="container mx-auto px-5">
+        <div class="flex justify-between gap-3 mb-3">
+            <h2 class="text-2xl font-bold">Featured Products</h2>
+            <div class="flex items-center gap-2">
+                <button #prevButton type="button" class="swiper-navigation-prev bg-gray-100 rounded-full w-10 h-10 flex items-center justify-center hover:bg-black hover:text-white transition-all ease-in-out duration-300">
+                    <i class="fa-solid fa-arrow-left"></i>
+                </button>
+                <button #nextButton type="button" class="swiper-navigation-next bg-gray-100 rounded-full w-10 h-10 flex items-center justify-center hover:bg-black hover:text-white transition-all ease-in-out duration-300">
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+
+        <div #swiperRef class="swiper">
+            <div class="swiper-wrapper">
+                @for(category of categories; track category) {
+                    <div class="swiper-slide p-5 rounded-md bg-green-100/60 cursor-pointer group">
+                        <img [src]="category.image" alt="Product Category" class="w-full h-auto mb-1">
+                        <h6 class="text-sm leading-5 font-bold text-center group-hover:text-green-500 transition-all ease-in-out duration-300">{{ category.name }}</h6>
+                        <p class="text-xs text-center">{{ category.items }} Items</p>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

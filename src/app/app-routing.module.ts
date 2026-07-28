@@ -5,7 +5,7 @@ import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 import { BlogsComponent } from './blogs/blogs.component';
 import { BlogDetailsComponent } from './blog-details/blog-details.component';
-import { ProductDetailsComponent } from './product-details/product-details.component';
+import { ProductDetailsComponent } from './shop/product-details/product-details.component';
 import { ShopComponent } from './shop/shop.component';
 
 const routes: Routes = [
@@ -16,7 +16,8 @@ const routes: Routes = [
     { path: 'blog', component: BlogsComponent },
     { path: 'blog/:id', component: BlogDetailsComponent },
     { path: 'shop', component: ShopComponent },
-    { path: 'product/:id', component: ProductDetailsComponent }
+    { path: 'product/:id', component: ProductDetailsComponent },
+    { path: 'shop', loadChildren: () => import('./shop/shopRoutes').then(m => m.shopRoutes) }
 ];
 
 @NgModule({

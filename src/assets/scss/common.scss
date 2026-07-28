@@ -9,10 +9,18 @@ mat-form-field {
             &.mdc-text-field--outlined {
                 .mat-mdc-form-field-flex {
                     .mdc-notched-outline {
+                        border: 1px solid #e4e4e4;
+                        border-radius: 5px;
                         &.mdc-notched-outline--upgraded {
                             .mat-mdc-notch-piece {
+                                border: 0;
                                 &.mdc-notched-outline__notch {
                                     border-right: unset;
+                                    .mdc-floating-label--float-above {
+                                        mat-label {
+                                            background-color: #fff;
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -23,35 +31,154 @@ mat-form-field {
     }
 }
 
-// Header CSS
+// Only Search Input
+.search-bar {
+    .mdc-notched-outline,
+    .mat-mdc-notch-piece {
+        border: none !important;
+    }
+}
 
-header {
-    box-shadow: 0px 20px 34px rgba(0, 0, 0, 0.0509803922);
+.slider-container {
+    perspective: 1200px;
+    transform-style: preserve-3d;
 
-    .dropDown-menu {
-        .mega-menu {
-            opacity: 0;
-            visibility: hidden;
-            transform: translateX(-50%) translateY(10px);
-            transition: all 0.3s ease;
-            pointer-events: none;
-        }
-
-        .fa-chevron-down {
-            transition: transform 0.3s ease-in-out;
-        }
-
-        &:hover {
-            .fa-chevron-down {
-                transform: rotate(180deg);
-                transition: transform 0.3s ease-in-out;
-            }
-            .mega-menu {
+    .slide {
+        opacity: 0;
+        visibility: hidden;
+        position: absolute;
+        inset: 0;
+        transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+        transform: translateZ(-200px) rotateY(15deg) scale(0.8);
+        filter: blur(4px) brightness(0.4);
+    
+        &.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateZ(0) rotateY(0) scale(1);
+            filter: blur(0) brightness(1);
+            z-index: 10;
+            .slide-text {
                 opacity: 1;
-                visibility: visible;
-                transform: translateX(-50%) translateY(0);
-                pointer-events: auto;
+                transform: translateY(0) rotateX(0);
+            }
+            .text-delay-1 { transition-delay: 0.3s; }
+            .text-delay-2 { transition-delay: 0.5s; }
+            .text-delay-3 { transition-delay: 0.7s; }
+            .text-delay-4 { transition-delay: 0.9s; }
+            .slide-image {
+                transform: scale(1);
+            }
+            .progress-ring-circle {
+                animation: progressAnim 5s linear forwards;
+            }
+            .counter-line {
+                width: 100%;
             }
         }
+    
+        &.prev {
+            transform: translateZ(-100px) rotateY(-25deg) scale(0.85) translateX(-30%);
+        }
+    
+        &.next {
+            transform: translateZ(-100px) rotateY(25deg) scale(0.85) translateX(30%);
+        }
+        .slide-text {
+            opacity: 0;
+            transform: translateY(60px) rotateX(-15deg);
+            transition: all 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .slide-image {
+            transform: scale(1.2);
+            transition: transform 8s ease-out;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow:  0 25px 50px -12px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+        .magnetic-btn {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            &::before {
+                content: '';
+                position: absolute;
+                inset: 0;
+                background: linear-gradient(135deg, transparent 40%, rgba(255,255,255,0.2) 50%, transparent 60%);
+                transform: translateX(-100%);
+                transition: transform 0.6s;
+            }
+            &:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 20px 40px -10px rgba(255, 255, 255, 0.2);
+                &::before {
+                    transform: translateX(100%);
+                }
+            }
+        }
+        .counter-line {
+            width: 0;
+            transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+    }
+    
+    .nav-btn {
+        transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        
+        &:hover {
+            transform: scale(1.1);
+            background: rgba(255, 255, 255, 0.15);
+        }
+    }
+    
+    .progress-ring-circle {
+        transition: stroke-dashoffset 0.1s linear;
+        stroke-dasharray: 126;
+        stroke-dashoffset: 126;
+    }
+    
+    @keyframes progressAnim {
+        to { stroke-dashoffset: 0; }
+    }
+}
+
+.grain {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 100;
+    opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
+.shine-card {
+    &::before {
+        background: linear-gradient( 120deg, transparent 0%, rgba(255, 255, 255, 0.15) 40%, rgba(255, 255, 255, 0.3) 50%, rgba(255, 255, 255, 0.15) 60%, transparent 100%);
+        transform: skewX(-20deg);
+    }
+
+    .line-shine {
+      background: linear-gradient(90deg, rgba(255,255,255,0.1), rgba(255,255,255,0.5), rgba(255,255,255,0.1));
+      background-size: 200% 100%;
+    }
+}
+
+.testimonial-card {
+    mask-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjMyIiBoZWlnaHQ9IjIxOSIgdmlld0JveD0iMCAwIDYzMiAyMTkiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIGQ9Ik0wLjUzNDgyNSAzNS41OTE5Qy0yLjk3MTM4IDE3LjExMTIgMTEuMTk4NyAwIDMwLjAwOTEgMEg2MDEuNTA0QzYxOS4yOTkgMCA2MzMuMTgyIDE1LjQwMDQgNjMxLjM0NCAzMy4wOTk4TDYxNi4xMzYgMTc5LjQ4OUM2MTQuNTc1IDE5NC41MTUgNjAyLjA4NSAyMDYuMDM2IDU4Ni45ODMgMjA2LjM4Mkw2MC43NTIyIDIxOC40MTlDNDYuMDg0OSAyMTguNzU0IDMzLjMyNjYgMjA4LjQzMiAzMC41OTE5IDE5NC4wMThMMC41MzQ4MjUgMzUuNTkxOVoiIGZpbGw9IndoaXRlIi8+Cjwvc3ZnPgo=");
+    mask-size: contain;
+    mask-position: 100% 100%;
+    mask-repeat: no-repeat;
+    &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-image: url(./../images/shape/border.png);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+        z-index: -1;
     }
 }

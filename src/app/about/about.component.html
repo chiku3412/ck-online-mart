@@ -1,1 +1,124 @@
-<p>about works!</p>
+<div class="about-section py-16">
+    <div class="container mx-auto px-5">
+        <div class="grid grid-cols-2 gap-8">
+            <div class="img-section relative rounded-lg overflow-hidden">
+                <img src="./../../assets/images/132083.jpg" class="h-full" alt="About Image" />
+                <div class="absolute left-4 bottom-4 bg-gray-50 rounded-lg p-4 animate-floatY">
+                    <div class="flex items-center gap-2">
+                        <h6 class="font-bold text-lg">4.8 / 5</h6>
+                        <div class="flex items-center gap-1">
+                            <i class="fa-solid fa-star text-yellow-500"></i>
+                            <i class="fa-solid fa-star text-yellow-500"></i>
+                            <i class="fa-solid fa-star text-yellow-500"></i>
+                            <i class="fa-solid fa-star text-yellow-500"></i>
+                            <i class="fa-duotone fa-solid fa-star-half text-yellow-500"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="about-content">
+                <div class="inline-flex items-center gap-3 shadow-lg px-8 py-1.5 rounded-full bg-black text-white mb-8">
+                    <div class="w-2 h-2 rounded-full bg-white"></div>
+                    <h6>About Us</h6>
+                </div>
+                <h2 class="text-4xl font-bold mb-6">
+                    Your Trusted Destination for Smart & Affordable Online Shopping
+                </h2>
+                <h6 class="text-lg mb-6">
+                    Welcome to CK Online Store — your one-stop destination for quality products at the best prices. We offer a wide range of trending, reliable, and affordable items with a smooth shopping experience, secure payments, and fast delivery. Our goal is to provide customers with trusted products, excellent service, and complete satisfaction every time they shop with us.
+                </h6>
+                <div class="grid grid-cols-3">
+                    <div class="list col-span-2">
+                        <h6 class="font-bold text-lg mb-2">What Makes CK Different</h6>
+                        <ul>
+                            <li class="flex items-center gap-2">
+                                <i class="fa-solid fa-check text-sm"></i>
+                                Best Quality Products
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <i class="fa-solid fa-check text-sm"></i>
+                                Fast & Secure Delivery
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <i class="fa-solid fa-check text-sm"></i>
+                                Affordable Price
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <i class="fa-solid fa-check text-sm"></i>
+                                Trusted Customer Support
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <i class="fa-solid fa-check text-sm"></i>
+                                Easy Online Shopping Experience
+                            </li>
+                        </ul>
+                        <button class="mt-3 px-6 py-2 bg-black text-white rounded-full">
+                            Contact Us Now
+                        </button>
+                    </div>
+                    <div class="shine-card bg-gray-900 rounded-lg p-6 flex flex-col items-center justify-center gap-2 relative overflow-hidden before:content-[''] before:absolute before:top-0 before:-left-full before:w-1/2 before:h-full before:animate-shineSweep">
+                        <div class="absolute top-4 right-4 w-1.5 h-1.5 bg-white rounded-full opacity-60 animate-pulse"></div>
+                        <div class="absolute top-8 right-8 w-1 h-1 bg-white rounded-full opacity-40 animate-pulse" style="animation-delay: 0.5s"></div>
+                        <div class="absolute bottom-12 left-4 w-1 h-1 bg-white rounded-full opacity-30 animate-pulse" style="animation-delay: 1s"></div>
+                        <h2 class="text-5xl font-black text-white glow-number tracking-tight">25+</h2>
+                        <p class="text-sm font-medium text-gray-300">Years of Industry Experience</p>
+                        <div class="w-full h-px line-shine rounded-full animate-lineShimmer"></div>
+                        <div class="flex items-center justify-center -space-x-3">
+                            <div class="avatar-shine w-10 h-10 rounded-full border-2 border-gray-900 overflow-hidden bg-gray-700">
+                                <img src="https://i.pravatar.cc/150?img=11" alt="Expert" class="w-full h-full object-cover">
+                            </div>
+                            <div class="avatar-shine w-10 h-10 rounded-full border-2 border-gray-900 overflow-hidden bg-gray-700">
+                                <img src="https://i.pravatar.cc/150?img=12" alt="Expert" class="w-full h-full object-cover">
+                            </div>
+                            <div class="avatar-shine w-10 h-10 rounded-full border-2 border-gray-900 overflow-hidden bg-gray-700">
+                                <img src="https://i.pravatar.cc/150?img=13" alt="Expert" class="w-full h-full object-cover">
+                            </div>
+                            <div class="avatar-shine w-10 h-10 rounded-full border-2 border-gray-900 overflow-hidden bg-gray-700">
+                                <img src="https://i.pravatar.cc/150?img=14" alt="Expert" class="w-full h-full object-cover">
+                            </div>
+                            <div class="badge-glow relative w-10 h-10 rounded-full bg-gray-700 border-2 border-gray-900 flex items-center justify-center z-10">
+                                <span class="text-[10px] font-bold text-white">25K</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="testimonial-section py-16 bg-black text-white">
+    <div class="container mx-auto px-5">
+        <div class="flex justify-center mb-4">
+            <div class="inline-flex items-center gap-3 shadow-lg px-8 py-1.5 rounded-full bg-white/20 text-white border border-white/40 justify-center">
+                <div class="w-2 h-2 rounded-full bg-white"></div>
+                <h6>About Us</h6>
+            </div>
+        </div>
+        <h5 class="text-4xl text-center font-bold max-w-xl mx-auto">Success stories from our customers</h5>
+
+        <div #swiperRef class="swiper w-full py-[50px] overflow-hidden">
+            <div class="swiper-wrapper">
+                @for(testimonial of testimonials; track testimonial) {
+                <div class="swiper-slide flex relative gap-6 p-7 bg-white text-black w-auto testimonial-card">
+                    <div class="user-image relative rounded-full w-20 h-20 flex-shrink-0 flex items-center justify-center border-[7px] border-gray-600 hover:border-black transition-colors duration-300">
+                        <img [src]="testimonial.avatar" alt="Client Image" class="w-full h-full object-cover rounded-full"/>
+                        <img src="./../../assets/images/shape/round-icon.png" alt="Round Icon" class="absolute left-1 -bottom-10 z-10"/>
+                    </div>
+                    <div class="testimonial-content relative">
+                        <p class="font-semibold mb-4">
+                            "{{ testimonial.feedback }}"
+                        </p>
+                        <h6 class="font-bold text-xl">
+                            {{ testimonial.name }}
+                        </h6>
+                        <div class="quote-icon absolute right-10 bottom-0 text-4xl text-black">
+                            <i class="fa-solid fa-quote-left"></i>
+                        </div>
+                    </div>
+                </div>
+                }
+            </div>
+        </div>
+
+    </div>
+</div>

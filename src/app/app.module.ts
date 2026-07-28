@@ -4,14 +4,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import {MatInputModule} from '@angular/material/input';
-import {MatFormFieldModule, MatLabel} from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
-import { ProductComponent } from './product/product.component';
-import { ProductDetailsComponent } from './product-details/product-details.component';
+import { ProductComponent } from './shop/product/product.component';
+import { ProductDetailsComponent } from './shop/product-details/product-details.component';
 import { HomeComponent } from './home/home.component';
 
 @NgModule({

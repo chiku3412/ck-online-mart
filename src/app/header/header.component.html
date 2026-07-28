@@ -1,286 +1,312 @@
-<header class="bg-white p-3">
-    <div class="container mx-auto">
-        <div class="flex justify-between items-center">
-            <div class="flex items-center gap-3">
-                <div class="header-info">
-                    <div class="logo">
-                        <a class="text-2xl font-bold">
-                            CK Online Mart
-                        </a>
+<header class="shadow-[0px_20px_34px_#0000000d]">
+    <div class="top-bar py-3">
+        <div class="container mx-auto px-5">
+            <div class="grid grid-cols-12 items-center">
+                <div class="flex items-center gap-2 sm:gap-3 col-span-2">
+                    <div class="header-info">
+                        <div class="logo">
+                            <a routerLink="/" class="text-2xl font-bold">
+                                Online Mart
+                            </a>
+                        </div>
                     </div>
                 </div>
-                <div class="header-info">
-                    <div class="flex items-center relative h-20 dropDown-menu">
-                        <div class="flex items-center cursor-pointer bg-[#0000000a] text-black font-medium px-5 py-2.5 rounded-lg">
-                            <div class="inline-block">
-                                <span class="hidden xl:block">
-                                    <i class="fa-regular fa-grid-2"></i>
-                                </span>
-                                <i title="Category" class="fa-regular fa-grid-2 xl:hidden"></i>
-                            </div>
-                            <span class="ps-1.5 hidden xl:block">Category</span>
-                        </div>
-                        <!-- Start category Area  -->
-                        <div class="mega-menu min-w-60 h-auto z-10 p-0 rounded-bl-md rounded-br-md shadow-lg bg-white border-t border-solid absolute top-full left-0 hidden xl:block">
-                            <div class="flex p-5">
-                                <div class="min-w-60 w-auto border-r border-solid border-gray-300 pr-5">
-                                    <ul class="m-0 p-0 list-none space-y-2">
-                                        <li class="my-0 relative px-3 py-2 rounded cursor-pointer text-sm font-medium"
-                                            [ngClass]="activeTab === 'tab1' ? 'bg-blue-50 text-blue-600 font-medium' : 'hover:bg-gray-100'"
-                                            (click)="activeTab = 'tab1'">
-                                            Course School
-                                        </li>
-                                        <li class="my-0 relative px-3 py-2 rounded cursor-pointer text-sm font-medium"
-                                            [ngClass]="activeTab === 'tab2' ? 'bg-blue-50 text-blue-600 font-medium' : 'hover:bg-gray-100'"
-                                            (click)="activeTab = 'tab2'">
-                                            Online School
-                                        </li>
-                                        <li class="my-0 relative px-3 py-2 rounded cursor-pointer text-sm font-medium"
-                                            [ngClass]="activeTab === 'tab3' ? 'bg-blue-50 text-blue-600 font-medium' : 'hover:bg-gray-100'"
-                                            (click)="activeTab = 'tab3'">
-                                            kindergarten
-                                        </li>
-                                        <li class="my-0 relative px-3 py-2 rounded cursor-pointer text-sm font-medium"
-                                            [ngClass]="activeTab === 'tab4' ? 'bg-blue-50 text-blue-600 font-medium' : 'hover:bg-gray-100'"
-                                            (click)="activeTab = 'tab4'">
-                                            Course
-                                        </li>
-                                    </ul>
+                <div class="search-bar col-span-8 flex items-center h-14 w-full rounded-lg group border border-green-300 bg-white px-0 transition-all duration-200 group-focus-within:border-indigo-500 group-focus-within:ring-1 group-focus-within:ring-indigo-500/20">
+                    <!-- Category Select -->
+                    <div class="relative h-full flex items-center pl-4 pr-2">
+                        <mat-form-field appearance="outline" [subscriptSizing]="'dynamic'">
+                            <mat-select [value]="'All'">
+                                <mat-option>All Categories</mat-option>
+                                <mat-option>Electronics</mat-option>
+                                <mat-option>Fashion</mat-option>
+                                <mat-option>Grocery</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <!-- Divider -->
+                    <div class="w-px h-6 bg-gray-300 mx-1"></div>
+                    <!-- Search Input -->
+                    <input  type="text" placeholder="Search for items..."  class="flex-1 h-full px-3 text-sm text-gray-900 placeholder-gray-500 outline-none bg-transparent">
+                    <!-- Search Button -->
+                    <button class="h-10 w-10 mr-1 flex items-center justify-center rounded-md text-gray-500 hover:bg-gray-100 hover:text-indigo-600 transition-colors">
+                        <i class="fa-regular fa-magnifying-glass"></i>
+                    </button>
+                </div>
+                <div class="flex items-center gap-3 justify-end col-span-2">
+                    <button class="w-10 h-10 flex items-center justify-center rounded-full bg-black text-white border border-black hover:bg-white hover:text-black transition-all duration-300 ease-in-out">
+                        <i class="fa-regular fa-arrow-right-arrow-left"></i>
+                    </button>
+                    <button class="w-10 h-10 flex items-center justify-center rounded-full bg-black text-white border border-black hover:bg-white hover:text-black transition-all duration-300 ease-in-out">
+                        <i class="fa-regular fa-heart"></i>
+                    </button>
+                    <button class="w-10 h-10 flex items-center justify-center rounded-full bg-black text-white border border-black hover:bg-white hover:text-black transition-all duration-300 ease-in-out">
+                        <i class="fa-regular fa-cart-shopping"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr/>
+    <div class="main-header py-3 bg-white">
+        <div class="container mx-auto px-5">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center gap-2 sm:gap-3">
+                    <div class="header-info hidden lg:block">
+                        <div class="flex items-center relative" (click)="toggleCategoryMenu()">
+                            <div class="flex items-center cursor-pointer sm:bg-[#0000000a] text-black font-medium p-2 sm:px-5 sm:py-2.5 rounded-lg">
+                                <div class="inline-block">
+                                    <span class="hidden xl:block">
+                                        <i class="fa-regular fa-grid-2"></i>
+                                    </span>
+                                    <i title="Category" class="fa-regular fa-grid-2 xl:hidden"></i>
                                 </div>
-                                <div class="min-w-80 h-full w-auto pl-5">
-                                    <div class="rbt-vertical-inner tab-content" *ngIf="activeTab === 'tab1'">
-                                        <div class="rbt-vertical-single">
-                                            <div class="grid grid-cols-2 gap-4">
-                                                <div class="vartical-nav-content-menu">
-                                                    <h3
-                                                        class="text-xs font-medium uppercase tracking-widest text-[#91959e]">
-                                                        Course Title</h3>
-                                                    <hr class="my-1.5" />
-                                                    <ul class="m-0 p-0 list-none space-y-2">
-                                                        <li class="m-0 relative text-sm font-medium">Web Design</li>
-                                                        <li class="m-0 relative text-sm font-medium">Art</li>
-                                                        <li class="m-0 relative text-sm font-medium">Figma</li>
-                                                        <li class="m-0 relative text-sm font-medium">Adobe</li>
-                                                    </ul>
-                                                </div>
-                                                <div class="vartical-nav-content-menu">
-                                                    <h3
-                                                        class="text-xs font-medium uppercase tracking-widest text-[#91959e]">
-                                                        Course Title</h3>
-                                                    <hr class="my-1.5" />
-                                                    <ul class="m-0 p-0 list-none space-y-2">
-                                                        <li class="m-0 relative text-sm font-medium">Photo</li>
-                                                        <li class="m-0 relative text-sm font-medium">English</li>
-                                                        <li class="m-0 relative text-sm font-medium">Math</li>
-                                                        <li class="m-0 relative text-sm font-medium">Read</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
+                                <span class="ps-1.5 hidden xl:block">Category</span>
+                            </div>
+                            <div class="lg:absolute lg:top-full lg:min-w-60 bg-white shadow-xl rounded-b-xl border-t border-solid border-gray-300 overflow-hidden transition-all duration-500 ease-in-out z-10" [ngClass]="isCategoryOpen ? 'max-h-[600px] opacity-100 visible' : 'max-h-0 opacity-0 invisible'">
+                                <div class="flex p-5">
+                                    <div class="min-w-60 w-auto border-r border-solid border-gray-300 pr-5">
+                                        <ul class="m-0 p-0 list-none space-y-2">
+                                            <li class="my-0 relative px-3 py-2 rounded cursor-pointer text-sm font-medium" (click)="$event.stopPropagation()" [ngClass]="activeTab === 'tab1' ? 'bg-blue-50 text-blue-600 font-medium' : 'hover:bg-gray-100'" (click)="activeTab = 'tab1'">
+                                                Course School
+                                            </li>
+                                            <li class="my-0 relative px-3 py-2 rounded cursor-pointer text-sm font-medium" (click)="$event.stopPropagation()" [ngClass]="activeTab === 'tab2' ? 'bg-blue-50 text-blue-600 font-medium' : 'hover:bg-gray-100'" (click)="activeTab = 'tab2'">
+                                                Online School
+                                            </li>
+                                            <li class="my-0 relative px-3 py-2 rounded cursor-pointer text-sm font-medium" (click)="$event.stopPropagation()" [ngClass]="activeTab === 'tab3' ? 'bg-blue-50 text-blue-600 font-medium' : 'hover:bg-gray-100'" (click)="activeTab = 'tab3'">
+                                                kindergarten
+                                            </li>
+                                            <li class="my-0 relative px-3 py-2 rounded cursor-pointer text-sm font-medium" (click)="$event.stopPropagation()" [ngClass]="activeTab === 'tab4' ? 'bg-blue-50 text-blue-600 font-medium' : 'hover:bg-gray-100'" (click)="activeTab = 'tab4'">
+                                                Course
+                                            </li>
+                                        </ul>
                                     </div>
-
-                                    <div class="rbt-vertical-inner tab-content" *ngIf="activeTab === 'tab2'">
-                                        <div class="rbt-vertical-single">
-                                            <div class="grid grid-cols-2 gap-4">
-                                                <div class="vartical-nav-content-menu">
-                                                    <h3
-                                                        class="text-xs font-medium uppercase tracking-widest text-[#91959e]">
-                                                        Course Title</h3>
-                                                    <hr class="my-1.5" />
-                                                    <ul class="m-0 p-0 list-none space-y-2">
-                                                        <li class="m-0 relative text-sm font-medium">Photo</li>
-                                                        <li class="m-0 relative text-sm font-medium">English</li>
-                                                        <li class="m-0 relative text-sm font-medium">Math</li>
-                                                        <li class="m-0 relative text-sm font-medium">Read</li>
-                                                    </ul>
-                                                </div>
-                                                <div class="vartical-nav-content-menu">
-                                                    <h3
-                                                        class="text-xs font-medium uppercase tracking-widest text-[#91959e]">
-                                                        Course Title</h3>
-                                                    <hr class="my-1.5" />
-                                                    <ul class="m-0 p-0 list-none space-y-2">
-                                                        <li class="m-0 relative text-sm font-medium">Web Design</li>
-                                                        <li class="m-0 relative text-sm font-medium">Art</li>
-                                                        <li class="m-0 relative text-sm font-medium">Figma</li>
-                                                        <li class="m-0 relative text-sm font-medium">Adobe</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="rbt-vertical-inner tab-content" *ngIf="activeTab === 'tab3'">
-                                        <div class="rbt-vertical-single">
-                                            <div class="grid grid-cols-2 gap-4">
-                                                <div class="col-span-2">
+                                    <div class="min-w-80 h-full w-auto pl-5">
+                                        <div class="rbt-vertical-inner tab-content" *ngIf="activeTab === 'tab1'">
+                                            <div class="rbt-vertical-single">
+                                                <div class="grid grid-cols-2 gap-4">
                                                     <div class="vartical-nav-content-menu">
-                                                        <h3
-                                                            class="text-xs font-medium uppercase tracking-widest text-[#91959e]">
+                                                        <h3 class="text-xs font-medium uppercase tracking-widest text-[#91959e]">
                                                             Course Title</h3>
                                                         <hr class="my-1.5" />
                                                         <ul class="m-0 p-0 list-none space-y-2">
-                                                            <li class="m-0 relative text-sm font-medium">Photo</li>
-                                                            <li class="m-0 relative text-sm font-medium">English</li>
-                                                            <li class="m-0 relative text-sm font-medium">Math</li>
+                                                            <li class="m-0 relative text-sm font-medium cursor-pointer">Web Design</li>
+                                                            <li class="m-0 relative text-sm font-medium cursor-pointer">Art</li>
+                                                            <li class="m-0 relative text-sm font-medium cursor-pointer">Figma</li>
+                                                            <li class="m-0 relative text-sm font-medium cursor-pointer">Adobe</li>
                                                         </ul>
-                                                        <div class="read-more-btn">
-                                                            <a class="text-black relative text-sm font-medium inline-block"
-                                                                href="#">Learn More <i
-                                                                    class="feather-arrow-right"></i></a>
+                                                    </div>
+                                                    <div class="vartical-nav-content-menu">
+                                                        <h3 class="text-xs font-medium uppercase tracking-widest text-[#91959e]">
+                                                            Course Title</h3>
+                                                        <hr class="my-1.5" />
+                                                        <ul class="m-0 p-0 list-none space-y-2">
+                                                            <li class="m-0 relative text-sm font-medium cursor-pointer">Photo</li>
+                                                            <li class="m-0 relative text-sm font-medium cursor-pointer">English</li>
+                                                            <li class="m-0 relative text-sm font-medium cursor-pointer">Math</li>
+                                                            <li class="m-0 relative text-sm font-medium cursor-pointer">Read</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+    
+                                        <div class="rbt-vertical-inner tab-content" *ngIf="activeTab === 'tab2'">
+                                            <div class="rbt-vertical-single">
+                                                <div class="grid grid-cols-2 gap-4">
+                                                    <div class="vartical-nav-content-menu">
+                                                        <h3 class="text-xs font-medium uppercase tracking-widest text-[#91959e]">
+                                                            Course Title</h3>
+                                                        <hr class="my-1.5" />
+                                                        <ul class="m-0 p-0 list-none space-y-2">
+                                                            <li class="m-0 relative text-sm font-medium cursor-pointer">Photo</li>
+                                                            <li class="m-0 relative text-sm font-medium cursor-pointer">English</li>
+                                                            <li class="m-0 relative text-sm font-medium cursor-pointer">Math</li>
+                                                            <li class="m-0 relative text-sm font-medium cursor-pointer">Read</li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="vartical-nav-content-menu">
+                                                        <h3 class="text-xs font-medium uppercase tracking-widest text-[#91959e]">
+                                                            Course Title</h3>
+                                                        <hr class="my-1.5" />
+                                                        <ul class="m-0 p-0 list-none space-y-2">
+                                                            <li class="m-0 relative text-sm font-medium cursor-pointer">Web Design</li>
+                                                            <li class="m-0 relative text-sm font-medium cursor-pointer">Art</li>
+                                                            <li class="m-0 relative text-sm font-medium cursor-pointer">Figma</li>
+                                                            <li class="m-0 relative text-sm font-medium cursor-pointer">Adobe</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+    
+                                        <div class="rbt-vertical-inner tab-content" *ngIf="activeTab === 'tab3'">
+                                            <div class="rbt-vertical-single">
+                                                <div class="grid grid-cols-2 gap-4">
+                                                    <div class="col-span-2">
+                                                        <div class="vartical-nav-content-menu">
+                                                            <h3 class="text-xs font-medium uppercase tracking-widest text-[#91959e]">
+                                                                Course Title</h3>
+                                                            <hr class="my-1.5" />
+                                                            <ul class="m-0 p-0 list-none space-y-2">
+                                                                <li class="m-0 relative text-sm font-medium cursor-pointer">Photo</li>
+                                                                <li class="m-0 relative text-sm font-medium cursor-pointer">English</li>
+                                                                <li class="m-0 relative text-sm font-medium cursor-pointer">Math</li>
+                                                            </ul>
+                                                            <div class="read-more-btn">
+                                                                <a class="text-black relative text-sm font-medium inline-block">
+                                                                    Learn More <i class="feather-arrow-right"></i>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+    
+                                        <div class="rbt-vertical-inner tab-content" *ngIf="activeTab === 'tab4'">
+                                            <div class="rbt-vertical-single">
+                                                <div class="grid grid-cols-2 gap-4">
+                                                    <div class="col-span-2">
+                                                        <div class="vartical-nav-content-menu">
+                                                            <h3 class="text-xs font-medium uppercase tracking-widest text-[#91959e]">
+                                                                Course Title
+                                                            </h3>
+                                                            <hr class="my-1.5" />
+                                                            <ul class="m-0 p-0 list-none space-y-2">
+                                                                <li class="m-0 relative text-sm font-medium cursor-pointer">Photo</li>
+                                                                <li class="m-0 relative text-sm font-medium cursor-pointer">English</li>
+                                                                <li class="m-0 relative text-sm font-medium cursor-pointer">Math</li>
+                                                                <li class="m-0 relative text-sm font-medium cursor-pointer">Read</li>
+                                                            </ul>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-
-                                    <div class="rbt-vertical-inner tab-content" *ngIf="activeTab === 'tab4'">
-                                        <div class="rbt-vertical-single">
-                                            <div class="grid grid-cols-2 gap-4">
-                                                <div class="col-span-2">
-                                                    <div class="vartical-nav-content-menu">
-                                                        <h3
-                                                            class="text-xs font-medium uppercase tracking-widest text-[#91959e]">
-                                                            Course Title</h3>
-                                                        <hr class="my-1.5" />
-                                                        <ul class="m-0 p-0 list-none space-y-2">
-                                                            <li class="m-0 relative text-sm font-medium">Photo</li>
-                                                            <li class="m-0 relative text-sm font-medium">English</li>
-                                                            <li class="m-0 relative text-sm font-medium">Math</li>
-                                                            <li class="m-0 relative text-sm font-medium">Read</li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <!-- End category Area  -->
                     </div>
                 </div>
-            </div>
-
-            <div class="main-navigation hidden xl:block">
-                <nav>
-                    <ul class="flex justify-center m-0 p-0">
-                        <li routerLink="/" class="h-20 text-black flex items-center px-4 py-2 font-medium cursor-pointer relative">Home</li>
-                        <li routerLink="/about" class="h-20 text-black flex items-center px-4 py-2 font-medium cursor-pointer relative">About</li>
-                        <li routerLink="/blog" class="h-20 text-black flex items-center px-4 py-2 font-medium cursor-pointer relative">Blog</li>
-                        <li class="relative dropDown-menu">
-                            <div class="h-20 text-black px-4 py-2 font-medium cursor-pointer relative flex items-center gap-2">
-                                Shop
-                                <i class="fa-regular fa-chevron-down transition-transform duration-300"></i>
+    
+                <ul class="main-navigation lg:flex lg:static lg:translate-x-0 lg:h-auto lg:w-auto lg:bg-transparent lg:p-0 fixed left-0 top-0 bg-white w-80 h-full z-50 p-5 transition-all duration-500 ease-in-out" [ngClass]="sidebarOpen ? 'translate-x-0' : '-translate-x-full'">
+                    <div class="flex items-center justify-between lg:hidden mb-5">
+                        <div class="logo">
+                            <a routerLink="/" class="text-2xl font-bold">
+                                CK Online Mart
+                            </a>
+                        </div>
+                        <i class="fa-regular fa-xmark" (click)="openNavigation()"></i>
+                    </div>
+                    <li routerLink="/" class="text-black flex items-center lg:px-4 py-2 font-medium cursor-pointer relative">Home</li>
+                    <li routerLink="/about" class="text-black flex items-center lg:px-4 py-2 font-medium cursor-pointer relative">About</li>
+                    <li routerLink="/blog" class="text-black flex items-center lg:px-4 py-2 font-medium cursor-pointer relative">Blog</li>
+                    <li class="relative" (click)="toggleMegaMenu()">
+                        <div class="text-black lg:px-4 py-2 font-medium cursor-pointer relative flex items-center gap-2">
+                            Shop
+                            <i class="fa-regular fa-chevron-down transition-transform duration-300" [ngClass]="isMegaOpen ? 'rotate-180' : ''"></i>
+                        </div>
+                        <div class="lg:absolute lg:left-1/2 lg:-translate-x-1/2 lg:top-full lg:w-[900px] w-full bg-white shadow-xl rounded-b-xl p-6 border-t border-solid border-gray-300 overflow-hidden transition-all duration-500 ease-in-out" [ngClass]="isMegaOpen ? 'max-h-[600px] opacity-100 visible' : 'max-h-0 opacity-0 invisible'">
+                            <div class="grid lg:grid-cols-4 gap-6">
+                                <div>
+                                    <h3 class="text-sm font-semibold mb-3 border-b pb-2">Get Started</h3>
+                                    <ul class="space-y-2">
+                                        <li class="block px-2 py-1 rounded hover:bg-gray-100 transition cursor-pointer">About Us</li>
+                                        <li class="block px-2 py-1 rounded hover:bg-gray-100 transition cursor-pointer">About Us 02</li>
+                                        <li class="block px-2 py-1 rounded hover:bg-gray-100 transition cursor-pointer">Event Grid</li>
+                                        <li class="block px-2 py-1 rounded hover:bg-gray-100 transition cursor-pointer">Event List</li>
+                                    </ul>
+                                </div>
+    
+                                <div>
+                                    <h3 class="text-sm font-semibold mb-3 border-b pb-2">Events</h3>
+                                    <ul class="space-y-2">
+                                        <li class="block px-2 py-1 rounded hover:bg-gray-100 transition cursor-pointer">Event Sidebar</li>
+                                        <li class="block px-2 py-1 rounded hover:bg-gray-100 transition cursor-pointer">Event Details</li>
+                                        <li class="block px-2 py-1 rounded hover:bg-gray-100 transition cursor-pointer">Gallery</li>
+                                    </ul>
+                                </div>
+    
+                                <div>
+                                    <h3 class="text-sm font-semibold mb-3 border-b pb-2">Academy</h3>
+                                    <ul class="space-y-2">
+                                        <li class="block px-2 py-1 rounded hover:bg-gray-100 transition cursor-pointer">Admission Guide</li>
+                                        <li class="block px-2 py-1 rounded hover:bg-gray-100 transition cursor-pointer">Courses</li>
+                                    </ul>
+                                </div>
+    
+                                <div class="flex flex-col justify-center">
+                                    <img src="assets/banner.jpg" class="rounded-lg mb-3" />
+                                    <p class="text-sm">Special Offer 🎉</p>
+                                </div>
                             </div>
-                            <div class="mega-menu absolute left-1/2 top-full w-[900px] bg-white shadow-xl rounded-b-xl p-6 border-t border-solid border-gray-300">
-                                <div class="grid grid-cols-4 gap-6">
-                                    <div>
-                                        <h3 class="text-sm font-semibold mb-3 border-b pb-2">Get Started</h3>
-                                        <ul class="space-y-2">
-                                            <li><a href="#" class="block px-2 py-1 rounded hover:bg-gray-100 transition">About Us</a></li>
-                                            <li><a href="#" class="block px-2 py-1 rounded hover:bg-gray-100 transition">About Us 02</a></li>
-                                            <li><a href="#" class="block px-2 py-1 rounded hover:bg-gray-100 transition">Event Grid</a></li>
-                                            <li><a href="#" class="block px-2 py-1 rounded hover:bg-gray-100 transition">Event List</a></li>
-                                        </ul>
+                        </div>
+                    </li>
+                    <li routerLink="/contact" class="text-black flex items-center lg:px-4 py-2 font-medium cursor-pointer relative">Contact</li>
+                </ul>
+    
+                <div class="flex items-center gap-3 justify-end">
+                    <ul class="flex items-center m-0 p-0 list-none">
+                        <li class="w-10 h-10 sm:w-auto relative cursor-pointer justify-center flex items-center gap-1.5" (click)="toggleUserMenu()">
+                            <a class="flex items-center gap-1.5">
+                                <i class="fa-regular fa-user"></i>
+                                <span class="hidden sm:block">Admin</span>
+                            </a>
+                            <div class="bg-white min-w-60 rounded-br-lg rounded-bl-lg shadow-lg border-t border-solid absolute top-full -left-40 lg:left-0 transition-all duration-300 ease-in-out z-10" [ngClass]="isUserMenuOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-2'">
+                                <div class="p-4">
+                                    <div class="pb-4 flex items-center gap-4">
+                                        <div class="admin-thumbnail">
+                                            <img class="w-12 h-12 rounded-full p-1 shadow-sm" src="./../../assets/images/avatar.jpg" alt="User Images">
+                                        </div>
+                                        <div class="admin-info">
+                                            <span class="font-medium">RainbowIT</span>
+                                            <a class="relative text-sm font-medium inline-block text-[#2f57ef]">View Profile</a>
+                                        </div>
                                     </div>
-
-                                    <div>
-                                        <h3 class="text-sm font-semibold mb-3 border-b pb-2">Events</h3>
-                                        <ul class="space-y-2">
-                                            <li><a href="#" class="block px-2 py-1 rounded hover:bg-gray-100 transition">Event Sidebar</a></li>
-                                            <li><a href="#" class="block px-2 py-1 rounded hover:bg-gray-100 transition">Event Details</a></li>
-                                            <li><a href="#" class="block px-2 py-1 rounded hover:bg-gray-100 transition">Gallery</a></li>
-                                        </ul>
-                                    </div>
-
-                                    <div>
-                                        <h3 class="text-sm font-semibold mb-3 border-b pb-2">Academy</h3>
-                                        <ul class="space-y-2">
-                                            <li><a href="#" class="block px-2 py-1 rounded hover:bg-gray-100 transition">Admission Guide</a></li>
-                                            <li><a href="#" class="block px-2 py-1 rounded hover:bg-gray-100 transition">Courses</a></li>
-                                        </ul>
-                                    </div>
-
-                                    <div class="flex flex-col justify-center">
-                                        <img src="assets/banner.jpg" class="rounded-lg mb-3" />
-                                        <p class="text-sm">Special Offer 🎉</p>
-                                    </div>
+                                    <ul class="list-none m-0 p-0 space-y-2">
+                                        <li>
+                                            <a class="flex items-center gap-4 text-[#6b7385]">
+                                                <i class="fa-regular fa-house"></i>
+                                                <span>My Dashboard</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="flex items-center gap-4 text-[#6b7385]">
+                                                <i class="fa-regular fa-heart"></i>
+                                                <span>Wishlist</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="flex items-center gap-4 text-[#6b7385]">
+                                                <i class="fa-regular fa-clock"></i>
+                                                <span>Order History</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <hr class="my-2.5">
+                                    <ul class="list-none m-0 p-0 space-y-2">
+                                        <li>
+                                            <a class="flex items-center gap-4 text-[#6b7385]">
+                                                <i class="fa-regular fa-gear"></i>
+                                                <span>Settings</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="flex items-center gap-4 text-[#6b7385]">
+                                                <i class="fa-regular fa-arrow-left-from-bracket"></i>
+                                                <span>Logout</span>
+                                            </a>
+                                        </li>
+                                    </ul>
                                 </div>
                             </div>
                         </li>
-                        <li routerLink="/contact" class="h-20 text-black flex items-center px-4 py-2 font-medium cursor-pointer relative">Contact</li>
+                        <li class="w-10 h-10 lg:hidden flex items-center justify-center" (click)="openNavigation()">
+                            <i class="fa-regular fa-bars"></i>
+                        </li>
                     </ul>
-                </nav>
-            </div>
-            <div class="flex items-center gap-3 justify-end">
-                <ul class="flex items-center m-0 p-0 list-none">
-                    <li class="flex items-center gap-1.5 h-20">
-                        <a class="relative z-10 font-medium text-black w-10 h-10 flex items-center justify-center rounded-full" href="#">
-                            <i class="fa-regular fa-magnifying-glass"></i>
-                        </a>
-                    </li>
-                    <li class="flex items-center gap-1.5 h-20 relative">
-                        <a class="relative z-10 font-medium text-black w-10 h-10 flex items-center justify-center rounded-full" href="#">
-                            <i class="fa-regular fa-cart-shopping"></i>
-                            <span class="absolute top-1 left-3/4 z-20 min-w-4 h-4 bg-[#2f57ef] rounded-lg text-xs text-center text-white inline-block px-1">4</span>
-                        </a>
-                    </li>
-                    <li class="dropDown-menu pl-7 mx-7 relative flex items-center gap-1.5 h-20 after:content-[''] after:absolute after:w-0.5 after:h-7 after:top-1/2 after:left-0 after:-translate-y-1/2 after:bg-gray-300">
-                        <a class="flex items-center gap-1.5" href="#">
-                            <i class="fa-regular fa-user"></i>Admin
-                        </a>
-                        <div class="bg-white mega-menu min-w-60 rounded-br-md rounded-bl-md shadow-lg border-t border-solid absolute top-full left-0 opacity-0 invisible transform">
-                            <div class="p-4">
-                                <div class="pb-4 flex items-center gap-4">
-                                    <div class="admin-thumbnail">
-                                        <img class="w-12 h-12 rounded-full p-1 shadow-sm" src="./../../assets/images/avatar.jpg" alt="User Images">
-                                    </div>
-                                    <div class="admin-info">
-                                        <span class="font-medium">RainbowIT</span>
-                                        <a class="relative text-sm font-medium inline-block text-[#2f57ef]" href="">View Profile</a>
-                                    </div>
-                                </div>
-                                <ul class="list-none m-0 p-0 space-y-2">
-                                    <li>
-                                        <a class="flex items-center gap-4 text-[#6b7385]" href="">
-                                            <i class="fa-regular fa-house"></i>
-                                            <span>My Dashboard</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="flex items-center gap-4 text-[#6b7385]" href="">
-                                            <i class="fa-regular fa-heart"></i>
-                                            <span>Wishlist</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="flex items-center gap-4 text-[#6b7385]" href="">
-                                            <i class="fa-regular fa-clock"></i>
-                                            <span>Order History</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                                <hr class="my-2.5">
-                                <ul class="list-none m-0 p-0 space-y-2">
-                                    <li>
-                                        <a class="flex items-center gap-4 text-[#6b7385]" href="">
-                                            <i class="fa-regular fa-gear"></i>
-                                            <span>Settings</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="flex items-center gap-4 text-[#6b7385]" href="">
-                                            <i class="fa-regular fa-arrow-left-from-bracket"></i>
-                                            <span>Logout</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
+                </div>
             </div>
         </div>
     </div>

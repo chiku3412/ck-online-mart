@@ -1,8 +1,35 @@
 /** @type {import('tailwindcss').Config} */
-export default {
+module.exports = {
     content: ["./src/**/*.{html,ts,scss}"],
     theme: {
-        extend: {},
+        extend: {
+            keyframes: {
+                circle: {
+                    '0%': { transform: 'rotate(0deg)' },
+                    '100%': { transform: 'rotate(-360deg)' },
+                },
+                floatY: {
+                    '0%': {transform: 'translateY(0px)'},
+                    '50%': {transform: 'translateY(-20px)'},
+                    '100%': {transform: 'translateY(0px)'}
+                },
+                sineSweep: {
+                    '0%': { left: '-100%' },
+                    '40%': { left: '150%' },
+                    '100%': { left: '150%' }
+                },
+                lineShimmer: {
+                    '0%': { backgroundPosition: '200% 0' },
+                    '100%': { backgroundPosition: '-200% 0' }
+                }
+            },
+            animation: {
+                circle: 'circle 3s linear infinite',
+                floatY: 'floatY 3s linear infinite',
+                shineSweep: 'sineSweep 2s linear infinite',
+                lineShimmer: 'lineShimmer 3s ease-in-out infinite'
+            },
+        },
     },
     plugins: [],
 }
