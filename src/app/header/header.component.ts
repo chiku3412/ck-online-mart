@@ -1,15 +1,15 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { AppRoutingModule } from "../app-routing.module";
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import {MatIconModule} from '@angular/material/icon';
 import {MatSelectModule} from '@angular/material/select';
+import { RouterModule } from '@angular/router';
 
 @Component({
     selector: 'app-header',
     standalone: true,
-    imports: [CommonModule, AppRoutingModule, MatFormFieldModule, MatInputModule, MatIconModule, MatSelectModule],
+    imports: [CommonModule, RouterModule, MatFormFieldModule, MatInputModule, MatIconModule, MatSelectModule],
     templateUrl: './header.component.html'
 })
 export class HeaderComponent {

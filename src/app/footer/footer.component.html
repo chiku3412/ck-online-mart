@@ -4,7 +4,7 @@
             <div class="company-profile col-span-2">
                 <a routerLink="/" class="text-4xl font-bold text-black block mb-4">Online Mart</a>
                 <p class="text-gray-600 mb-4 text-sm leading-relaxed">
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tenetur voluptatem labore iste cum assumenda.   
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tenetur voluptatem labore iste cum assumenda.
                 </p>
 
                 <div class="flex gap-3 mb-5">
@@ -30,7 +30,7 @@
             <div class="useful-link">
                 <h3 class="font-semibold mb-4">Useful Links</h3>
                 <ul class="space-y-2 text-gray-600 text-sm">
-                    <li class="cursor-pointer">About Us</li>
+                    <li routerLink="/about" class="cursor-pointer">About Us</li>
                     <li class="cursor-pointer">My Account</li>
                     <li class="cursor-pointer">My Orders</li>
                     <li class="cursor-pointer">Redeem Code</li>
@@ -42,10 +42,10 @@
             <div class="useful-link">
                 <h3 class="font-semibold mb-4">Information</h3>
                 <ul class="space-y-2 text-gray-600 text-sm">
-                    <li class="cursor-pointer">Privacy Policy</li>
-                    <li class="cursor-pointer">Return Policy</li>
+                    <li routerLink="/privacy-policy" class="cursor-pointer">Privacy Policy</li>
+                    <li routerLink="/return-policy" class="cursor-pointer">Return Policy</li>
                     <li class="cursor-pointer">Shipping & Return</li>
-                    <li class="cursor-pointer">Terms & Conditions</li>
+                    <li routerLink="/terms-condition" class="cursor-pointer">Terms & Conditions</li>
                     <li class="cursor-pointer">Cash Back Guarantee</li>
                 </ul>
             </div>
@@ -86,13 +86,11 @@
         <div class="border-t mt-5 lg:mt-10 pt-6 flex flex-col lg:flex-row justify-between items-center text-sm text-gray-500">
             <p>Copyright © 2025 CK Online Mart. All Rights Reserved</p>
             <div class="flex flex-wrap gap-2 sm:gap-4 mt-3 lg:mt-0">
-                <span class="cursor-pointer shrink-0">Terms of service</span>
+                <span routerLink="/terms-condition" class="cursor-pointer shrink-0">Terms of service</span>
                 <span class="hidden sm:block">|</span>
-                <span class="cursor-pointer shrink-0">Privacy policy</span>
+                <span routerLink="privacy-policy" class="cursor-pointer shrink-0">Privacy policy</span>
                 <span class="hidden sm:block">|</span>
-                <span class="cursor-pointer shrink-0">Subscription</span>
-                <span class="hidden sm:block">|</span>
-                <span class="cursor-pointer shrink-0">Login & Register</span>
+                <span routerLink="/register" class="cursor-pointer shrink-0">Login & Register</span>
             </div>
         </div>
 
