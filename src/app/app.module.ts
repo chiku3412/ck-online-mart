@@ -13,6 +13,7 @@ import { ContactComponent } from './contact/contact.component';
 import { ProductComponent } from './shop/product/product.component';
 import { ProductDetailsComponent } from './shop/product-details/product-details.component';
 import { HomeComponent } from './home/home.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
     declarations: [
@@ -29,7 +30,8 @@ import { HomeComponent } from './home/home.component';
         ContactComponent,
         ProductComponent,
         ProductDetailsComponent,
-        HomeComponent
+        HomeComponent,
+        HttpClientModule
     ],
     providers: [
     provideAnimationsAsync()

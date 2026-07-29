@@ -14,17 +14,17 @@ export class AboutComponent {
     testimonials = [
         { 
             name: 'Alex Star',
-            feedback: 'CK Online Store has completely transformed my shopping experience. The quality of their products is outstanding.',
+            feedback: 'Online Store has completely transformed my shopping experience. The quality of their products is outstanding.',
             avatar: './../../assets/images/client-img1.png'
         },
         { 
             name: 'Alex Star',
-            feedback: 'CK Online Store has completely transformed my shopping experience. The quality of their products is outstanding.',
+            feedback: 'Online Store has completely transformed my shopping experience. The quality of their products is outstanding.',
             avatar: './../../assets/images/client-img2.png'
         },
         { 
             name: 'Alex Star',
-            feedback: 'CK Online Store has completely transformed my shopping experience. The quality of their products is outstanding.',
+            feedback: 'Online Store has completely transformed my shopping experience. The quality of their products is outstanding.',
             avatar: './../../assets/images/avatar.jpg'
         },
     ]

@@ -5,7 +5,7 @@
                 <div class="flex items-center gap-2 sm:gap-3 col-span-2">
                     <div class="header-info">
                         <div class="logo">
-                            <a routerLink="/" class="text-2xl font-bold">
+                            <a routerLink="/" class="text-2xl font-bold text-green-600">
                                 Online Mart
                             </a>
                         </div>
@@ -15,11 +15,10 @@
                     <!-- Category Select -->
                     <div class="relative h-full flex items-center pl-4 pr-2">
                         <mat-form-field appearance="outline" [subscriptSizing]="'dynamic'">
-                            <mat-select [value]="'All'">
-                                <mat-option>All Categories</mat-option>
-                                <mat-option>Electronics</mat-option>
-                                <mat-option>Fashion</mat-option>
-                                <mat-option>Grocery</mat-option>
+                            <mat-select class="!text-sm !font-bold" [(value)]="selectedCategory">
+                                @for(category of categories; track category) {
+                                    <mat-option [value]="category.value">{{ category.viewValue }}</mat-option>
+                                }
                             </mat-select>
                         </mat-form-field>
                     </div>
@@ -52,7 +51,7 @@
             <div class="flex justify-between items-center">
                 <div class="flex items-center gap-2 sm:gap-3">
                     <div class="header-info hidden lg:block">
-                        <div class="flex items-center relative" (click)="toggleCategoryMenu()">
+                        <div class="flex items-center relative" (click)="toggleCategoryMenu($event)">
                             <div class="flex items-center cursor-pointer sm:bg-[#0000000a] text-black font-medium p-2 sm:px-5 sm:py-2.5 rounded-lg">
                                 <div class="inline-block">
                                     <span class="hidden xl:block">
@@ -81,96 +80,24 @@
                                         </ul>
                                     </div>
                                     <div class="min-w-80 h-full w-auto pl-5">
-                                        <div class="rbt-vertical-inner tab-content" *ngIf="activeTab === 'tab1'">
-                                            <div class="rbt-vertical-single">
-                                                <div class="grid grid-cols-2 gap-4">
-                                                    <div class="vartical-nav-content-menu">
-                                                        <h3 class="text-xs font-medium uppercase tracking-widest text-[#91959e]">
-                                                            Course Title</h3>
-                                                        <hr class="my-1.5" />
-                                                        <ul class="m-0 p-0 list-none space-y-2">
-                                                            <li class="m-0 relative text-sm font-medium cursor-pointer">Web Design</li>
-                                                            <li class="m-0 relative text-sm font-medium cursor-pointer">Art</li>
-                                                            <li class="m-0 relative text-sm font-medium cursor-pointer">Figma</li>
-                                                            <li class="m-0 relative text-sm font-medium cursor-pointer">Adobe</li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="vartical-nav-content-menu">
-                                                        <h3 class="text-xs font-medium uppercase tracking-widest text-[#91959e]">
-                                                            Course Title</h3>
-                                                        <hr class="my-1.5" />
-                                                        <ul class="m-0 p-0 list-none space-y-2">
-                                                            <li class="m-0 relative text-sm font-medium cursor-pointer">Photo</li>
-                                                            <li class="m-0 relative text-sm font-medium cursor-pointer">English</li>
-                                                            <li class="m-0 relative text-sm font-medium cursor-pointer">Math</li>
-                                                            <li class="m-0 relative text-sm font-medium cursor-pointer">Read</li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-    
-                                        <div class="rbt-vertical-inner tab-content" *ngIf="activeTab === 'tab2'">
-                                            <div class="rbt-vertical-single">
-                                                <div class="grid grid-cols-2 gap-4">
-                                                    <div class="vartical-nav-content-menu">
-                                                        <h3 class="text-xs font-medium uppercase tracking-widest text-[#91959e]">
-                                                            Course Title</h3>
-                                                        <hr class="my-1.5" />
-                                                        <ul class="m-0 p-0 list-none space-y-2">
-                                                            <li class="m-0 relative text-sm font-medium cursor-pointer">Photo</li>
-                                                            <li class="m-0 relative text-sm font-medium cursor-pointer">English</li>
-                                                            <li class="m-0 relative text-sm font-medium cursor-pointer">Math</li>
-                                                            <li class="m-0 relative text-sm font-medium cursor-pointer">Read</li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="vartical-nav-content-menu">
-                                                        <h3 class="text-xs font-medium uppercase tracking-widest text-[#91959e]">
-                                                            Course Title</h3>
-                                                        <hr class="my-1.5" />
-                                                        <ul class="m-0 p-0 list-none space-y-2">
-                                                            <li class="m-0 relative text-sm font-medium cursor-pointer">Web Design</li>
-                                                            <li class="m-0 relative text-sm font-medium cursor-pointer">Art</li>
-                                                            <li class="m-0 relative text-sm font-medium cursor-pointer">Figma</li>
-                                                            <li class="m-0 relative text-sm font-medium cursor-pointer">Adobe</li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-    
-                                        <div class="rbt-vertical-inner tab-content" *ngIf="activeTab === 'tab3'">
-                                            <div class="rbt-vertical-single">
-                                                <div class="grid grid-cols-2 gap-4">
-                                                    <div class="col-span-2">
+                                        @if(activeTab === 'tab1') {
+                                            <div class="rbt-vertical-inner tab-content">
+                                                <div class="rbt-vertical-single">
+                                                    <div class="grid grid-cols-2 gap-4">
                                                         <div class="vartical-nav-content-menu">
                                                             <h3 class="text-xs font-medium uppercase tracking-widest text-[#91959e]">
                                                                 Course Title</h3>
                                                             <hr class="my-1.5" />
                                                             <ul class="m-0 p-0 list-none space-y-2">
-                                                                <li class="m-0 relative text-sm font-medium cursor-pointer">Photo</li>
-                                                                <li class="m-0 relative text-sm font-medium cursor-pointer">English</li>
-                                                                <li class="m-0 relative text-sm font-medium cursor-pointer">Math</li>
+                                                                <li class="m-0 relative text-sm font-medium cursor-pointer">Web Design</li>
+                                                                <li class="m-0 relative text-sm font-medium cursor-pointer">Art</li>
+                                                                <li class="m-0 relative text-sm font-medium cursor-pointer">Figma</li>
+                                                                <li class="m-0 relative text-sm font-medium cursor-pointer">Adobe</li>
                                                             </ul>
-                                                            <div class="read-more-btn">
-                                                                <a class="text-black relative text-sm font-medium inline-block">
-                                                                    Learn More <i class="feather-arrow-right"></i>
-                                                                </a>
-                                                            </div>
                                                         </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-    
-                                        <div class="rbt-vertical-inner tab-content" *ngIf="activeTab === 'tab4'">
-                                            <div class="rbt-vertical-single">
-                                                <div class="grid grid-cols-2 gap-4">
-                                                    <div class="col-span-2">
                                                         <div class="vartical-nav-content-menu">
                                                             <h3 class="text-xs font-medium uppercase tracking-widest text-[#91959e]">
-                                                                Course Title
-                                                            </h3>
+                                                                Course Title</h3>
                                                             <hr class="my-1.5" />
                                                             <ul class="m-0 p-0 list-none space-y-2">
                                                                 <li class="m-0 relative text-sm font-medium cursor-pointer">Photo</li>
@@ -182,7 +109,81 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        } @else if (activeTab === 'tab2') {
+                                            <div class="rbt-vertical-inner tab-content">
+                                                <div class="rbt-vertical-single">
+                                                    <div class="grid grid-cols-2 gap-4">
+                                                        <div class="vartical-nav-content-menu">
+                                                            <h3 class="text-xs font-medium uppercase tracking-widest text-[#91959e]">
+                                                                Course Title</h3>
+                                                            <hr class="my-1.5" />
+                                                            <ul class="m-0 p-0 list-none space-y-2">
+                                                                <li class="m-0 relative text-sm font-medium cursor-pointer">Photo</li>
+                                                                <li class="m-0 relative text-sm font-medium cursor-pointer">English</li>
+                                                                <li class="m-0 relative text-sm font-medium cursor-pointer">Math</li>
+                                                                <li class="m-0 relative text-sm font-medium cursor-pointer">Read</li>
+                                                            </ul>
+                                                        </div>
+                                                        <div class="vartical-nav-content-menu">
+                                                            <h3 class="text-xs font-medium uppercase tracking-widest text-[#91959e]">
+                                                                Course Title</h3>
+                                                            <hr class="my-1.5" />
+                                                            <ul class="m-0 p-0 list-none space-y-2">
+                                                                <li class="m-0 relative text-sm font-medium cursor-pointer">Web Design</li>
+                                                                <li class="m-0 relative text-sm font-medium cursor-pointer">Art</li>
+                                                                <li class="m-0 relative text-sm font-medium cursor-pointer">Figma</li>
+                                                                <li class="m-0 relative text-sm font-medium cursor-pointer">Adobe</li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        } @else if (activeTab === 'tab3') {
+                                            <div class="rbt-vertical-inner tab-content">
+                                                <div class="rbt-vertical-single">
+                                                    <div class="grid grid-cols-2 gap-4">
+                                                        <div class="col-span-2">
+                                                            <div class="vartical-nav-content-menu">
+                                                                <h3 class="text-xs font-medium uppercase tracking-widest text-[#91959e]">
+                                                                    Course Title</h3>
+                                                                <hr class="my-1.5" />
+                                                                <ul class="m-0 p-0 list-none space-y-2">
+                                                                    <li class="m-0 relative text-sm font-medium cursor-pointer">Photo</li>
+                                                                    <li class="m-0 relative text-sm font-medium cursor-pointer">English</li>
+                                                                    <li class="m-0 relative text-sm font-medium cursor-pointer">Math</li>
+                                                                </ul>
+                                                                <div class="read-more-btn">
+                                                                    <a class="text-black relative text-sm font-medium inline-block">
+                                                                        Learn More <i class="feather-arrow-right"></i>
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        } @else {
+                                            <div class="rbt-vertical-inner tab-content">
+                                                <div class="rbt-vertical-single">
+                                                    <div class="grid grid-cols-2 gap-4">
+                                                        <div class="col-span-2">
+                                                            <div class="vartical-nav-content-menu">
+                                                                <h3 class="text-xs font-medium uppercase tracking-widest text-[#91959e]">
+                                                                    Course Title
+                                                                </h3>
+                                                                <hr class="my-1.5" />
+                                                                <ul class="m-0 p-0 list-none space-y-2">
+                                                                    <li class="m-0 relative text-sm font-medium cursor-pointer">Photo</li>
+                                                                    <li class="m-0 relative text-sm font-medium cursor-pointer">English</li>
+                                                                    <li class="m-0 relative text-sm font-medium cursor-pointer">Math</li>
+                                                                    <li class="m-0 relative text-sm font-medium cursor-pointer">Read</li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
                                     </div>
                                 </div>
                             </div>
@@ -194,7 +195,7 @@
                     <div class="flex items-center justify-between lg:hidden mb-5">
                         <div class="logo">
                             <a routerLink="/" class="text-2xl font-bold">
-                                CK Online Mart
+                                Online Mart
                             </a>
                         </div>
                         <i class="fa-regular fa-xmark" (click)="openNavigation()"></i>
@@ -202,7 +203,7 @@
                     <li routerLink="/" class="text-black flex items-center lg:px-4 py-2 font-medium cursor-pointer relative">Home</li>
                     <li routerLink="/about" class="text-black flex items-center lg:px-4 py-2 font-medium cursor-pointer relative">About</li>
                     <li routerLink="/blog" class="text-black flex items-center lg:px-4 py-2 font-medium cursor-pointer relative">Blog</li>
-                    <li class="relative" (click)="toggleMegaMenu()">
+                    <li class="relative" (click)="toggleMegaMenu($event)">
                         <div class="text-black lg:px-4 py-2 font-medium cursor-pointer relative flex items-center gap-2">
                             Shop
                             <i class="fa-regular fa-chevron-down transition-transform duration-300" [ngClass]="isMegaOpen ? 'rotate-180' : ''"></i>
@@ -248,58 +249,56 @@
     
                 <div class="flex items-center gap-3 justify-end">
                     <ul class="flex items-center m-0 p-0 list-none">
-                        <li class="w-10 h-10 sm:w-auto relative cursor-pointer justify-center flex items-center gap-1.5" (click)="toggleUserMenu()">
+                        <li #userMenu class="w-10 h-10 sm:w-auto relative cursor-pointer justify-center flex items-center gap-1.5" (click)="toggleUserMenu($event)">
                             <a class="flex items-center gap-1.5">
                                 <i class="fa-regular fa-user"></i>
                                 <span class="hidden sm:block">Admin</span>
                             </a>
-                            <div class="bg-white min-w-60 rounded-br-lg rounded-bl-lg shadow-lg border-t border-solid absolute top-full -left-40 lg:left-0 transition-all duration-300 ease-in-out z-10" [ngClass]="isUserMenuOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-2'">
-                                <div class="p-4">
-                                    <div class="pb-4 flex items-center gap-4">
-                                        <div class="admin-thumbnail">
-                                            <img class="w-12 h-12 rounded-full p-1 shadow-sm" src="./../../assets/images/avatar.jpg" alt="User Images">
-                                        </div>
-                                        <div class="admin-info">
-                                            <span class="font-medium">RainbowIT</span>
-                                            <a class="relative text-sm font-medium inline-block text-[#2f57ef]">View Profile</a>
-                                        </div>
+                            <div class="p-4 bg-white min-w-60 rounded-br-lg rounded-bl-lg shadow-lg border-t border-solid absolute top-full -left-40 transition-all duration-300 ease-in-out z-10" [ngClass]="isUserMenuOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-2'">
+                                <div class="pb-4 flex items-center gap-4">
+                                    <div class="admin-thumbnail">
+                                        <img class="w-12 h-12 rounded-full p-1 shadow-sm" src="./../../assets/images/avatar.jpg" alt="User Images">
                                     </div>
-                                    <ul class="list-none m-0 p-0 space-y-2">
-                                        <li>
-                                            <a class="flex items-center gap-4 text-[#6b7385]">
-                                                <i class="fa-regular fa-house"></i>
-                                                <span>My Dashboard</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a class="flex items-center gap-4 text-[#6b7385]">
-                                                <i class="fa-regular fa-heart"></i>
-                                                <span>Wishlist</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a class="flex items-center gap-4 text-[#6b7385]">
-                                                <i class="fa-regular fa-clock"></i>
-                                                <span>Order History</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                    <hr class="my-2.5">
-                                    <ul class="list-none m-0 p-0 space-y-2">
-                                        <li>
-                                            <a class="flex items-center gap-4 text-[#6b7385]">
-                                                <i class="fa-regular fa-gear"></i>
-                                                <span>Settings</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a class="flex items-center gap-4 text-[#6b7385]">
-                                                <i class="fa-regular fa-arrow-left-from-bracket"></i>
-                                                <span>Logout</span>
-                                            </a>
-                                        </li>
-                                    </ul>
+                                    <div class="admin-info">
+                                        <span class="font-medium">RainbowIT</span>
+                                        <a class="relative text-sm font-medium inline-block text-[#2f57ef]">View Profile</a>
+                                    </div>
                                 </div>
+                                <ul class="list-none m-0 p-0 space-y-2">
+                                    <li>
+                                        <a class="flex items-center gap-4 text-[#6b7385]">
+                                            <i class="fa-regular fa-house"></i>
+                                            <span>My Dashboard</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="flex items-center gap-4 text-[#6b7385]">
+                                            <i class="fa-regular fa-heart"></i>
+                                            <span>Wishlist</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="flex items-center gap-4 text-[#6b7385]">
+                                            <i class="fa-regular fa-clock"></i>
+                                            <span>Order History</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <hr class="my-2.5">
+                                <ul class="list-none m-0 p-0 space-y-2">
+                                    <li>
+                                        <a class="flex items-center gap-4 text-[#6b7385]">
+                                            <i class="fa-regular fa-gear"></i>
+                                            <span>Settings</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="flex items-center gap-4 text-[#6b7385]">
+                                            <i class="fa-regular fa-arrow-left-from-bracket"></i>
+                                            <span>Logout</span>
+                                        </a>
+                                    </li>
+                                </ul>
                             </div>
                         </li>
                         <li class="w-10 h-10 lg:hidden flex items-center justify-center" (click)="openNavigation()">

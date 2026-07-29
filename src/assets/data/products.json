@@ -1,0 +1,92 @@
+[
+    {
+        "id": 1,
+        "name": "Apple iPhone 16 Pro Max 256GB",
+        "category": "Electronics",
+        "image": "assets/images/products/iphone-16-pro-max.png",
+        "price": 1599,
+        "oldPrice": 1699,
+        "rating": 4.8
+    },
+    {
+        "id": 2,
+        "name": "Samsung Galaxy S25 Ultra",
+        "category": "Electronics",
+        "image": "assets/images/products/samsung-s25-ultra.png",
+        "price": 1399,
+        "oldPrice": 1499,
+        "rating": 4.7
+    },
+    {
+        "id": 3,
+        "name": "Sony WH-1000XM5 Headphones",
+        "category": "Electronics",
+        "image": "assets/images/products/sony-headphone.png",
+        "price": 349,
+        "oldPrice": 399,
+        "rating": 4.8
+    },
+    {
+        "id": 4,
+        "name": "JBL Flip 6 Bluetooth Speaker",
+        "category": "Electronics",
+        "image": "assets/images/products/jbl-speaker.png",
+        "price": 129,
+        "oldPrice": 149,
+        "rating": 4.6
+    },
+    {
+        "id": 5,
+        "name": "Balaji Masala Masti Wafers",
+        "category": "Snacks",
+        "image": "assets/images/products/balaji-masala-wafer.png",
+        "price": 20,
+        "oldPrice": 25,
+        "rating": 4.5
+    },
+    {
+        "id": 6,
+        "name": "Parle-G Biscuits",
+        "category": "Snacks",
+        "image": "assets/images/products/parle-g.png",
+        "price": 10,
+        "oldPrice": 12,
+        "rating": 4.9
+    },
+    {
+        "id": 7,
+        "name": "Britannia Good Day Cookies",
+        "category": "Snacks",
+        "image": "assets/images/products/good-day.png",
+        "price": 35,
+        "oldPrice": 40,
+        "rating": 4.7
+    },
+    {
+        "id": 8,
+        "name": "Cadbury Dairy Milk Silk",
+        "category": "Chocolates",
+        "image": "assets/images/products/silk.png",
+        "price": 80,
+        "oldPrice": 100,
+        "rating": 4.8
+    },
+    {
+        "id": 9,
+        "name": "Cadbury Gems",
+        "category": "Chocolates",
+        "image": "assets/images/products/gems.png",
+        "price": 20,
+        "oldPrice": 25,
+        "rating": 4.6
+    },
+    {
+        "id": 10,
+        "name": "Kinder Joy",
+        "category": "Chocolates",
+        "image": "assets/images/products/kinder-joy.png",
+        "price": 50,
+        "oldPrice": 60,
+        "rating": 4.9
+    }
+]

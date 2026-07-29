@@ -1,39 +1,60 @@
 <app-home-banner></app-home-banner>
 <app-product-category></app-product-category>
 <!-- Product Highlight Section -->
- <div class="product-highlight">
+<div class="product-highlight">
     <div class="container mx-auto px-5">
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-            <div class="product-box rounded-lg overflow-hidden relative hover:-translate-y-2 transition-all ease-in-out duration-500">
-                <img src="./../../assets/images/banner-1.png" />
-                <div class="absolute left-10 top-1/2 -translate-y-1/2 max-w-60">
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            <div class="bg-[url('/assets/images/banner-16.png')] bg-cover bg-bottom bg-no-repeat py-10 ps-10 pe-5 rounded-lg overflow-hidden hover:-translate-y-2 transition-all ease-in-out duration-500">
+                <div class="text-end">
                     <h6 class="text-lg font-bold">Everyday Fresh & Clean with Our Products </h6>
                     <button class="px-5 py-2 bg-black text-white mt-2 border border-black hover:text-black hover:bg-transparent transition-all duration-500 ease-in-out">Shop Now</button>
                 </div>
             </div>
-            <div class="product-box rounded-lg overflow-hidden relative hover:-translate-y-2 transition-all ease-in-out duration-500">
-                <img src="./../../assets/images/banner-2.png" />
-                <div class="absolute left-10 top-1/2 -translate-y-1/2 max-w-60">
+            <div class="bg-[url('/assets/images/banner-17.png')] bg-cover bg-bottom py-10 ps-10 pe-5 rounded-lg overflow-hidden relative hover:-translate-y-2 transition-all ease-in-out duration-500">
+                <div class="text-end">
                     <h6 class="text-lg font-bold">Everyday Fresh & Clean with Our Products </h6>
                     <button class="px-5 py-2 bg-black text-white mt-2 border border-black hover:text-black hover:bg-transparent transition-all duration-500 ease-in-out">Shop Now</button>
                 </div>
             </div>
-            <div class="product-box rounded-lg overflow-hidden relative hover:-translate-y-2 transition-all ease-in-out duration-500 md:col-span-2 lg:col-span-1">
-                <img src="./../../assets/images/banner-3.png" />
-                <div class="absolute left-10 top-1/2 -translate-y-1/2 max-w-60">
+            <div class="bg-[url('/assets/images/banner-18.png')] bg-cover bg-bottom py-10 ps-10 pe-5 rounded-lg overflow-hidden relative hover:-translate-y-2 transition-all ease-in-out duration-500">
+                <div class="text-end">
+                    <h6 class="text-lg font-bold">Everyday Fresh & Clean with Our Products </h6>
+                    <button class="px-5 py-2 bg-black text-white mt-2 border border-black hover:text-black hover:bg-transparent transition-all duration-500 ease-in-out">Shop Now</button>
+                </div>
+            </div>
+            <div class="bg-[url('/assets/images/banner-19.png')] bg-cover bg-bottom py-10 ps-10 pe-5 rounded-lg overflow-hidden relative hover:-translate-y-2 transition-all ease-in-out duration-500">
+                <div class="text-end">
                     <h6 class="text-lg font-bold">Everyday Fresh & Clean with Our Products </h6>
                     <button class="px-5 py-2 bg-black text-white mt-2 border border-black hover:text-black hover:bg-transparent transition-all duration-500 ease-in-out">Shop Now</button>
                 </div>
             </div>
         </div>
     </div>
- </div>
+</div>
 <app-shop></app-shop>
 <!-- Newsletter Section -->
-<div class="newsletter-section">
+<div class="newsletter-section mb-6 md:mb-10 lg:mb-16">
     <div class="container mx-auto px-5">
-        <div class="newsletter-card bg-[url('/assets/images/banner-10.png')] bg-cover bg-center p-10">
-
+        <div class="rounded-lg bg-[url('/assets/images/banner-10.png')] bg-cover bg-center">
+            <div class="md:grid md:grid-cols-3 items-end">
+                <div class="md:col-span-2 p-5 md:p-10 lg:p-20">
+                    <h2 class="text-2xl md:text-4xl xl:text-5xl font-bold">Stay home & get your daily needs from our shop </h2>
+                    <h6 class="text-lg mt-2 mb-4">Start You'r Daily Shopping with <b>Online Mart</b></h6>
+                    <div class="relative">
+                        <mat-form-field appearance="outline" subscriptSizing="dynamic" class="w-full newsletter-input">
+                            <input matInput class="!pr-24 !text-sm !font-semibold" placeholder="Your email address...">
+                        </mat-form-field>
+                        <!-- <input type="text" class="p-5 border border-black bg-transparent" placeholder="Your email address..." /> -->
+                        <button class="absolute right-1 top-1/2 -translate-y-1/2 bg-black font-semibold text-white border border-solid border-black px-5 py-1.5 rounded-full text-sm flex items-center gap-2">
+                            Send
+                            <i class="fa-regular fa-arrow-right-long"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="img hidden xl:block">
+                    <img src="./../../assets/images/banner-9.png" />
+                </div>
+            </div>
         </div>
     </div>
 </div>

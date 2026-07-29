@@ -1,58 +1,7 @@
 body {
     font-family: "SN Pro", sans-serif !important;
 }
-
-// Material Input CSS
-mat-form-field {
-    .mat-mdc-text-field-wrapper {
-        &.mdc-text-field {
-            &.mdc-text-field--outlined {
-                .mat-mdc-form-field-flex {
-                    .mdc-notched-outline {
-                        border: 1px solid #e4e4e4;
-                        border-radius: 5px;
-                        &.mdc-notched-outline--upgraded {
-                            .mat-mdc-notch-piece {
-                                border: 0;
-                                &.mdc-notched-outline__notch {
-                                    border-right: unset;
-                                    .mdc-floating-label--float-above {
-                                        mat-label {
-                                            background-color: #fff;
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
-.shop-input {
-    .mat-mdc-form-field-icon-prefix {
-        padding: 0;
-    }
-}
-input:-webkit-autofill,
-input:-webkit-autofill:hover,
-input:-webkit-autofill:focus,
-textarea:-webkit-autofill,
-select:-webkit-autofill {
-  -webkit-text-fill-color: #000 !important;
-  -webkit-box-shadow: 0 0 0px 1000px #ffffff inset !important;
-  box-shadow: 0 0 0px 1000px #ffffff inset !important;
-  transition: background-color 9999s ease-in-out 0s;
-}
-
-// Only Search Input
-.search-bar {
-    .mdc-notched-outline,
-    .mat-mdc-notch-piece {
-        border: none !important;
-    }
-}
+@import './material.scss';
 
 .slider-container {
     perspective: 1200px;

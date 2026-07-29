@@ -1,0 +1,84 @@
+mat-form-field {
+    .mat-mdc-text-field-wrapper {
+        &.mdc-text-field {
+            &.mdc-text-field--outlined {
+                .mat-mdc-form-field-flex {
+                    .mdc-notched-outline {
+                        border: 1px solid #e4e4e4;
+                        border-radius: 5px;
+                        &.mdc-notched-outline {
+                            .mat-mdc-notch-piece {
+                                border: unset !important;
+                                &.mdc-notched-outline__notch {
+                                    border-right: unset;
+                                    .mdc-floating-label--float-above {
+                                        mat-label {
+                                            background-color: #fff;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+.newsletter-input {
+    &.mat-mdc-form-field {
+        .mat-mdc-text-field-wrapper {
+            .mat-mdc-form-field-flex {
+                .mdc-notched-outline--no-label {
+                    &.mdc-notched-outline {
+                        border-color: #000;
+                        border-radius: 50px;
+                    }
+                }
+            }
+            .mat-mdc-form-field-infix {
+                min-height: 40px;
+                padding-top: 8px;
+                padding-bottom: 8px;
+            }
+        }
+    }
+}
+.shop-input {
+    .mat-mdc-form-field-icon-prefix {
+        padding: 0;
+    }
+}
+
+input:-webkit-autofill,
+.mat-mdc-input-element:-webkit-autofill,
+.mat-mdc-input-element:-webkit-autofill:hover,
+.mat-mdc-input-element:-webkit-autofill:focus {
+    -webkit-text-fill-color: #000 !important;
+    -webkit-background-clip: text;
+    transition: background-color 5000000s ease-in-out 0s;
+    box-shadow: 0 0 0 1000px transparent inset !important;
+}
+
+// Only Search Input
+.search-bar {
+    .mdc-notched-outline,
+    .mat-mdc-notch-piece {
+        border: none !important;
+    }
+}
+
+// Mat Select
+.mat-mdc-select-panel {
+    padding: 0 !important;
+    background-color: #fff !important;
+    .mat-mdc-option {
+        @apply font-semibold text-sm;
+        min-height: 40px;
+        &:hover,
+        &.mat-mdc-option-active {
+            background-color: rgba(187, 247, 208, 0.5) !important;
+            
+        }
+    }
+}

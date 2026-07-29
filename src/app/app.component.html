@@ -1,5 +1,9 @@
-<app-header *ngIf="!hideLayout"></app-header>
+@if(!hideLayout) {
+    <app-header></app-header>
+}
 <!-- <div class="container mx-auto"> -->
     <router-outlet></router-outlet>
 <!-- </div> -->
-<app-footer *ngIf="!hideLayout"></app-footer>
+@if(!hideLayout) {
+    <app-footer></app-footer>
+}

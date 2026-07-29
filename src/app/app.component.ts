@@ -7,7 +7,7 @@ import { every, filter } from 'rxjs';
     templateUrl: './app.component.html'
 })
 export class AppComponent {
-    title = 'ck-online-mart';
+    title = 'online-mart';
     hideLayout = true;
 
     constructor(private router: Router) {

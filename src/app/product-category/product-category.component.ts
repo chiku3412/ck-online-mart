@@ -43,11 +43,17 @@ export class ProductCategoryComponent implements AfterViewInit, OnDestroy {
                     prevEl: this.prevButton.nativeElement,
                 },
                 breakpoints: {
+                    320: {
+                        slidesPerView: 3,
+                        spaceBetween: 10
+                    },
                     640: {
-                        slidesPerView: 2,
+                        slidesPerView: 5,
+                        spaceBetween: 10
                     },
                     1024: {
                         slidesPerView: 8,
+                        spaceBetween: 20
                     },
                     1400: {
                         slidesPerView: 10,
