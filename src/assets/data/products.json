@@ -4,89 +4,509 @@
         "name": "Apple iPhone 16 Pro Max 256GB",
         "category": "Electronics",
         "image": "assets/images/products/iphone-16-pro-max.png",
-        "price": 1599,
-        "oldPrice": 1699,
-        "rating": 4.8
+        "images": [
+            "assets/images/products/iphone-16-pro-max-1.jpg",
+            "assets/images/products/iphone-16-pro-max-2.jpg",
+            "assets/images/products/iphone-16-pro-max-3.jpg",
+            "assets/images/products/iphone-16-pro-max-4.jpg",
+            "assets/images/products/iphone-16-pro-max-5.jpg"
+        ],
+        "price": 134900,
+        "oldPrice": 144900,
+        "rating": 4.8,
+        "description": "Experience flagship performance with the latest processor, stunning display, and professional-grade camera system. Enjoy all-day battery life, premium design, and lightning-fast connectivity. Perfect for photography, gaming, and productivity. Built to deliver a smooth and reliable smartphone experience every day."
     },
     {
         "id": 2,
         "name": "Samsung Galaxy S25 Ultra",
         "category": "Electronics",
         "image": "assets/images/products/samsung-s25-ultra.png",
-        "price": 1399,
-        "oldPrice": 1499,
-        "rating": 4.7
+        "images": [
+            "assets/images/products/samsung-s25-ultra.png",
+            "assets/images/products/samsung-s25-ultra.png",
+            "assets/images/products/samsung-s25-ultra.png",
+            "assets/images/products/samsung-s25-ultra.png",
+            "assets/images/products/samsung-s25-ultra.png"
+        ],
+        "price": 119999,
+        "oldPrice": 129000,
+        "rating": 4.7,
+        "description": "The Samsung Galaxy S25 Ultra combines a brilliant AMOLED display with powerful performance and advanced AI features. Capture stunning photos with its versatile camera system and enjoy long-lasting battery life. Designed for multitasking, gaming, and creative professionals."
     },
     {
         "id": 3,
         "name": "Sony WH-1000XM5 Headphones",
         "category": "Electronics",
         "image": "assets/images/products/sony-headphone.png",
-        "price": 349,
-        "oldPrice": 399,
-        "rating": 4.8
+        "images": [
+            "assets/images/products/sony-headphone.png",
+            "assets/images/products/sony-headphone.png",
+            "assets/images/products/sony-headphone.png",
+            "assets/images/products/sony-headphone.png",
+            "assets/images/products/sony-headphone.png"
+        ],
+        "price": 34999,
+        "oldPrice": 39999,
+        "rating": 4.8,
+        "description": "Sony WH-1000XM5 headphones offer industry-leading noise cancellation and exceptional sound quality. Enjoy crystal-clear calls, immersive audio, and long battery life. Their lightweight design provides all-day comfort for travel, work, and entertainment."
     },
     {
         "id": 4,
         "name": "JBL Flip 6 Bluetooth Speaker",
         "category": "Electronics",
         "image": "assets/images/products/jbl-speaker.png",
-        "price": 129,
-        "oldPrice": 149,
-        "rating": 4.6
+        "images": [
+            "assets/images/products/jbl-speaker.png",
+            "assets/images/products/jbl-speaker.png",
+            "assets/images/products/jbl-speaker.png",
+            "assets/images/products/jbl-speaker.png",
+            "assets/images/products/jbl-speaker.png"
+        ],
+        "price": 13999,
+        "oldPrice": 14999,
+        "rating": 4.6,
+        "description": "The JBL Flip 6 delivers powerful sound with deep bass in a compact and waterproof design. Perfect for indoor and outdoor use, it offers long battery life and Bluetooth connectivity. Take your music anywhere with premium JBL audio."
     },
     {
         "id": 5,
         "name": "Balaji Masala Masti Wafers",
         "category": "Snacks",
         "image": "assets/images/products/balaji-masala-wafer.png",
+        "images": [
+            "assets/images/products/balaji-masala-wafer.png",
+            "assets/images/products/balaji-masala-wafer.png",
+            "assets/images/products/balaji-masala-wafer.png",
+            "assets/images/products/balaji-masala-wafer.png",
+            "assets/images/products/balaji-masala-wafer.png"
+        ],
         "price": 20,
         "oldPrice": 25,
-        "rating": 4.5
+        "rating": 4.5,
+        "description": "Balaji Masala Masti Wafers are crispy potato chips seasoned with a flavorful blend of Indian spices. A perfect snack for tea time, parties, or movie nights. Fresh, crunchy, and full of irresistible taste."
     },
     {
         "id": 6,
         "name": "Parle-G Biscuits",
         "category": "Snacks",
         "image": "assets/images/products/parle-g.png",
+        "images": [
+            "assets/images/products/parle-g.png",
+            "assets/images/products/parle-g.png",
+            "assets/images/products/parle-g.png",
+            "assets/images/products/parle-g.png",
+            "assets/images/products/parle-g.png"
+        ],
         "price": 10,
         "oldPrice": 12,
-        "rating": 4.9
+        "rating": 4.9,
+        "description": "Parle-G Biscuits are India's favorite tea-time biscuits, loved for their delicious taste and quality. Made with wholesome ingredients, they provide a quick source of energy. Perfect for kids and adults alike."
     },
     {
         "id": 7,
         "name": "Britannia Good Day Cookies",
         "category": "Snacks",
         "image": "assets/images/products/good-day.png",
+        "images": [
+            "assets/images/products/good-day.png",
+            "assets/images/products/good-day.png",
+            "assets/images/products/good-day.png",
+            "assets/images/products/good-day.png",
+            "assets/images/products/good-day.png"
+        ],
         "price": 35,
         "oldPrice": 40,
-        "rating": 4.7
+        "rating": 4.7,
+        "description": "Britannia Good Day Cookies are loaded with rich buttery flavor and crunchy cookie goodness. Every bite is packed with premium ingredients for a delightful snack. Enjoy them with tea, coffee, or anytime cravings."
     },
     {
         "id": 8,
         "name": "Cadbury Dairy Milk Silk",
         "category": "Chocolates",
         "image": "assets/images/products/silk.png",
+        "images": [
+            "assets/images/products/silk.png",
+            "assets/images/products/silk.png",
+            "assets/images/products/silk.png",
+            "assets/images/products/silk.png",
+            "assets/images/products/silk.png"
+        ],
         "price": 80,
         "oldPrice": 100,
-        "rating": 4.8
+        "rating": 4.8,
+        "description": "Cadbury Dairy Milk Silk offers a rich, smooth, and creamy chocolate experience. Crafted with premium cocoa and silky milk chocolate, it melts perfectly in every bite. Ideal for gifting and celebrating special moments."
     },
     {
         "id": 9,
         "name": "Cadbury Gems",
         "category": "Chocolates",
         "image": "assets/images/products/gems.png",
+        "images": [
+            "assets/images/products/gems.png",
+            "assets/images/products/gems.png",
+            "assets/images/products/gems.png",
+            "assets/images/products/gems.png",
+            "assets/images/products/gems.png"
+        ],
         "price": 20,
         "oldPrice": 25,
-        "rating": 4.6
+        "rating": 4.6,
+        "description": "Cadbury Gems are colorful chocolate-coated treats loved by children and adults alike. Enjoy the crunchy candy shell with delicious milk chocolate inside. A fun snack for every occasion."
     },
     {
         "id": 10,
         "name": "Kinder Joy",
         "category": "Chocolates",
         "image": "assets/images/products/kinder-joy.png",
+        "images": [
+            "assets/images/products/kinder-joy.png",
+            "assets/images/products/kinder-joy.png",
+            "assets/images/products/kinder-joy.png",
+            "assets/images/products/kinder-joy.png",
+            "assets/images/products/kinder-joy.png"
+        ],
         "price": 50,
         "oldPrice": 60,
-        "rating": 4.9
+        "rating": 4.9,
+        "description": "Kinder Joy combines creamy milk and cocoa layers with crispy wafer bites and a surprise toy. A delightful treat specially made for kids and families. Enjoy sweetness with every bite."
+    },
+    {
+        "id": 11,
+        "name": "Apple AirPods Pro (2nd Gen)",
+        "category": "Mobile Accessories",
+        "image": "assets/images/products/airpods-pro.png",
+        "images": [
+            "assets/images/products/airpods-pro.png",
+            "assets/images/products/airpods-pro.png",
+            "assets/images/products/airpods-pro.png",
+            "assets/images/products/airpods-pro.png",
+            "assets/images/products/airpods-pro.png"
+        ],
+        "price": 24999,
+        "oldPrice": 25999,
+        "rating": 4.9,
+        "description": "Apple AirPods Pro (2nd Gen) feature Active Noise Cancellation, Spatial Audio, and crystal-clear sound. Their comfortable fit and long battery life make them ideal for music, calls, and entertainment. Experience premium wireless audio."
+    },
+    {
+        "id": 12,
+        "name": "Samsung 25W Fast Charger",
+        "category": "Mobile Accessories",
+        "image": "assets/images/products/samsung-charger.png",
+        "images": [
+            "assets/images/products/samsung-charger.png",
+            "assets/images/products/samsung-charger.png",
+            "assets/images/products/samsung-charger.png",
+            "assets/images/products/samsung-charger.png",
+            "assets/images/products/samsung-charger.png"
+        ],
+        "price": 419,
+        "oldPrice": 450,
+        "rating": 4.6,
+        "description": "Samsung 25W Fast Charger delivers efficient and reliable charging for compatible devices. Compact and lightweight, it's perfect for travel or everyday use. Charge your smartphone quickly and safely."
+    },
+    {
+        "id": 13,
+        "name": "Anker USB-C Charging Cable",
+        "category": "Mobile Accessories",
+        "image": "assets/images/products/type-c-cable.png",
+        "images": [
+            "assets/images/products/type-c-cable.png",
+            "assets/images/products/type-c-cable.png",
+            "assets/images/products/type-c-cable.png",
+            "assets/images/products/type-c-cable.png",
+            "assets/images/products/type-c-cable.png"
+        ],
+        "price": 450,
+        "oldPrice": 520,
+        "rating": 4.5,
+        "description": "The Anker USB-C Charging Cable is built for durability and high-speed charging. It supports fast charging and reliable data transfer for smartphones, tablets, and laptops. Designed to last through thousands of bends."
+    },
+    {
+        "id": 14,
+        "name": "Spigen Crystal Clear iPhone Case",
+        "category": "Mobile Accessories",
+        "image": "assets/images/products/iphone-case.png",
+        "images": [
+            "assets/images/products/iphone-case.png",
+            "assets/images/products/iphone-case.png",
+            "assets/images/products/iphone-case.png",
+            "assets/images/products/iphone-case.png",
+            "assets/images/products/iphone-case.png"
+        ],
+        "price": 499,
+        "oldPrice": 599,
+        "rating": 4.7,
+        "description": "Protect your iPhone with the Spigen Crystal Clear Case featuring shock-absorbing technology and a slim transparent design. It preserves your phone's original look while providing everyday protection from drops and scratches."
+    },
+    {
+        "id": 15,
+        "name": "Fresh Red Apple",
+        "category": "Fruits",
+        "image": "assets/images/products/apple.png",
+        "images": [
+            "assets/images/products/apple.png",
+            "assets/images/products/apple.png",
+            "assets/images/products/apple.png",
+            "assets/images/products/apple.png",
+            "assets/images/products/apple.png"
+        ],
+        "price": 99,
+        "oldPrice": 149,
+        "rating": 4.8,
+        "description": "Fresh Red Apples are naturally sweet, juicy, and packed with vitamins and antioxidants. Perfect for healthy snacking, desserts, or fruit salads. Enjoy farm-fresh quality with every bite."
+    },
+    {
+        "id": 16,
+        "name": "Premium Banana",
+        "category": "Fruits",
+        "image": "assets/images/products/banana.png",
+        "images": [
+            "assets/images/products/banana.png",
+            "assets/images/products/banana.png",
+            "assets/images/products/banana.png",
+            "assets/images/products/banana.png",
+            "assets/images/products/banana.png"
+        ],
+        "price": 99,
+        "oldPrice": 149,
+        "rating": 4.6,
+        "description": "Premium Bananas are rich in potassium, fiber, and natural energy. Their sweet taste makes them ideal for breakfast, smoothies, or healthy snacks. Freshly selected for superior quality."
+    },
+    {
+        "id": 17,
+        "name": "Fresh Orange",
+        "category": "Fruits",
+        "image": "assets/images/products/orange.png",
+        "images": [
+            "assets/images/products/orange.png",
+            "assets/images/products/orange.png",
+            "assets/images/products/orange.png",
+            "assets/images/products/orange.png",
+            "assets/images/products/orange.png"
+        ],
+        "price": 99,
+        "oldPrice": 149,
+        "rating": 4.7,
+        "description": "Fresh Oranges are loaded with Vitamin C and refreshing citrus flavor. Enjoy them as a healthy snack or freshly squeezed juice. Carefully selected for maximum freshness and taste."
+    },
+    {
+        "id": 18,
+        "name": "Seedless Green Grapes",
+        "category": "Fruits",
+        "image": "assets/images/products/grapes.png",
+        "images": [
+            "assets/images/products/grapes.png",
+            "assets/images/products/grapes.png",
+            "assets/images/products/grapes.png",
+            "assets/images/products/grapes.png",
+            "assets/images/products/grapes.png"
+        ],
+        "price": 99,
+        "oldPrice": 149,
+        "rating": 4.9,
+        "description": "Seedless Green Grapes are juicy, sweet, and bursting with freshness. Perfect for snacking, fruit platters, or desserts. Naturally delicious and packed with essential nutrients."
+    },
+    {
+        "id": 19,
+        "name": "Coca-Cola 2L Bottle",
+        "category": "Cold Drinks",
+        "image": "assets/images/products/coca-cola.png",
+        "images": [
+            "assets/images/products/coca-cola.png",
+            "assets/images/products/coca-cola.png",
+            "assets/images/products/coca-cola.png",
+            "assets/images/products/coca-cola.png",
+            "assets/images/products/coca-cola.png"
+        ],
+        "price": 45,
+        "oldPrice": 55,
+        "rating": 4.8,
+        "description": "Coca-Cola 2L Bottle delivers the classic refreshing taste loved around the world. Perfect for family meals, celebrations, and parties. Serve chilled for the best experience."
+    },
+    {
+        "id": 20,
+        "name": "Pepsi 2L Bottle",
+        "category": "Cold Drinks",
+        "image": "assets/images/products/pepsi.png",
+        "images": [
+            "assets/images/products/pepsi.png",
+            "assets/images/products/pepsi.png",
+            "assets/images/products/pepsi.png",
+            "assets/images/products/pepsi.png",
+            "assets/images/products/pepsi.png"
+        ],
+        "price": 45,
+        "oldPrice": 55,
+        "rating": 4.7,
+        "description": "Pepsi 2L Bottle offers bold cola flavor with refreshing fizz. Great for sharing with friends and family during meals or gatherings. Best enjoyed chilled."
+    },
+    {
+        "id": 21,
+        "name": "Sprite Lemon Soft Drink",
+        "category": "Cold Drinks",
+        "image": "assets/images/products/sprite.png",
+        "images": [
+            "assets/images/products/sprite.png",
+            "assets/images/products/sprite.png",
+            "assets/images/products/sprite.png",
+            "assets/images/products/sprite.png",
+            "assets/images/products/sprite.png"
+        ],
+        "price": 40,
+        "oldPrice": 50,
+        "rating": 4.6,
+        "description": "Sprite Lemon Soft Drink provides a crisp lemon-lime flavor with refreshing bubbles. Its caffeine-free formula makes it a perfect drink for any occasion. Enjoy ice cold for maximum refreshment."
+    },
+    {
+        "id": 22,
+        "name": "Fanta Orange Drink",
+        "category": "Cold Drinks",
+        "image": "assets/images/products/fanta.png",
+        "images": [
+            "assets/images/products/fanta.png",
+            "assets/images/products/fanta.png",
+            "assets/images/products/fanta.png",
+            "assets/images/products/fanta.png",
+            "assets/images/products/fanta.png"
+        ],
+        "price": 40,
+        "oldPrice": 48,
+        "rating": 4.5,
+        "description": "Fanta Orange Drink is packed with fruity orange flavor and sparkling refreshment. A fun beverage for parties, picnics, and everyday enjoyment. Best served chilled."
+    },
+    {
+        "id": 23,
+        "name": "Amul Gold Milk 1L",
+        "category": "Dairy Products",
+        "image": "assets/images/products/amul-milk.png",
+        "images": [
+            "assets/images/products/amul-milk.png",
+            "assets/images/products/amul-milk.png",
+            "assets/images/products/amul-milk.png",
+            "assets/images/products/amul-milk.png",
+            "assets/images/products/amul-milk.png"
+        ],
+        "price": 35,
+        "oldPrice": 40,
+        "rating": 4.9,
+        "description": "Amul Gold Milk is rich, creamy, and packed with essential nutrients for the whole family. Ideal for drinking, tea, coffee, and cooking. Enjoy trusted quality and freshness every day."
+    },
+    {
+        "id": 24,
+        "name": "Amul Butter 500g",
+        "category": "Dairy Products",
+        "image": "assets/images/products/amul-butter.png",
+        "images": [
+            "assets/images/products/amul-butter.png",
+            "assets/images/products/amul-butter.png",
+            "assets/images/products/amul-butter.png",
+            "assets/images/products/amul-butter.png",
+            "assets/images/products/amul-butter.png"
+        ],
+        "price": 70,
+        "oldPrice": 80,
+        "rating": 4.8,
+        "description": "Amul Butter is made from fresh cream and offers a rich, delicious taste. Perfect for bread, toast, cooking, and baking. A household favorite loved across generations."
+    },
+    {
+        "id": 25,
+        "name": "Mother Dairy Curd",
+        "category": "Dairy Products",
+        "image": "assets/images/products/curd.png",
+        "images": [
+            "assets/images/products/curd.png",
+            "assets/images/products/curd.png",
+            "assets/images/products/curd.png",
+            "assets/images/products/curd.png",
+            "assets/images/products/curd.png"
+        ],
+        "price": 30,
+        "oldPrice": 35,
+        "rating": 4.6,
+        "description": "Mother Dairy Curd is fresh, creamy, and naturally rich in probiotics. Ideal for healthy meals, raita, and traditional Indian dishes. Prepared with high-quality milk for great taste."
+    },
+    {
+        "id": 26,
+        "name": "Amul Cheese Slices",
+        "category": "Dairy Products",
+        "image": "assets/images/products/cheese.png",
+        "images": [
+            "assets/images/products/cheese.png",
+            "assets/images/products/cheese.png",
+            "assets/images/products/cheese.png",
+            "assets/images/products/cheese.png",
+            "assets/images/products/cheese.png"
+        ],
+        "price": 90,
+        "oldPrice": 100,
+        "rating": 4.8,
+        "description": "Amul Cheese Slices are smooth, creamy, and perfect for sandwiches, burgers, and snacks. Made from premium quality milk, they melt beautifully and enhance every recipe."
+    },
+    {
+        "id": 27,
+        "name": "Ray-Ban Aviator Sunglasses",
+        "category": "Goggles",
+        "image": "assets/images/products/rayban.png",
+        "images": [
+            "assets/images/products/rayban.png",
+            "assets/images/products/rayban.png",
+            "assets/images/products/rayban.png",
+            "assets/images/products/rayban.png",
+            "assets/images/products/rayban.png"
+        ],
+        "price": 159,
+        "oldPrice": 199,
+        "rating": 4.9,
+        "description": "Ray-Ban Aviator Sunglasses feature an iconic design with premium UV protection. Lightweight and stylish, they are suitable for everyday wear and outdoor adventures. A timeless fashion accessory."
+    },
+    {
+        "id": 28,
+        "name": "Oakley Sport Sunglasses",
+        "category": "Goggles",
+        "image": "assets/images/products/oakley.png",
+        "images": [
+            "assets/images/products/oakley.png",
+            "assets/images/products/oakley.png",
+            "assets/images/products/oakley.png",
+            "assets/images/products/oakley.png",
+            "assets/images/products/oakley.png"
+        ],
+        "price": 139,
+        "oldPrice": 169,
+        "rating": 4.7,
+        "description": "Oakley Sport Sunglasses provide superior comfort, durability, and UV protection. Designed for active lifestyles, they offer a secure fit and modern sporty look. Perfect for cycling, running, and outdoor sports."
+    },
+    {
+        "id": 29,
+        "name": "Michael Kors Leather Handbag",
+        "category": "Fashion Style",
+        "image": "assets/images/products/mk-purse.png",
+        "images": [
+            "assets/images/products/mk-purse.png",
+            "assets/images/products/mk-purse.png",
+            "assets/images/products/mk-purse.png",
+            "assets/images/products/mk-purse.png",
+            "assets/images/products/mk-purse.png"
+        ],
+        "price": 2999,
+        "oldPrice": 3499,
+        "rating": 4.8,
+        "description": "Michael Kors Leather Handbag combines luxury, elegance, and practicality. Crafted from premium materials with spacious storage, it complements both casual and formal outfits. A perfect everyday fashion accessory."
+    },
+    {
+        "id": 30,
+        "name": "Fossil Women's Shoulder Bag",
+        "category": "Fashion Style",
+        "image": "assets/images/products/fossil-purse.png",
+        "images": [
+            "assets/images/products/fossil-purse.png",
+            "assets/images/products/fossil-purse.png",
+            "assets/images/products/fossil-purse.png",
+            "assets/images/products/fossil-purse.png",
+            "assets/images/products/fossil-purse.png"
+        ],
+        "price": 2499,
+        "oldPrice": 2999,
+        "rating": 4.7,
+        "description": "Fossil Women's Shoulder Bag features premium craftsmanship with a stylish and functional design. It offers multiple compartments for daily essentials while adding elegance to any outfit. Ideal for work, travel, or casual outings."
     }
 ]

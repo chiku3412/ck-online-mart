@@ -1,1 +1,137 @@
-<p>product-details works!</p>
+<div class="product-detail-section py-6 md:py-10 lg:py-16">
+    <div class="container mx-auto px-4">
+        <div class="lg:grid lg:grid-cols-12 lg:gap-12">
+            <!-- Left: Image Gallery -->
+            <div class="lg:col-span-5">
+                <div class="relative bg-gray-50 rounded-lg mb-4 group overflow-hidden">
+                    <img [src]="currentImage" class="fade-img" alt="Product">
+                    <!-- Top Actions -->
+                    <div class="absolute top-4 right-4 flex flex-col gap-2">
+                        <button class="w-9 h-9 bg-white rounded-full shadow-sm flex items-center justify-center text-gray-600 hover:text-gray-900 transition-colors">
+                            <i class="fa-light fa-arrow-up-from-bracket"></i>
+                        </button>
+                        <button class="w-9 h-9 bg-white rounded-full shadow-sm flex items-center justify-center text-gray-600 hover:text-red-500 transition-colors">
+                            <i class="fa-light fa-heart"></i>
+                        </button>
+                    </div>
+                    <!-- Side Arrows -->
+                    <button (click)="prevImage()" class="absolute left-3 top-1/2 -translate-y-1/2 w-8 h-8 bg-white/90 rounded-full shadow-sm flex items-center justify-center text-gray-600 hover:bg-white transition-colors opacity-0 group-hover:opacity-100">
+                        <i class="fa-regular fa-angle-left"></i>
+                    </button>
+                    <button (click)="nextImage()" class="absolute right-3 top-1/2 -translate-y-1/2 w-8 h-8 bg-white/90 rounded-full shadow-sm flex items-center justify-center text-gray-600 hover:bg-white transition-colors opacity-0 group-hover:opacity-100">
+                        <i class="fa-regular fa-angle-right"></i>
+                    </button>
+                </div>
+                <!-- Thumbnails -->
+                <div class="flex gap-3 overflow-x-auto thumb-scroll pb-1">
+                    @for(image of images; track i; let i = $index) {
+                        <button class="overflow-hidden rounded-lg border p-1 shadow-[inset_0px_0px_10px] hover:shadow-green-600 transition-all ease-in-out duration-500" [ngClass]="currentIndex === i ? 'shadow-green-600' : 'shadow-gray-200'" (click)="setImage(i)">
+                            <img class="rounded-lg" [src]="image">
+                        </button>
+                    }
+                </div>
+            </div>
+            <!-- Right: Product Info -->
+            <div class="lg:col-span-7 mt-8 lg:mt-0">
+                <!-- Brand -->
+                <p class="text-sm text-gray-500 mb-1">{{ product?.category }}</p>
+                <!-- Title -->
+                <h1 class="text-2xl lg:text-3xl font-bold text-gray-900 leading-tight mb-3">
+                    {{ product?.name }}
+                </h1>
+                <!-- Price & Rating Row -->
+                <div class="flex items-center justify-between mb-6">
+                    <div class="flex items-baseline gap-3">
+                        <span class="text-gray-400 line-through">₹ {{ product?.oldPrice | number:'1.0-0' }}</span>
+                        <span class="text-2xl font-bold text-gray-900">₹ {{ product?.price | number:'1.0-0' }}</span>
+                    </div>
+                    <div class="flex items-center gap-1">
+                        <i class="fa-solid fa-star text-amber-400"></i>
+                        <span class="text-sm font-bold text-gray-900">{{ product?.rating }}</span>
+                    </div>
+                </div>
+                <!-- Divider -->
+                <div class="border-t border-dashed border-gray-200 mb-6"></div>
+                <!-- Description -->
+                <div class="mb-6">
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">Description:</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        {{ product?.description }}
+                    </p>
+                </div>
+
+                <div class="mb-8 max-w-xl">
+                    <h3 class="text-base font-bold text-gray-900 mb-4">Product Details:</h3>
+                    <div class="flex flex-col gap-2">
+                        <div class="p-1 border-b border-gray-200 flex items-center justify-between">
+                            <span class="text-xs font-medium text-gray-500 uppercase tracking-wide">Height</span>
+                            <p class="text-sm font-semibold text-gray-900">159.9 mm</p>
+                        </div>
+
+                        <div class="p-1 border-b border-gray-200 flex items-center justify-between">
+                            <span class="text-xs font-medium text-gray-500 uppercase tracking-wide">Width</span>
+                            <p class="text-sm font-semibold text-gray-900">76.7 mm</p>
+                        </div>
+
+                        <div class="p-1 border-b border-gray-200 flex items-center justify-between">
+                            <span class="text-xs font-medium text-gray-500 uppercase tracking-wide">Depth</span>
+                            <p class="text-sm font-semibold text-gray-900">8.25 mm</p>
+                        </div>
+
+                        <div class="p-1 border-b border-gray-200 flex items-center justify-between">
+                            <span class="text-xs font-medium text-gray-500 uppercase tracking-wide">Weight</span>
+                            <p class="text-sm font-semibold text-gray-900">227 grams</p>
+                        </div>
+
+                        <div class="p-1 border-b border-gray-200 flex items-center justify-between">
+                            <span class="text-xs font-medium text-gray-500 uppercase tracking-wide">Display</span>
+                            <p class="text-sm font-semibold text-gray-900">6.9" OLED</p>
+                        </div>
+
+                        <div class="p-1 border-b border-gray-200 flex items-center justify-between">
+                            <span class="text-xs font-medium text-gray-500 uppercase tracking-wide">Battery</span>
+                            <p class="text-sm font-semibold text-gray-900">4685 mAh</p>
+                        </div>
+
+                        <div class="p-1 border-b border-gray-200 flex items-center justify-between">
+                            <span class="text-xs font-medium text-gray-500 uppercase tracking-wide">Chipset</span>
+                            <p class="text-sm font-semibold text-gray-900">A18 Pro Bionic</p>
+                        </div>
+
+                        <div class="p-1 border-b border-gray-200 flex items-center justify-between">
+                            <span class="text-xs font-medium text-gray-500 uppercase tracking-wide">Camera</span>
+                            <p class="text-sm font-semibold text-gray-900">48MP Triple</p>
+                        </div>
+
+                        <div class="p-1 flex items-center justify-between">
+                            <span class="text-xs font-medium text-gray-500 uppercase tracking-wide">Warranty</span>
+                            <p class="text-sm font-semibold text-gray-900">1 Year</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-8">
+                    <h3 class="text-base font-bold text-gray-900 mb-3">In the Box:</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1.5 bg-gray-100 text-gray-700 text-xs font-medium rounded-lg">iPhone 16 Pro Max</span>
+                        <span class="px-3 py-1.5 bg-gray-100 text-gray-700 text-xs font-medium rounded-lg">USB-C Cable</span>
+                        <span class="px-3 py-1.5 bg-gray-100 text-gray-700 text-xs font-medium rounded-lg">SIM Eject Tool</span>
+                        <span class="px-3 py-1.5 bg-gray-100 text-gray-700 text-xs font-medium rounded-lg">Documentation</span>
+                    </div>
+                </div>
+
+                <!-- Buttons -->
+                <div class="flex gap-3 mb-4">
+                    <button onclick="addToCart()"
+                        class="flex-1 h-12 bg-gray-900 hover:bg-gray-800 text-white text-sm font-semibold rounded-lg transition-colors active:scale-[0.98]">
+                        Add To Cart
+                    </button>
+                    <button
+                        class="flex-1 h-12 bg-white border border-gray-200 hover:border-gray-400 text-gray-900 text-sm font-semibold rounded-lg transition-colors active:scale-[0.98]">
+                        Checkout Now
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

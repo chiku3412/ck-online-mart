@@ -1,1 +1,37 @@
-<app-product></app-product>
+<div class="product-section py-6 md:py-10 lg:py-16">
+    <div class="container mx-auto px-4">
+        <!-- Mobile Filter Button -->
+        <div class="xl:hidden flex justify-between mb-4">
+            <h6>Filters</h6>
+            <button (click)="isFilterOpen = true" class="flex items-center gap-2 bg-green-600 text-white px-4 py-2 rounded-lg">
+                <i class="fa-solid fa-filter"></i>
+            </button>
+        </div>
+        <div class="grid xl:grid-cols-12 gap-4 items-start">
+            <div class="hidden xl:block col-span-3 sticky top-24 z-50">
+                <app-product-filter></app-product-filter>
+            </div>
+            <div class="col-span-9">
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+
+        <!-- Mobile Overlay -->
+        @if (isFilterOpen) {
+            <div class="fixed inset-0 bg-black/50 z-40 xl:hidden" (click)="isFilterOpen = false"></div>
+        }
+
+        <!-- Mobile Sidebar -->
+        <div class="fixed top-0 left-0 h-full w-80 max-w-[85%] bg-white z-50 shadow-xl transition-transform duration-300 xl:hidden" [class.translate-x-0]="isFilterOpen" [class.-translate-x-full]="!isFilterOpen">
+            <div class="flex items-center justify-between p-4 border-b">
+                <h3 class="text-lg font-semibold">Filters</h3>
+                <button (click)="isFilterOpen = false">
+                    <i class="fa-solid fa-xmark text-xl"></i>
+                </button>
+            </div>
+            <div class="overflow-y-auto h-[calc(100vh-65px)] p-4">
+                <app-product-filter></app-product-filter>
+            </div>
+        </div>
+    </div>
+</div>

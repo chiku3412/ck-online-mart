@@ -31,7 +31,11 @@
         </div>
     </div>
 </div>
-<app-shop></app-shop>
+<div class="py-6 md:py-10 lg:py-16">
+    <div class="container mx-auto px-3">
+        <app-product [gridCols]="5" [limit]="10" [showSeeMore]="true"></app-product>
+    </div>
+</div>
 <!-- Newsletter Section -->
 <div class="newsletter-section mb-6 md:mb-10 lg:mb-16">
     <div class="container mx-auto px-5">
