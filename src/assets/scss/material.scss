@@ -73,12 +73,25 @@ input:-webkit-autofill,
     padding: 0 !important;
     background-color: #fff !important;
     .mat-mdc-option {
-        @apply font-semibold text-sm;
+        @apply text-sm;
         min-height: 40px;
         &:hover,
         &.mat-mdc-option-active {
             background-color: rgba(187, 247, 208, 0.5) !important;
             
+        }
+    }
+}
+
+.review-filter {
+    .mat-mdc-form-field-flex {
+        .mat-mdc-form-field-infix {
+            min-height: 40px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            .mat-mdc-select-value-text {
+                font-size: 14px;
+            }
         }
     }
 }

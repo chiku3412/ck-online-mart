@@ -14,6 +14,11 @@ export class AppComponent {
         this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe(() => {
             const hideRoutes = ['/login', '/register'];
             this.hideLayout = hideRoutes.includes(this.router.url);
+
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
         });
     }
 }

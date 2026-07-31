@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
+import { CartService } from 'src/app/services/cart.service';
 import { ProductService } from 'src/app/services/product-service';
 
 @Component({
@@ -16,7 +17,11 @@ export class ProductComponent implements OnInit {
     products: any[] = [];
     Math = Math;
 
-    constructor(private productService: ProductService) {}
+    constructor(
+        private productService: ProductService,
+        private cartService: CartService,
+        private router: Router
+    ) {}
 
     loadProducts(): void {
         this.productService.getProducts().subscribe({
@@ -31,6 +36,11 @@ export class ProductComponent implements OnInit {
 
     get displayProducts() {
         return this.limit ? this.products.slice(0, this.limit) : this.products;
+    }
+
+    addToCart(product:any){
+        this.cartService.addToCart(product);
+        this.router.navigate(['/cart']);
     }
 
     ngOnInit(): void {

@@ -1,1 +1,194 @@
-<p>cart works!</p>
+<div class="py-16">
+    <div class="container mx-auto px-4">
+        <div class="flex flex-col lg:flex-row gap-8 lg:gap-12">
+            <div class="flex-1">
+                <div class="flex items-center justify-between mb-6">
+                    <h1 class="text-2xl font-bold text-gray-900">Shopping Cart <span class="text-gray-400 text-lg font-normal">({{ cartItems.length }} items)</span></h1>
+                    <button (click)="clearCart()" class="text-sm text-red-500 hover:text-red-600 font-medium transition-colors">
+                        Remove All
+                    </button>
+                </div>
+                <div class="hidden md:grid grid-cols-12 gap-4 pb-3 border-b border-gray-200 text-xs font-semibold text-gray-400 uppercase tracking-wider">
+                    <div class="col-span-5">Product</div>
+                    <div class="col-span-2 text-center">Quantity</div>
+                    <div class="col-span-2 text-center">Price</div>
+                    <div class="col-span-2 text-right">Total</div>
+                    <div class="col-span-1 text-center">Action</div>
+                </div>
+                <div id="cartItems" class="divide-y divide-gray-100">
+                    <div class="cart-item py-6 space-y-3" data-id="1" data-price="28999">
+                        @if(cartItems.length > 0) {
+                            @for(item of cartItems; track item) {
+                                <div class="flex flex-col md:grid md:grid-cols-12 gap-4 items-start md:items-center">
+                                    <div class="col-span-5 flex gap-4 w-full">
+                                        <div class="relative flex-shrink-0 w-14 h-14 sm:w-16 sm:h-16 rounded-xl bg-gray-100 overflow-hidden">
+                                            <img [src]="item.image" class="w-full h-full object-cover" alt="Headphones">
+                                        </div>
+                                        <div class="flex flex-col justify-between py-1 flex-1 min-w-0">
+                                            <div class="flex items-start justify-between gap-2">
+                                                <div>
+                                                    <p class="text-xs text-gray-500 mb-0.5">{{ item.category }}</p>
+                                                    <h3 class="text-sm font-semibold text-gray-900 leading-snug">{{ item.name }}</h3>
+                                                </div>
+                                                <button (click)="removeItem(item.id)" class="md:hidden text-gray-400 hover:text-red-500 transition-colors p-1">
+                                                    <i class="fa-regular fa-trash-can"></i>
+                                                </button>
+                                            </div>
+                                            <div class="flex items-center gap-3 mt-2 md:hidden">
+                                                <div class="flex items-center border border-gray-200 rounded-lg h-8">
+                                                    <button (click)="updateQty(item.id, -1)" class="qty-btn w-8 h-full flex items-center justify-center text-gray-500 hover:text-gray-900 transition-colors">
+                                                        <i class="fa-solid fa-minus text-[10px]"></i>
+                                                    </button>
+                                                    <span class="qty-display w-8 text-center text-sm font-semibold">1</span>
+                                                    <button (click)="updateQty(item.id, 1)" class="qty-btn w-8 h-full flex items-center justify-center text-gray-500 hover:text-gray-900 transition-colors">
+                                                        <i class="fa-solid fa-plus text-[10px]"></i>
+                                                    </button>
+                                                </div>
+                                                <span class="text-sm font-bold text-gray-900 item-total">₹ {{ item.price }}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="hidden md:flex col-span-2 justify-center">
+                                        <div class="flex items-center border border-gray-200 rounded-xl h-10">
+                                            <button (click)="updateQty(item.id, -1)" class="qty-btn w-10 h-full flex items-center justify-center text-gray-500 hover:text-gray-900 transition-colors">
+                                                <i class="fa-solid fa-minus text-[10px]"></i>
+                                            </button>
+                                            <span class="qty-display w-10 text-center text-sm font-semibold">{{ item.quantity }}</span>
+                                            <button (click)="updateQty(item.id, 1)" class="qty-btn w-10 h-full flex items-center justify-center text-gray-500 hover:text-gray-900 transition-colors">
+                                                <i class="fa-solid fa-plus text-[10px]"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="hidden md:flex col-span-2 justify-center">
+                                        <div class="text-center">
+                                            <p class="text-sm font-bold text-gray-900 item-price">₹ {{ item.price }}</p>
+                                            <p class="text-xs text-gray-400 line-through mt-0.5">₹ {{ item.oldPrice }}</p>
+                                        </div>
+                                    </div>
+                                    <div class="hidden md:flex col-span-2 justify-end items-center gap-4">
+                                        <span class="text-sm font-bold text-gray-900 item-total">₹ {{ item.price }}</span>
+                                    </div>
+                                    <div class="hidden md:flex col-span-1 justify-center items-center gap-4">
+                                        <button (click)="removeItem(1)" class="w-8 h-8 flex items-center justify-center rounded-full hover:bg-red-50 text-gray-400 hover:text-red-500 transition-all">
+                                            <i class="fa-regular fa-trash-can text-sm"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            }
+                        } @else {
+                            <div class="flex flex-col items-center justify-center py-20 text-center">
+                                <i class="fa-regular fa-cart-shopping text-7xl text-gray-300 mb-5"></i>
+
+                                <h2 class="text-2xl font-bold text-gray-800">
+                                    Your cart is empty
+                                </h2>
+
+                                <p class="text-gray-500 mt-2 mb-6">
+                                    Looks like you haven't added any products yet.
+                                </p>
+
+                                <button routerLink="/shop/product" class="font-semibold bg-black text-white border border-solid border-black px-24 py-2 rounded-lg text-sm flex items-center gap-2 hover:text-black hover:bg-transparent transition-all ease-in-out duration-300">
+                                    Continue Shopping
+                                </button>
+                            </div>
+                        }
+                    </div>
+                </div>
+
+                <a routerLink="/shop/product" class="inline-flex items-center gap-2 mt-8 text-sm font-semibold text-gray-600 hover:text-gray-900 transition-colors">
+                    <i class="fa-solid fa-arrow-left text-xs"></i>
+                    Continue Shopping
+                </a>
+            </div>
+
+            <div class="lg:w-96 flex-shrink-0">
+                <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 sticky top-24">
+                    <h2 class="text-lg font-bold text-gray-900 mb-6">Order Summary</h2>
+
+                    <div class="flex gap-2 mb-6">
+                        <div class="flex-1 relative">
+                            <i class="fa-solid fa-tag absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-xs"></i>
+                            <input [(ngModel)]="promoCode" type="text" id="promoInput" placeholder="Promo code" class="w-full pl-9 pr-3 py-2.5 text-sm border border-gray-200 rounded-xl outline-none focus:border-gray-900 transition-colors placeholder-gray-400">
+                        </div>
+                        <button (click)="applyPromo()" class="w-max font-semibold bg-black text-white border border-solid border-black px-10 py-2 rounded-lg text-sm flex items-center gap-2 hover:text-black hover:bg-transparent transition-all ease-in-out duration-300">
+                            Apply
+                        </button>
+                        <p *ngIf="promoMessage" class="mt-2 text-sm" [class.text-green-600]="promoApplied" [class.text-red-500]="!promoApplied">
+                            {{ promoMessage }}
+                        </p>
+                    </div>
+                    <p id="promoMessage" class="text-xs text-emerald-600 font-medium mb-4 hidden"><i class="fa-solid fa-check mr-1"></i> Code SAVE20 applied! -₹3,400</p>
+
+                    <div class="space-y-3 mb-6">
+                        <div class="flex justify-between text-sm">
+                            <span class="text-gray-500">Subtotal</span>
+                            <span class="font-medium text-gray-900" id="subtotal">₹ {{ subtotal | number:'1.0-0' }}</span>
+                        </div>
+                        <div class="flex justify-between text-sm">
+                            <span class="text-gray-500">Discount</span>
+                            <span class="font-medium text-emerald-600" id="discount">-₹ {{ discount | number:'1.0-0' }}</span>
+                        </div>
+                        <div class="flex justify-between text-sm">
+                            <span class="text-gray-500">Shipping</span>
+                            <span class="font-medium text-gray-900">Free</span>
+                        </div>
+                        <div class="flex justify-between text-sm">
+                            <span class="text-gray-500">Tax (18% GST)</span>
+                            <span class="font-medium text-gray-900" id="tax">₹ {{ gst | number:'1.0-0' }}</span>
+                        </div>
+                    </div>
+
+                    <div class="border-t border-dashed border-gray-200 my-4"></div>
+
+                    <div class="flex justify-between items-end mb-6">
+                        <div>
+                            <span class="text-sm font-bold text-gray-900 block">Total</span>
+                            <span class="text-xs text-gray-500">Including VAT</span>
+                        </div>
+                        <span class="text-2xl font-bold text-gray-900" id="total">₹ {{ total | number:'1.0-0' }}</span>
+                    </div>
+
+                    <button class="w-full font-semibold bg-black text-white border border-solid border-black px-24 py-2 rounded-lg text-sm flex items-center gap-2 hover:text-black hover:bg-transparent transition-all ease-in-out duration-300">
+                        Checkout Now
+                    </button>
+                    <div class="flex gap-3 mt-3">
+                        <button class="flex-1 h-11 border border-gray-200 hover:border-gray-400 text-gray-700 text-sm font-semibold rounded-xl transition-colors flex items-center justify-center gap-2">
+                            <i class="fa-brands fa-google-pay text-xl"></i>
+                        </button>
+                        <button class="flex-1 h-11 border border-gray-200 hover:border-gray-400 text-gray-700 text-sm font-semibold rounded-xl transition-colors flex items-center justify-center gap-2">
+                            <i class="fa-brands fa-apple text-lg"></i> Pay
+                        </button>
+                    </div>
+
+                    <div class="flex items-center justify-center gap-4 mt-6 pt-6 border-t border-gray-100">
+                        <div class="flex items-center gap-1.5 text-gray-400">
+                            <i class="fa-solid fa-shield-halved text-xs"></i>
+                            <span class="text-[10px] font-medium">Secure</span>
+                        </div>
+                        <div class="flex items-center gap-1.5 text-gray-400">
+                            <i class="fa-solid fa-truck-fast text-xs"></i>
+                            <span class="text-[10px] font-medium">Free Ship</span>
+                        </div>
+                        <div class="flex items-center gap-1.5 text-gray-400">
+                            <i class="fa-solid fa-rotate-left text-xs"></i>
+                            <span class="text-[10px] font-medium">30 Day Return</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-4 bg-amber-50 rounded-2xl p-5 border border-amber-100">
+                    <div class="flex items-start gap-3">
+                        <div class="w-8 h-8 bg-amber-100 rounded-full flex items-center justify-center flex-shrink-0 text-amber-600">
+                            <i class="fa-solid fa-headset text-xs"></i>
+                        </div>
+                        <div>
+                            <p class="text-sm font-bold text-gray-900">Need help with your order?</p>
+                            <p class="text-xs text-gray-600 mt-0.5">Our support team is available 24/7</p>
+                            <a href="#" class="text-xs font-bold text-amber-700 mt-2 inline-block hover:underline">Contact Support</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

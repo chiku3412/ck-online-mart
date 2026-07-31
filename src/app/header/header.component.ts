@@ -6,6 +6,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatSelectModule} from '@angular/material/select';
 import { RouterModule } from '@angular/router';
 import { ProductService } from '../services/product-service';
+import { CartService } from '../services/cart.service';
 
 @Component({
     selector: 'app-header',
@@ -24,8 +25,12 @@ export class HeaderComponent implements OnInit {
     categories: any[] = [];
     groupedProducts: any[] = [];
     isSticky = false;
+    cartCount = 0;
 
-    constructor (private productService: ProductService) {}
+    constructor (
+        private productService: ProductService,
+        private cartService: CartService
+    ) {}
 
     loadCategories() {
         this.productService.getProducts().subscribe({
@@ -87,7 +92,17 @@ export class HeaderComponent implements OnInit {
         this.isCategoryOpen = false;
     }
 
+    cartCounting() {
+        this.cartService.cart$.subscribe(cart=>{
+            this.cartCount = cart.reduce(
+                (sum:any,item:any)=>sum+item.quantity,
+                0
+            );
+        });
+    }
+
     ngOnInit(): void {
         this.loadCategories();
+        this.cartCounting();
     }
 }

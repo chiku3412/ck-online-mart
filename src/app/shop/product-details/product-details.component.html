@@ -1,8 +1,8 @@
 <div class="product-detail-section py-6 md:py-10 lg:py-16">
     <div class="container mx-auto px-4">
-        <div class="lg:grid lg:grid-cols-12 lg:gap-12">
+        <div class="lg:grid lg:grid-cols-12 lg:gap-12 items-start">
             <!-- Left: Image Gallery -->
-            <div class="lg:col-span-5">
+            <div class="lg:col-span-5 sticky top-24">
                 <div class="relative bg-gray-50 rounded-lg mb-4 group overflow-hidden">
                     <img [src]="currentImage" class="fade-img" alt="Product">
                     <!-- Top Actions -->
@@ -122,15 +122,252 @@
 
                 <!-- Buttons -->
                 <div class="flex gap-3 mb-4">
-                    <button onclick="addToCart()"
-                        class="flex-1 h-12 bg-gray-900 hover:bg-gray-800 text-white text-sm font-semibold rounded-lg transition-colors active:scale-[0.98]">
+                    <button (click)="addToCart()" class="flex-1 h-12 bg-gray-900 hover:bg-gray-800 text-white text-sm font-semibold rounded-lg transition-colors active:scale-[0.98]">
                         Add To Cart
                     </button>
-                    <button
-                        class="flex-1 h-12 bg-white border border-gray-200 hover:border-gray-400 text-gray-900 text-sm font-semibold rounded-lg transition-colors active:scale-[0.98]">
+                    <button class="flex-1 h-12 bg-white border border-gray-200 hover:border-gray-400 text-gray-900 text-sm font-semibold rounded-lg transition-colors active:scale-[0.98]">
                         Checkout Now
                     </button>
                 </div>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden my-16">
+            <div class="px-6 md:px-10 py-6 border-b border-gray-100 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div>
+                    <h2 class="text-xl font-bold text-gray-900">Ratings & Reviews</h2>
+                    <p class="text-sm text-gray-500 mt-0.5">Verified purchase reviews from real customers</p>
+                </div>
+                <button class="h-11 px-6 bg-gray-900 hover:bg-gray-800 text-white text-sm font-semibold rounded-xl transition-colors active:scale-[0.98]">
+                    Write a Review
+                </button>
+            </div>
+
+            <div class="grid lg:grid-cols-12 divide-y lg:divide-y-0 lg:divide-x divide-gray-100">
+                <div class="lg:col-span-4 p-6 md:p-10">
+                    <div class="flex items-end gap-3 mb-2">
+                        <span class="text-6xl font-bold text-gray-900 tracking-tight">4.8</span>
+                        <div class="mb-2">
+                            <div class="flex text-amber-400 text-lg gap-0.5">
+                                <i class="fa-solid fa-star text-amber-400"></i>
+                                <i class="fa-solid fa-star text-amber-400"></i>
+                                <i class="fa-solid fa-star text-amber-400"></i>
+                                <i class="fa-solid fa-star text-amber-400"></i>
+                                <i class="fa-solid fa-star text-amber-400"></i>
+                            </div>
+                            <p class="text-sm text-gray-500 mt-1">Based on 1,248 reviews</p>
+                        </div>
+                    </div>
+
+                    <div class="space-y-2.5 mt-6">
+                        @for(item of ratingBreakdown; track item) {
+                            <div class="flex items-center gap-3">
+                                <span class="text-sm font-medium text-gray-600 w-3">{{ item.star }}</span>
+                                <i class="fa-solid fa-star text-amber-400"></i>
+                                <div class="flex-1 h-2 bg-gray-100 rounded-full overflow-hidden">
+                                    <div class="h-full bg-amber-400 rounded-full progress-fill" [style.width.%]="item.percent"></div>
+                                </div>
+                                <span class="text-xs text-gray-500 w-8 text-right">{{ item.percent }}%</span>
+                            </div>
+                        }
+                    </div>
+
+                    <div class="mt-8">
+                        <h4 class="text-sm font-bold text-gray-900 mb-3">Customer Photos</h4>
+                        <div class="grid grid-cols-4 gap-2">
+                            <div class="photo-thumb aspect-square rounded-lg bg-gray-100 overflow-hidden cursor-pointer">
+                                <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=200&h=200&fit=crop" class="w-full h-full object-cover">
+                            </div>
+                            <div class="photo-thumb aspect-square rounded-lg bg-gray-100 overflow-hidden cursor-pointer">
+                                <img src="https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?w=200&h=200&fit=crop" class="w-full h-full object-cover">
+                            </div>
+                            <div class="photo-thumb aspect-square rounded-lg bg-gray-100 overflow-hidden cursor-pointer">
+                                <img src="https://images.unsplash.com/photo-1580910051074-3eb694886505?w=200&h=200&fit=crop" class="w-full h-full object-cover">
+                            </div>
+                            <div class="photo-thumb aspect-square rounded-lg bg-gray-100 overflow-hidden cursor-pointer relative">
+                                <img src="https://images.unsplash.com/photo-1565849904461-04a58ad377e0?w=200&h=200&fit=crop" class="w-full h-full object-cover">
+                                <div class="absolute inset-0 bg-black/40 flex items-center justify-center text-white text-xs font-bold">+12</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-8 flex flex-col h-full">
+                    <div class="px-6 md:px-10 py-4 border-b border-gray-100 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                        <div class="flex items-center gap-2">
+                            <span class="text-sm font-bold text-gray-900">1,248 Reviews</span>
+                            <span class="text-xs text-gray-400">•</span>
+                            <div class="flex gap-1">
+                                <button class="px-3 py-1.5 text-xs font-semibold bg-gray-900 text-white rounded-full">All</button>
+                                <button class="px-3 py-1.5 text-xs font-semibold text-gray-600 bg-gray-100 hover:bg-gray-200 rounded-full transition-colors">5★</button>
+                                <button class="px-3 py-1.5 text-xs font-semibold text-gray-600 bg-gray-100 hover:bg-gray-200 rounded-full transition-colors">4★</button>
+                                <button class="px-3 py-1.5 text-xs font-semibold text-gray-600 bg-gray-100 hover:bg-gray-200 rounded-full transition-colors">With Photos</button>
+                            </div>
+                        </div>
+                        <mat-form-field class="review-filter" appearance="outline" subscriptSizing="dynamic">
+                            <mat-select value="most-recent">
+                                <mat-option value="most-recent">Most Recent</mat-option>
+                                <mat-option value="highest-rated">Highest Rated</mat-option>
+                                <mat-option value="lowest-rated">Lowest Rated</mat-option>
+                                <mat-option value="most-helpful">Most Helpful</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="flex-1 overflow-y-auto review-scroll max-h-[700px]">
+                        <div class="review-card px-6 md:px-10 py-6 border-b border-gray-50">
+                            <div class="flex items-start justify-between mb-3">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center text-white text-sm font-bold shadow-sm">AR</div>
+                                    <div>
+                                        <div class="flex items-center gap-2">
+                                            <span class="text-sm font-bold text-gray-900">Aditya Roy</span>
+                                            <span class="px-2 py-0.5 bg-emerald-50 text-emerald-700 text-[10px] font-bold rounded-full uppercase tracking-wide">Verified</span>
+                                        </div>
+                                        <p class="text-xs text-gray-400 mt-0.5">2 days ago</p>
+                                    </div>
+                                </div>
+                                <div class="flex text-amber-400 text-xs gap-0.5">
+                                    <i class="fa-solid fa-star text-amber-400"></i>
+                                    <i class="fa-solid fa-star text-amber-400"></i>
+                                    <i class="fa-solid fa-star text-amber-400"></i>
+                                    <i class="fa-solid fa-star text-amber-400"></i>
+                                    <i class="fa-solid fa-star text-amber-400"></i>
+                                </div>
+                            </div>
+                            
+                            <h4 class="text-sm font-bold text-gray-900 mb-1.5">Absolutely love it! Worth every penny.</h4>
+                            <p class="text-sm text-gray-600 leading-relaxed mb-4">
+                                The build quality is exceptional and the performance is buttery smooth. Camera quality exceeded my expectations, especially in low light. Battery easily lasts a full day with heavy usage. Highly recommend upgrading if you're coming from an older model.
+                            </p>
+                            
+                            <!-- Review Images -->
+                            <div class="flex gap-2 mb-4">
+                                <div class="w-20 h-20 rounded-lg bg-gray-100 overflow-hidden cursor-pointer hover:opacity-80 transition-opacity">
+                                    <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=200&h=200&fit=crop" class="w-full h-full object-cover">
+                                </div>
+                                <div class="w-20 h-20 rounded-lg bg-gray-100 overflow-hidden cursor-pointer hover:opacity-80 transition-opacity">
+                                    <img src="https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?w=200&h=200&fit=crop" class="w-full h-full object-cover">
+                                </div>
+                            </div>
+
+                            <!-- Review Meta -->
+                            <div class="flex items-center gap-4">
+                                <button class="like-btn flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-gray-200 text-xs font-medium text-gray-500 hover:border-gray-300 transition-all" onclick="this.classList.toggle('active')">
+                                    <i class="fa-regular fa-thumbs-up"></i>
+                                    Helpful (24)
+                                </button>
+                                <button class="text-xs font-medium text-gray-400 hover:text-gray-600 transition-colors">Report</button>
+                            </div>
+                        </div>
+
+                        <!-- Review 2 -->
+                        <div class="review-card px-6 md:px-10 py-6 border-b border-gray-50">
+                            <div class="flex items-start justify-between mb-3">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-blue-400 to-indigo-500 flex items-center justify-center text-white text-sm font-bold shadow-sm">SP</div>
+                                    <div>
+                                        <div class="flex items-center gap-2">
+                                            <span class="text-sm font-bold text-gray-900">Sneha Patel</span>
+                                            <span class="px-2 py-0.5 bg-emerald-50 text-emerald-700 text-[10px] font-bold rounded-full uppercase tracking-wide">Verified</span>
+                                        </div>
+                                        <p class="text-xs text-gray-400 mt-0.5">1 week ago</p>
+                                    </div>
+                                </div>
+                                <div class="flex text-amber-400 text-xs gap-0.5">
+                                    <i class="fa-solid fa-star text-amber-400"></i>
+                                    <i class="fa-solid fa-star text-amber-400"></i>
+                                    <i class="fa-solid fa-star text-amber-400"></i>
+                                    <i class="fa-solid fa-star text-amber-400"></i>
+                                    <i class="fa-solid fa-star text-gray-200"></i>
+                                </div>
+                            </div>
+                            
+                            <h4 class="text-sm font-bold text-gray-900 mb-1.5">Great phone but heating issues while gaming</h4>
+                            <p class="text-sm text-gray-600 leading-relaxed mb-4">
+                                Overall a solid device. The display is gorgeous and iOS runs flawlessly. However, I noticed it gets warm during extended gaming sessions (30+ mins). Not a dealbreaker but worth noting. Camera is fantastic for everyday shots.
+                            </p>
+
+                            <div class="flex items-center gap-4">
+                                <button class="like-btn flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-gray-200 text-xs font-medium text-gray-500 hover:border-gray-300 transition-all" onclick="this.classList.toggle('active')">
+                                    <i class="fa-regular fa-thumbs-up"></i>
+                                    Helpful (18)
+                                </button>
+                                <button class="text-xs font-medium text-gray-400 hover:text-gray-600 transition-colors">Report</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Load More -->
+                    <div class="px-6 md:px-10 py-6 border-t border-gray-100">
+                        <button class="w-full py-3 text-sm font-semibold text-gray-700 border border-gray-200 rounded-xl hover:bg-gray-50 transition-colors">
+                            Load More Reviews
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Related Product Section -->
+        <div class="related-product">
+            <div class="flex items-center justify-between mb-8">
+                <h2 class="text-3xl font-bold">
+                    Related Products
+                </h2>
+
+                <a routerLink="/shop/product" class="text-green-600 font-semibold hover:underline">
+                    View All
+                </a>
+            </div>
+            <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+                @for(product of relatedProducts; track product) {
+                    <div class="product-card shadow-md bg-white rounded-md p-3 group">
+                        <div class="product-image rounded-md overflow-hidden mb-3 relative">
+                            <div class="product-image bg-gray-50 rounded-md flex items-center justify-center overflow-hidden">
+                                <img [src]="product.image" [alt]="product.name" class="max-w-full max-h-full object-contain transition duration-300 group-hover:scale-110">
+                            </div>
+                            <div class="absolute inset-0 bg-black bg-opacity-25 translate-y-full group-hover:-translate-y-0 transition-all duration-1000 flex items-center justify-center gap-3 text-white text-lg">
+                                <div [routerLink]="['/shop/product-details', product.id]" class="w-10 h-10 rounded-md bg-black flex items-center justify-center cursor-pointer">
+                                    <i class="fa-solid fa-eye"></i>
+                                </div>
+                                <div class="w-10 h-10 rounded-md bg-black flex items-center justify-center cursor-pointer">
+                                    <i class="fa-solid fa-arrow-right-arrow-left"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-content">
+                            <h6 class="text-sm bg-green-100 rounded-md font-bold px-4 py-0.5 inline-block">{{ product.category }}</h6>
+                            <h5 class="text-lg line-clamp-1 font-medium leading-6 mt-2 cursor-pointer" [title]="product.name"> {{ product.name }} </h5>
+                            <div class="my-2 flex items-center gap-2">
+                                <div class="flex items-center">
+                                    @for(star of [1,2,3,4,5]; track star) {
+                                        @if (star <= Math.floor(product.rating)) {
+                                            <i class="fa-solid fa-star text-yellow-500"></i>
+                                        }
+                                        @else if (star === Math.ceil(product.rating) && product.rating % 1 !== 0) {
+                                            <i class="fa-solid fa-star-half-stroke text-yellow-500"></i>
+                                        }
+                                        @else {
+                                            <i class="fa-regular fa-star text-gray-300"></i>
+                                        }                                    
+                                    }
+                                    
+                                </div>
+                                <span>|</span>
+                                <span>5.0</span>
+                            </div>
+                            <div class="flex gap-2 items-center">
+                                <h5>₹ {{ product.price | number:'1.0-0' }}</h5>
+                                <h5 class="text-gray-500"><s>₹ {{ product.oldPrice | number:'1.0-0' }}</s></h5>
+                            </div>
+                            <button (click)="addToCart()" class="bg-green-100 text-green-500 px-4 py-2 flex items-center justify-center gap-2 font-bold text-lg rounded-md hover:-translate-y-1 transition-all duration-300 w-full mt-1">
+                                <i class="fa-solid fa-cart-arrow-down"></i>
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                }
             </div>
         </div>
     </div>
