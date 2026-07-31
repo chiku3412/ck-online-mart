@@ -1,8 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { CartService } from 'src/app/services/cart.service';
 import { ProductService } from 'src/app/services/product-service';
+import { WishlistService } from 'src/app/services/wishlist.service';
 
 @Component({
     selector: 'app-product',
@@ -10,41 +11,60 @@ import { ProductService } from 'src/app/services/product-service';
     imports: [CommonModule, RouterModule],
     templateUrl: './product.component.html'
 })
-export class ProductComponent implements OnInit {
+export class ProductComponent implements OnInit, OnChanges {
+
     @Input() limit: number | null = null;
     @Input() showSeeMore = false;
     @Input() gridCols = 4;
+    @Input() customProducts: any[] = [];
+
     products: any[] = [];
     Math = Math;
 
     constructor(
         private productService: ProductService,
         private cartService: CartService,
-        private router: Router
+        private router: Router,
+        private wishlistService: WishlistService
     ) {}
+
+    ngOnInit(): void {
+        if (!this.customProducts.length) {
+            this.loadProducts();
+        }
+    }
+
+    ngOnChanges(changes: SimpleChanges): void {
+        if (changes['customProducts']) {
+            this.products = [...this.customProducts];
+        }
+    }
 
     loadProducts(): void {
         this.productService.getProducts().subscribe({
             next: (res) => {
                 this.products = res;
             },
-            error: (err) => {
-                console.error(err);
-            }
+            error: (err) => console.error(err)
         });
     }
 
     get displayProducts() {
-        return this.limit ? this.products.slice(0, this.limit) : this.products;
+        return this.limit
+            ? this.products.slice(0, this.limit)
+            : this.products;
     }
 
-    addToCart(product:any){
+    addToCart(product: any) {
         this.cartService.addToCart(product);
         this.router.navigate(['/cart']);
     }
 
-    ngOnInit(): void {
-        this.loadProducts();
+    toggleWishlist(product: any): void {
+        this.wishlistService.toggleWishlist(product);
     }
 
+    isWishlist(product: any): boolean {
+        return this.wishlistService.isInWishlist(product.id);
+    }
 }

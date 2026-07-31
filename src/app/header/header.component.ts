@@ -7,6 +7,7 @@ import {MatSelectModule} from '@angular/material/select';
 import { RouterModule } from '@angular/router';
 import { ProductService } from '../services/product-service';
 import { CartService } from '../services/cart.service';
+import { WishlistService } from '../services/wishlist.service';
 
 @Component({
     selector: 'app-header',
@@ -26,10 +27,12 @@ export class HeaderComponent implements OnInit {
     groupedProducts: any[] = [];
     isSticky = false;
     cartCount = 0;
+    wishlistCount = 0;
 
     constructor (
         private productService: ProductService,
-        private cartService: CartService
+        private cartService: CartService,
+        private wishlistService: WishlistService
     ) {}
 
     loadCategories() {
@@ -101,8 +104,15 @@ export class HeaderComponent implements OnInit {
         });
     }
 
+    wishListCounting() {
+        this.wishlistService.wishlist$.subscribe(items => {
+            this.wishlistCount = items.length;
+        });
+    }
+
     ngOnInit(): void {
         this.loadCategories();
         this.cartCounting();
+        this.wishListCounting();
     }
 }

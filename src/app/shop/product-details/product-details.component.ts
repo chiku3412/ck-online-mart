@@ -5,11 +5,13 @@ import { CommonModule } from '@angular/common';
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatSelectModule } from '@angular/material/select';
 import { CartService } from 'src/app/services/cart.service';
+import { WishlistService } from 'src/app/services/wishlist.service';
+import { ProductComponent } from "../product/product.component";
 
 @Component({
     selector: 'app-product-details',
     standalone: true,
-    imports: [CommonModule, RouterModule, MatFormFieldModule, MatSelectModule],
+    imports: [CommonModule, RouterModule, MatFormFieldModule, MatSelectModule, ProductComponent],
     templateUrl: './product-details.component.html'
 })
 export class ProductDetailsComponent implements OnInit {
@@ -31,7 +33,8 @@ export class ProductDetailsComponent implements OnInit {
         private productService : ProductService,
         private route: ActivatedRoute,
         private cartService: CartService,
-        private router: Router
+        private router: Router,
+        private wishlistService: WishlistService
     ) {}
 
     loadRelatedProducts() {
@@ -67,6 +70,14 @@ export class ProductDetailsComponent implements OnInit {
             this.showToast = false;
             this.router.navigate(['/cart']);
         }, 2000);
+    }
+
+    // Add to wishlist
+    toggleWishlist(product: any) {
+        this.wishlistService.toggleWishlist(product);
+    }
+    isWishlist(product: any) {
+        return this.wishlistService.isInWishlist(product.id);
     }
 
     ngOnInit(): void {

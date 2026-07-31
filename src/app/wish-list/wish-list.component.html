@@ -1,1 +1,41 @@
-<p>wish-list works!</p>
+<div class="py-16">
+    <div class="container mx-auto px-4">
+        <div class="bg-gray-900 rounded-2xl overflow-hidden relative mb-16">
+            <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1200&h=300&fit=crop')] bg-cover bg-center opacity-20"></div>
+            <div class="relative px-8 py-12 md:px-12 md:py-16 flex flex-col md:flex-row md:items-center justify-between gap-6">
+                <div class="flex items-center gap-5">
+                    <div class="w-14 h-14 bg-white/10 backdrop-blur rounded-xl flex items-center justify-center border border-white/20">
+                        <i class="fa-solid fa-heart text-white text-2xl"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-2xl md:text-3xl font-bold text-white">My Wishlist</h1>
+                        <p class="text-gray-400 text-sm mt-1">Your favorite items saved in one place</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-2 bg-white/5 backdrop-blur rounded-xl px-5 py-3 border border-white/10">
+                    <span class="text-sm font-semibold text-gray-200 ml-2">{{ wishlistItems.length }} Products</span>
+                    <button onclick="clearCompare()" class="ml-3 text-xs text-red-500 hover:text-red-600 font-medium">Clear All</button>
+                </div>
+            </div>
+        </div>
+        @if(wishlistItems.length > 0) {
+            <app-product [customProducts]="wishlistItems" [gridCols]="5"></app-product>
+        } @else {
+            <div class="flex flex-col items-center justify-center py-20 text-center">
+                <i class="fa-regular fa-heart text-7xl text-gray-300 mb-5"></i>
+
+                <h2 class="text-2xl font-bold text-gray-800">
+                    Your list is empty
+                </h2>
+
+                <p class="text-gray-500 mt-2 mb-6">
+                    Looks like you haven't added any products yet.
+                </p>
+
+                <button routerLink="/shop/product" class="font-semibold bg-black text-white border border-solid border-black px-24 py-2 rounded-lg text-sm flex items-center gap-2 hover:text-black hover:bg-transparent transition-all ease-in-out duration-300">
+                    Continue Shopping
+                </button>
+            </div>
+        }
+    </div>
+</div>
