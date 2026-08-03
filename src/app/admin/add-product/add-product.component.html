@@ -1,0 +1,51 @@
+<div class="w-full bg-white rounded-2xl shadow-sm border border-slate-100 p-8">
+    <div class="mb-8 flex items-center gap-4">
+        <div class="w-12 h-12 bg-indigo-50 rounded-xl flex items-center justify-center">
+            <i class="fa-light fa-tag text-2xl text-indigo-600"></i>
+        </div>
+        <div>
+            <h1 class="text-2xl font-bold text-slate-900">Add Product</h1>
+            <p class="text-sm text-slate-500">Create a new product for your store.</p>
+        </div>
+    </div>
+
+    <form class="space-y-6">
+        <div class="grid grid-cols-2 gap-3">
+            <mat-form-field appearance="outline" subscriptSizing="dynamic" class="w-full custom-category-field">
+                <mat-label class="!font-medium !text-slate-600">Category Name</mat-label>
+                <mat-select>
+                    <mat-option>123</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="outline" subscriptSizing="dynamic" class="w-full custom-category-field">
+                <mat-label class="!font-medium !text-slate-600">Product Name</mat-label>
+                <input matInput placeholder="e.g. Electronics, Fashion, Home" required class="!text-slate-900">
+            </mat-form-field>
+            <mat-form-field appearance="outline" subscriptSizing="dynamic" class="w-full custom-category-field">
+                <mat-label class="!font-medium !text-slate-600">Product Description</mat-label>
+                <input matInput placeholder="e.g. High-quality electronics for your home" required class="!text-slate-900">
+            </mat-form-field>
+            <mat-form-field appearance="outline" subscriptSizing="dynamic" class="w-full custom-category-field">
+                <mat-label class="!font-medium !text-slate-600">Product Old Price</mat-label>
+                <input matInput placeholder="e.g. 29.99" required class="!text-slate-900">
+            </mat-form-field>
+            <mat-form-field appearance="outline" subscriptSizing="dynamic" class="w-full custom-category-field">
+                <mat-label class="!font-medium !text-slate-600">Product Price</mat-label>
+                <input matInput placeholder="e.g. 19.99" required class="!text-slate-900">
+            </mat-form-field>
+            <mat-form-field appearance="outline" subscriptSizing="dynamic" class="w-full custom-category-field">
+                <mat-label class="!font-medium !text-slate-600">Stock Quantity</mat-label>
+                <input matInput placeholder="e.g. 100" required class="!text-slate-900">
+            </mat-form-field>
+        </div>
+
+        <div class="flex gap-3 pt-2">
+            <button type="button" class="flex-1 h-11 border border-slate-200 text-slate-700 text-sm font-semibold rounded-xl hover:bg-slate-50 transition-colors active:scale-[0.98]">
+                Cancel
+            </button>
+            <button type="submit" class="flex-1 h-11 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-semibold rounded-xl transition-all active:scale-[0.98] shadow-sm shadow-indigo-200 disabled:opacity-50 disabled:cursor-not-allowed">
+                Add Category
+            </button>
+        </div>
+    </form>
+</div>

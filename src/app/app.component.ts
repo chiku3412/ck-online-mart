@@ -12,7 +12,7 @@ export class AppComponent {
 
     constructor(private router: Router) {
         this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe(() => {
-            const hideRoutes = ['/login', '/register'];
+            const hideRoutes = ['/login', '/register', '/admin/login', '/admin', '/admin/dashboard', '/admin/products', '/admin/products/add-product', '/admin/categories', '/admin/categories/add-category', '/admin/orders', '/admin/users'];
             this.hideLayout = hideRoutes.includes(this.router.url);
 
             window.scrollTo({
