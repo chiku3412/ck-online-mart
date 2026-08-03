@@ -22,11 +22,11 @@
         "category": "Electronics",
         "image": "assets/images/products/samsung-s25-ultra.png",
         "images": [
-            "assets/images/products/samsung-s25-ultra.png",
-            "assets/images/products/samsung-s25-ultra.png",
-            "assets/images/products/samsung-s25-ultra.png",
-            "assets/images/products/samsung-s25-ultra.png",
-            "assets/images/products/samsung-s25-ultra.png"
+            "assets/images/products/samsung-s25-ultra-1.jpg",
+            "assets/images/products/samsung-s25-ultra-2.jpg",
+            "assets/images/products/samsung-s25-ultra-3.jpg",
+            "assets/images/products/samsung-s25-ultra-4.jpg",
+            "assets/images/products/samsung-s25-ultra-5.jpg"
         ],
         "price": 119999,
         "oldPrice": 129000,
@@ -39,11 +39,12 @@
         "category": "Electronics",
         "image": "assets/images/products/sony-headphone.png",
         "images": [
-            "assets/images/products/sony-headphone.png",
-            "assets/images/products/sony-headphone.png",
-            "assets/images/products/sony-headphone.png",
-            "assets/images/products/sony-headphone.png",
-            "assets/images/products/sony-headphone.png"
+            "assets/images/products/sony-headphone-1.jpg",
+            "assets/images/products/sony-headphone-2.jpg",
+            "assets/images/products/sony-headphone-3.jpg",
+            "assets/images/products/sony-headphone-4.jpg",
+            "assets/images/products/sony-headphone-5.jpg",
+            "assets/images/products/sony-headphone-6.jpg"
         ],
         "price": 34999,
         "oldPrice": 39999,
@@ -56,11 +57,11 @@
         "category": "Electronics",
         "image": "assets/images/products/jbl-speaker.png",
         "images": [
-            "assets/images/products/jbl-speaker.png",
-            "assets/images/products/jbl-speaker.png",
-            "assets/images/products/jbl-speaker.png",
-            "assets/images/products/jbl-speaker.png",
-            "assets/images/products/jbl-speaker.png"
+            "assets/images/products/jbl-speaker-1.jpg",
+            "assets/images/products/jbl-speaker-2.jpg",
+            "assets/images/products/jbl-speaker-3.jpg",
+            "assets/images/products/jbl-speaker-4.jpg",
+            "assets/images/products/jbl-speaker-5.jpg"
         ],
         "price": 13999,
         "oldPrice": 14999,
@@ -73,11 +74,9 @@
         "category": "Snacks",
         "image": "assets/images/products/balaji-masala-wafer.png",
         "images": [
-            "assets/images/products/balaji-masala-wafer.png",
-            "assets/images/products/balaji-masala-wafer.png",
-            "assets/images/products/balaji-masala-wafer.png",
-            "assets/images/products/balaji-masala-wafer.png",
-            "assets/images/products/balaji-masala-wafer.png"
+            "assets/images/products/balaji-masala-wafer-1.jpg",
+            "assets/images/products/balaji-masala-wafer-2.jpg",
+            "assets/images/products/balaji-masala-wafer-3.jpg"
         ],
         "price": 20,
         "oldPrice": 25,
@@ -90,11 +89,9 @@
         "category": "Snacks",
         "image": "assets/images/products/parle-g.png",
         "images": [
-            "assets/images/products/parle-g.png",
-            "assets/images/products/parle-g.png",
-            "assets/images/products/parle-g.png",
-            "assets/images/products/parle-g.png",
-            "assets/images/products/parle-g.png"
+            "assets/images/products/parle-g-1.webp",
+            "assets/images/products/parle-g-2.webp",
+            "assets/images/products/parle-g-3.webp"
         ],
         "price": 10,
         "oldPrice": 12,
