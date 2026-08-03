@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
-import { ProductService } from 'src/app/services/product-service';
 import { CommonModule } from '@angular/common';
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatSelectModule } from '@angular/material/select';
-import { CartService } from 'src/app/services/cart.service';
-import { WishlistService } from 'src/app/services/wishlist.service';
 import { ProductComponent } from "../product/product.component";
+import { ProductService } from '../../services/product-service';
+import { CartService } from '../../services/cart.service';
+import { WishlistService } from '../../services/wishlist.service';
 
 @Component({
     selector: 'app-product-details',

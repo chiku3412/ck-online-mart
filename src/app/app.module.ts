@@ -6,14 +6,14 @@ import { AppComponent } from './app.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component';
-import { AboutComponent } from './about/about.component';
-import { ContactComponent } from './contact/contact.component';
-import { ProductComponent } from './shop/product/product.component';
-import { ProductDetailsComponent } from './shop/product-details/product-details.component';
-import { HomeComponent } from './home/home.component';
 import { HttpClientModule } from '@angular/common/http';
+import { HeaderComponent } from './user/header/header.component';
+import { FooterComponent } from './user/footer/footer.component';
+import { AboutComponent } from './user/about/about.component';
+import { ContactComponent } from './user/contact/contact.component';
+import { ProductComponent } from './user/shop/product/product.component';
+import { ProductDetailsComponent } from './user/shop/product-details/product-details.component';
+import { HomeComponent } from './user/home/home.component';
 
 @NgModule({
     declarations: [

@@ -2,78 +2,168 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-    {path : '', redirectTo: '/home', pathMatch: 'full'},
+
+    // Redirect
+    {
+        path: '',
+        redirectTo: 'home',
+        pathMatch: 'full'
+    },
+
+    // ==========================
+    // USER ROUTES
+    // ==========================
+
     {
         path: 'home',
         loadComponent: () =>
-            import('./home/home.component').then(m => m.HomeComponent)
+            import('./user/home/home.component').then(m => m.HomeComponent)
     },
     {
         path: 'about',
         loadComponent: () =>
-        import('./about/about.component').then(m => m.AboutComponent)
+            import('./user/about/about.component').then(m => m.AboutComponent)
     },
     {
         path: 'contact',
         loadComponent: () =>
-            import('./contact/contact.component').then(m => m.ContactComponent)
+            import('./user/contact/contact.component').then(m => m.ContactComponent)
     },
     {
         path: 'blog',
         loadComponent: () =>
-            import('./blogs/blogs.component').then(m => m.BlogsComponent)
+            import('./user/blogs/blogs.component').then(m => m.BlogsComponent)
     },
     {
         path: 'blog/:id',
         loadComponent: () =>
-        import('./blog-details/blog-details.component').then(m => m.BlogDetailsComponent)
+            import('./user/blog-details/blog-details.component').then(m => m.BlogDetailsComponent)
     },
     {
         path: 'cart',
         loadComponent: () =>
-            import('./cart/cart.component').then(m => m.CartComponent)
+            import('./user/cart/cart.component').then(m => m.CartComponent)
     },
     {
         path: 'wishlist',
         loadComponent: () =>
-        import('./wish-list/wish-list.component').then(m => m.WishListComponent)
+            import('./user/wish-list/wish-list.component').then(m => m.WishListComponent)
     },
     {
         path: 'compare',
         loadComponent: () =>
-        import('./compare/compare.component').then(m => m.CompareComponent)
+            import('./user/compare/compare.component').then(m => m.CompareComponent)
     },
     {
         path: 'checkout',
         loadComponent: () =>
-        import('./checkout/checkout.component').then(m => m.CheckoutComponent)
+            import('./user/checkout/checkout.component').then(m => m.CheckoutComponent)
     },
     {
         path: 'login',
         loadComponent: () =>
-            import('./login/login.component').then(m => m.LoginComponent)
+            import('./user/login/login.component').then(m => m.LoginComponent)
     },
     {
         path: 'register',
         loadComponent: () =>
-            import('./register/register.component').then(m => m.RegisterComponent)
+            import('./user/register/register.component').then(m => m.RegisterComponent)
     },
     {
         path: 'return-policy',
         loadComponent: () =>
-            import('./policy/return-policy/return-policy.component').then(m => m.ReturnPolicyComponent)
+            import('./user/policy/return-policy/return-policy.component').then(m => m.ReturnPolicyComponent)
     },
     {
         path: 'terms-condition',
         loadComponent: () =>
-            import('./policy/terms-condition/terms-condition.component').then(m => m.TermsConditionComponent)
+            import('./user/policy/terms-condition/terms-condition.component').then(m => m.TermsConditionComponent)
     },
     {
         path: 'privacy-policy',
         loadComponent: () =>
-            import('./policy/privacy-policy/privacy-policy.component').then(m => m.PrivacyPolicyComponent)
+            import('./user/policy/privacy-policy/privacy-policy.component').then(m => m.PrivacyPolicyComponent)
     },
-    { path: 'shop', loadChildren: () => import('./shop/shopRoutes').then(m => m.shopRoutes) },
+
+    {
+        path: 'shop',
+        loadChildren: () =>
+            import('./user/shop/shopRoutes').then(m => m.shopRoutes)
+    },
+
+    // ==========================
+    // ADMIN ROUTES
+    // ==========================
+
+    // {
+    //     path: 'admin/login',
+    //     loadComponent: () =>
+    //         import('./admin/login/login.component').then(m => m.LoginComponent)
+    // },
+
+    // {
+    //     path: 'admin/dashboard',
+    //     loadComponent: () =>
+    //         import('./admin/dashboard/dashboard.component').then(m => m.DashboardComponent)
+    // },
+
+    // {
+    //     path: 'admin/products',
+    //     loadComponent: () =>
+    //         import('./admin/products/product-list/product-list.component').then(m => m.ProductListComponent)
+    // },
+
+    // {
+    //     path: 'admin/products/add',
+    //     loadComponent: () =>
+    //         import('./admin/products/add-product/add-product.component').then(m => m.AddProductComponent)
+    // },
+
+    // {
+    //     path: 'admin/products/edit/:id',
+    //     loadComponent: () =>
+    //         import('./admin/products/edit-product/edit-product.component').then(m => m.EditProductComponent)
+    // },
+
+    // {
+    //     path: 'admin/categories',
+    //     loadComponent: () =>
+    //         import('./admin/categories/categories.component').then(m => m.CategoriesComponent)
+    // },
+
+    // {
+    //     path: 'admin/orders',
+    //     loadComponent: () =>
+    //         import('./admin/orders/orders.component').then(m => m.OrdersComponent)
+    // },
+
+    // {
+    //     path: 'admin/customers',
+    //     loadComponent: () =>
+    //         import('./admin/customers/customers.component').then(m => m.CustomersComponent)
+    // },
+
+    // {
+    //     path: 'admin/users',
+    //     loadComponent: () =>
+    //         import('./admin/users/users.component').then(m => m.UsersComponent)
+    // },
+
+    // {
+    //     path: 'admin/settings',
+    //     loadComponent: () =>
+    //         import('./admin/settings/settings.component').then(m => m.SettingsComponent)
+    // },
+
+    // ==========================
+    // 404
+    // ==========================
+
+    {
+        path: '**',
+        redirectTo: 'home'
+    }
+
 ];
 
 @NgModule({

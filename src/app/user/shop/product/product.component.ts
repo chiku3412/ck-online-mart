@@ -1,9 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
-import { CartService } from 'src/app/services/cart.service';
-import { ProductService } from 'src/app/services/product-service';
-import { WishlistService } from 'src/app/services/wishlist.service';
+import { ProductService } from '../../services/product-service';
+import { CartService } from '../../services/cart.service';
+import { WishlistService } from '../../services/wishlist.service';
 
 @Component({
     selector: 'app-product',
