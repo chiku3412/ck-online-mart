@@ -24,6 +24,9 @@ mat-form-field {
             }
         }
     }
+    .mat-mdc-form-field-error-wrapper {
+        padding: 0;
+    }
 }
 .newsletter-input {
     &.mat-mdc-form-field {

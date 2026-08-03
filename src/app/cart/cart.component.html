@@ -133,7 +133,7 @@
                 <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 sticky top-24">
                     <h2 class="text-lg font-bold text-gray-900 mb-6">Order Summary</h2>
 
-                    <div class="flex gap-2 mb-6">
+                    <div class="flex gap-2">
                         <div class="flex-1 relative">
                             <i class="fa-solid fa-tag absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-xs"></i>
                             <input [(ngModel)]="promoCode" type="text" id="promoInput" placeholder="Promo code" class="w-full pl-9 pr-3 py-2.5 text-sm border border-gray-200 rounded-xl outline-none focus:border-gray-900 transition-colors placeholder-gray-400">
@@ -141,13 +141,13 @@
                         <button (click)="applyPromo()" class="w-max font-semibold bg-black text-white border border-solid border-black px-10 py-2 rounded-lg text-sm flex items-center gap-2 hover:text-black hover:bg-transparent transition-all ease-in-out duration-300">
                             Apply
                         </button>
-                        <p *ngIf="promoMessage" class="mt-2 text-sm" [class.text-green-600]="promoApplied" [class.text-red-500]="!promoApplied">
-                            {{ promoMessage }}
-                        </p>
                     </div>
+                    <p *ngIf="promoMessage" class="mt-1 text-sm" [class.text-green-600]="promoApplied" [class.text-red-500]="!promoApplied">
+                        {{ promoMessage }}
+                    </p>
                     <p id="promoMessage" class="text-xs text-emerald-600 font-medium mb-4 hidden"><i class="fa-solid fa-check mr-1"></i> Code SAVE20 applied! -₹3,400</p>
 
-                    <div class="space-y-3 mb-6">
+                    <div class="space-y-3 my-6">
                         <div class="flex justify-between text-sm">
                             <span class="text-gray-500">Subtotal</span>
                             <span class="font-medium text-gray-900" id="subtotal">₹ {{ (subtotal).toLocaleString('en-IN') }}</span>

@@ -1,0 +1,14 @@
+{
+  "register": [
+    {
+      "fullName": "chirag patel",
+      "email": "chiragoffice941@gmail.com",
+      "mobileNumber": "9876543210",
+      "password": "123456",
+      "terms": true,
+      "createdAt": "2026-08-03T06:19:36.779Z",
+      "id": "mLjxp3IHPv0"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}

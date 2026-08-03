@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, HostListener, Injectable, OnInit, ViewChild } from '@angular/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import {MatIconModule} from '@angular/material/icon';
@@ -8,6 +8,11 @@ import { RouterModule } from '@angular/router';
 import { ProductService } from '../services/product-service';
 import { CartService } from '../services/cart.service';
 import { WishlistService } from '../services/wishlist.service';
+import { AuthService } from '../services/auth.service';
+
+@Injectable ({
+    providedIn: 'root'
+})
 
 @Component({
     selector: 'app-header',
@@ -28,11 +33,13 @@ export class HeaderComponent implements OnInit {
     isSticky = false;
     cartCount = 0;
     wishlistCount = 0;
-
+    loginUser = this.authService.getCurrentUser();
+    
     constructor (
         private productService: ProductService,
         private cartService: CartService,
-        private wishlistService: WishlistService
+        private wishlistService: WishlistService,
+        private authService: AuthService,
     ) {}
 
     loadCategories() {
@@ -110,9 +117,19 @@ export class HeaderComponent implements OnInit {
         });
     }
 
+    logout() {
+        localStorage.removeItem('user');
+        window.location.reload();
+    }
+
     ngOnInit(): void {
         this.loadCategories();
         this.cartCounting();
         this.wishListCounting();
+        
+        const user = localStorage.getItem('user');
+        if (user) {
+            this.loginUser = JSON.parse(user);
+        }
     }
 }

@@ -162,14 +162,14 @@
                     <li #userMenu class="w-10 h-10 sm:w-auto relative cursor-pointer justify-center flex items-center gap-1.5" (click)="toggleUserMenu($event)">
                         <a class="flex items-center gap-1.5">
                             <i class="fa-regular fa-user"></i>
-                            <span class="hidden sm:block">Admin</span>
+                            <span class="hidden sm:block">{{ loginUser?.fullName || 'User' }}</span>
                         </a>
                         <div class="p-4 bg-white min-w-60 rounded-br-lg rounded-bl-lg shadow-lg border-t border-solid absolute top-full -left-40 transition-all duration-300 ease-in-out z-10" [ngClass]="isUserMenuOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-2'">
                             <div class="pb-4 flex items-center gap-4">
                                 <div class="admin-thumbnail">
                                     <img class="w-12 h-12 rounded-full p-1 shadow-sm" src="./../../assets/images/avatar.jpg" alt="User Images">
                                 </div>
-                                <div class="admin-info">
+                                <div class="admin-info flex flex-col">
                                     <span class="font-medium">RainbowIT</span>
                                     <a class="relative text-sm font-medium inline-block text-[#2f57ef]">View Profile</a>
                                 </div>
@@ -177,36 +177,31 @@
                             <ul class="list-none m-0 p-0 space-y-2">
                                 <li>
                                     <a class="flex items-center gap-4 text-[#6b7385]">
-                                        <i class="fa-regular fa-house"></i>
-                                        <span>My Dashboard</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="flex items-center gap-4 text-[#6b7385]">
-                                        <i class="fa-regular fa-heart"></i>
-                                        <span>Wishlist</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="flex items-center gap-4 text-[#6b7385]">
                                         <i class="fa-regular fa-clock"></i>
                                         <span>Order History</span>
                                     </a>
                                 </li>
-                            </ul>
-                            <hr class="my-2.5">
-                            <ul class="list-none m-0 p-0 space-y-2">
                                 <li>
                                     <a class="flex items-center gap-4 text-[#6b7385]">
                                         <i class="fa-regular fa-gear"></i>
                                         <span>Settings</span>
                                     </a>
                                 </li>
+                            </ul>
+                            <hr class="my-2.5">
+                            <ul class="list-none m-0 p-0 space-y-2">
                                 <li>
-                                    <a class="flex items-center gap-4 text-[#6b7385]">
-                                        <i class="fa-regular fa-arrow-left-from-bracket"></i>
-                                        <span>Logout</span>
-                                    </a>
+                                    @if(loginUser) {
+                                        <a class="flex items-center gap-4 text-[#6b7385]" (click)="logout()">
+                                            <i class="fa-regular fa-arrow-left-from-bracket"></i>
+                                            <span>Logout</span>
+                                        </a>
+                                    } @else {
+                                        <a class="flex items-center gap-4 text-[#6b7385]" routerLink="/login">
+                                            <i class="fa-regular fa-arrow-right-from-bracket"></i>
+                                            <span>Login</span>
+                                        </a>
+                                    }
                                 </li>
                             </ul>
                         </div>
