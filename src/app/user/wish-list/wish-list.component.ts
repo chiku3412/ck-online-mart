@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { WishlistService } from '../services/wishlist.service';
 import { ProductComponent } from "../shop/product/product.component";
+import { WishlistService } from 'src/assets/services/wishlist.service';
 
 @Component({
     selector: 'app-wish-list',

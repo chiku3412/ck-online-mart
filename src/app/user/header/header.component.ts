@@ -5,10 +5,10 @@ import { MatInputModule } from '@angular/material/input';
 import {MatIconModule} from '@angular/material/icon';
 import {MatSelectModule} from '@angular/material/select';
 import { RouterModule } from '@angular/router';
-import { ProductService } from '../services/product-service';
-import { CartService } from '../services/cart.service';
-import { WishlistService } from '../services/wishlist.service';
-import { AuthService } from '../services/auth.service';
+import { ProductService } from 'src/assets/services/product-service';
+import { CartService } from 'src/assets/services/cart.service';
+import { WishlistService } from 'src/assets/services/wishlist.service';
+import { AuthService } from 'src/assets/services/auth.service';
 
 @Injectable ({
     providedIn: 'root'

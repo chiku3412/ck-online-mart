@@ -21,13 +21,20 @@ module.exports = {
                 lineShimmer: {
                     '0%': { backgroundPosition: '200% 0' },
                     '100%': { backgroundPosition: '-200% 0' }
+                },
+                blobFloat: {
+                    '0%, 100%': { transform: 'translate(0, 0) scale(1)' },
+                    '33%': { transform: 'translate(20px, -30px) scale(1.05)' },
+                    '66%': { transform: 'translate(-15px, 15px) scale(0.95)' }
                 }
             },
             animation: {
                 circle: 'circle 3s linear infinite',
                 floatY: 'floatY 3s linear infinite',
                 shineSweep: 'sineSweep 2s linear infinite',
-                lineShimmer: 'lineShimmer 3s ease-in-out infinite'
+                lineShimmer: 'lineShimmer 3s ease-in-out infinite',
+                blobFloat: 'blobFloat 6s ease-in-out infinite'
+
             },
         },
     },

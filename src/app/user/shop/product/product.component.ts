@@ -1,10 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
-import { ProductService } from '../../services/product-service';
-import { CartService } from '../../services/cart.service';
-import { WishlistService } from '../../services/wishlist.service';
-
+import { CartService } from 'src/assets/services/cart.service';
+import { ProductService } from 'src/assets/services/product-service';
+import { WishlistService } from 'src/assets/services/wishlist.service';
 @Component({
     selector: 'app-product',
     standalone: true,

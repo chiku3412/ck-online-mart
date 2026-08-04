@@ -4,9 +4,9 @@ import { CommonModule } from '@angular/common';
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatSelectModule } from '@angular/material/select';
 import { ProductComponent } from "../product/product.component";
-import { ProductService } from '../../services/product-service';
-import { CartService } from '../../services/cart.service';
-import { WishlistService } from '../../services/wishlist.service';
+import { ProductService } from 'src/assets/services/product-service';
+import { CartService } from 'src/assets/services/cart.service';
+import { WishlistService } from 'src/assets/services/wishlist.service';
 
 @Component({
     selector: 'app-product-details',
