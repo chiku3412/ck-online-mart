@@ -33,8 +33,8 @@ export class WishlistService {
         this.saveWishlist();
     }
 
-    isInWishlist(id: number): boolean {
-        return this.wishlist.some(x => x.id === id);
+    isInWishlist(id: string | number): boolean {
+        return this.wishlist.some(x => String(x.id) === String(id));
     }
 
     getWishlist(): any[] {

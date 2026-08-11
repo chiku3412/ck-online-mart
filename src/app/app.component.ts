@@ -11,10 +11,28 @@ export class AppComponent {
     hideLayout = true;
 
     constructor(private router: Router) {
-        this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe(() => {
-            const hideRoutes = ['/login', '/register', '/admin/login', '/admin', '/admin/dashboard', '/admin/products', '/admin/products/add-product', '/admin/categories', '/admin/categories/add-category', '/admin/orders', '/admin/users'];
-            this.hideLayout = hideRoutes.includes(this.router.url);
 
+    this.router.events
+        .pipe(
+            filter(event => event instanceof NavigationEnd)
+        )
+        .subscribe(() => {
+            const hideRoutes = [
+                '/login',
+                '/register',
+                // Admin
+                '/admin',
+                '/admin/dashboard',
+                '/admin/products',
+                '/admin/products/add-product',
+                '/admin/categories',
+                '/admin/categories/add-category',
+                '/admin/orders',
+                '/admin/users'
+            ];
+            const currentUrl = this.router.url;
+            this.hideLayout = hideRoutes.includes(currentUrl) || currentUrl.startsWith('/admin/products/edit-product/');
+            this.hideLayout = hideRoutes.includes(currentUrl) || currentUrl.startsWith('/admin/categories/edit-category/');
             window.scrollTo({
                 top: 0,
                 behavior: 'smooth'

@@ -14,6 +14,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class LoginComponent {
     hidePassword = true;
+    private api = 'http://localhost:3000/admin';
 
     loginForm = this.fb.group({
         email: ['', [Validators.required, Validators.email]],
@@ -32,7 +33,7 @@ export class LoginComponent {
             this.loginForm.markAllAsTouched();
             return;
         }
-        this.http.get<any[]>('assets/data/adminUser.json').subscribe(users => {
+        this.http.get<any[]>(this.api).subscribe(users => {
             const user = users.find(u =>
                 u.email === this.loginForm.value.email &&
                 u.password === this.loginForm.value.password

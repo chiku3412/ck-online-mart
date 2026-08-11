@@ -32,6 +32,12 @@ export const adminRoutes: Routes = [
             },
 
             {
+                path: 'products/edit-product/:id',
+                loadComponent: () =>
+                    import('./add-product/add-product.component').then(m => m.AddProductComponent)
+            },
+
+            {
                 path: 'categories',
                 loadComponent: () =>
                     import('./category-list/category-list.component').then(m => m.CategoryListComponent)
@@ -39,6 +45,12 @@ export const adminRoutes: Routes = [
 
             {
                 path: 'categories/add-category',
+                loadComponent: () =>
+                    import('./add-category/add-category.component').then(m => m.AddCategoryComponent)
+            },
+
+            {
+                path: 'categories/edit-category/:id',
                 loadComponent: () =>
                     import('./add-category/add-category.component').then(m => m.AddCategoryComponent)
             },

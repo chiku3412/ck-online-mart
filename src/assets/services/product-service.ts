@@ -1,17 +1,19 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { map, Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 
 export interface Product {
-    id: number;
+    id: string;
+    productId: string;
     name: string;
     category: string;
     image: string;
-    images?: string[];
+    images: string[];
     price: number;
     oldPrice: number;
     rating: number;
     description: string;
+    stock?: number;
 }
 
 @Injectable({
@@ -19,31 +21,63 @@ export interface Product {
 })
 export class ProductService {
 
+    private apiUrl = 'http://localhost:5000/products';
+
     constructor(private http: HttpClient) { }
 
-    // Get All Products
     getProducts(): Observable<Product[]> {
-        return this.http.get<Product[]>('assets/data/products.json');
+        return this.http.get<Product[]>(this.apiUrl);
     }
 
-    // Get Product By ID
-    getProductById(id: number) {
+    // IMPORTANT: id is string
+    getProductById(id: string): Observable<Product> {
         return this.getProducts().pipe(
-            map(products => products.find(product => product.id === id))
+            map(products => {
+                const product = products.find(
+                    product =>
+                        String(product.id) === id ||
+                        String(product.productId) === id
+                );
+
+                if (!product) {
+                    throw new Error(`Product not found: ${id}`);
+                }
+
+                return product;
+            })
         );
     }
 
-    // Related Product
-    getRelatedProducts(category: string, productId: number) {
+    addProducts(formData: FormData): Observable<any> {
+        return this.http.post(this.apiUrl, formData);
+    }
+
+    updateProduct(id: string, formData: FormData): Observable<any> {
+        return this.http.put(
+            `${this.apiUrl}/${encodeURIComponent(id)}`,
+            formData
+        );
+    }
+
+    deleteProduct(id: string): Observable<any> {
+        return this.http.delete(
+            `${this.apiUrl}/${encodeURIComponent(id)}`
+        );
+    }
+
+    getRelatedProducts(
+        category: string,
+        productId: string
+    ): Observable<Product[]> {
+
         return this.getProducts().pipe(
             map(products =>
-            products
-                .filter(
-                product =>
-                    product.category === category &&
-                    product.id !== productId
-                )
-                .slice(0, 4)
+                products
+                    .filter(product =>
+                        product.category === category &&
+                        String(product.id) !== String(productId)
+                    )
+                    .slice(0, 4)
             )
         );
     }

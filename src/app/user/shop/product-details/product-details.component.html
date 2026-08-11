@@ -4,13 +4,13 @@
             <!-- Left: Image Gallery -->
             <div class="lg:col-span-5 sticky top-24">
                 <div class="relative bg-gray-50 rounded-lg mb-4 group overflow-hidden h-[600px]">
-                    <img [src]="currentImage" class="fade-img h-full w-full object-contain bg-center" alt="Product">
+                    <img [src]="'http://localhost:5000' + currentImage" class="fade-img h-full w-full object-contain bg-center" alt="Product">
                     <!-- Top Actions -->
                     <div class="absolute top-4 right-4 flex flex-col gap-2">
                         <button class="w-9 h-9 bg-white rounded-full shadow-sm flex items-center justify-center text-gray-600 hover:text-gray-900 transition-colors">
                             <i class="fa-light fa-arrow-up-from-bracket"></i>
                         </button>
-                        <button (click)="toggleWishlist(product)" class="w-9 h-9 bg-white rounded-full shadow-sm flex items-center justify-center text-gray-600 hover:text-red-500 transition-colors">
+                        <button (click)="product && toggleWishlist(product)" class="w-9 h-9 bg-white rounded-full shadow-sm flex items-center justify-center text-gray-600 hover:text-red-500 transition-colors">
                             <i class="fa-light fa-heart"></i>
                         </button>
                     </div>
@@ -26,7 +26,7 @@
                 <div class="flex gap-3 overflow-x-auto thumb-scroll pb-1">
                     @for(image of images; track i; let i = $index) {
                         <button class="w-24 h-24 flex-shrink-0 overflow-hidden rounded-lg border p-1 shadow-[inset_0px_0px_10px] hover:shadow-green-600 transition-all ease-in-out duration-500" [ngClass]="currentIndex === i ? 'shadow-green-600' : 'shadow-gray-200'" (click)="setImage(i)">
-                            <img class="rounded-lg w-full h-full object-contain bg-center" [src]="image">
+                            <img class="rounded-lg w-full h-full object-contain bg-center" [src]="'http://localhost:5000' + image">
                         </button>
                     }
                 </div>

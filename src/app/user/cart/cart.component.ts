@@ -11,7 +11,7 @@ import { CartService } from 'src/assets/services/cart.service';
     templateUrl: './cart.component.html'
 })
 export class CartComponent implements OnInit {
-    cartItems:any[]=[];
+    cartItems: any[] = [];
     promoCode = '';
     promoApplied = false;
     promoMessage = '';
@@ -22,21 +22,20 @@ export class CartComponent implements OnInit {
         private cartService: CartService
     ) {}
 
-    loadCartItems() {
-        this.cartService.cart$.subscribe(cart=>{
+    loadCartItems(): void {
+        this.cartService.cart$.subscribe(cart => {
             this.cartItems = cart;
             this.subtotal = this.cartService.getTotal();
         });
     }
 
     // Remove Product From Cart
-    removeItem(id: number): void {
+    removeItem(id: string | number): void {
         this.cartService.removeFromCart(id);
-        this.loadCartItems();
     }
 
     // Update Quantity IN Cart
-    updateQty(id: number, change: number): void {
+    updateQty(id: string | number, change: number): void {
         this.cartService.updateQuantity(id, change);
     }
 
@@ -70,9 +69,8 @@ export class CartComponent implements OnInit {
     }
 
     // Clear Full Cart
-    clearCart() {
+    clearCart(): void {
         this.cartService.clearCart();
-        this.loadCartItems();
     }
 
     // Total Calculation

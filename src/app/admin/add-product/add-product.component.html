@@ -4,47 +4,89 @@
             <i class="fa-light fa-tag text-2xl text-indigo-600"></i>
         </div>
         <div>
-            <h1 class="text-2xl font-bold text-slate-900">Add Product</h1>
-            <p class="text-sm text-slate-500">Create a new product for your store.</p>
+            <h1 class="text-2xl font-bold text-slate-900">
+                {{ isEditMode ? 'Edit Product' : 'Add Product' }}
+            </h1>
+            <p class="text-sm text-slate-500">
+                {{ isEditMode ? 'Update your product details.' : 'Create a new product for your store.' }}
+            </p>
         </div>
     </div>
+    <form class="grid grid-cols-2 gap-3" [formGroup]="productForm" (ngSubmit)="onSubmit()">
+        <!-- Product Name -->
+        <mat-form-field appearance="outline" class="w-full" subscriptSizing="dynamic">
+            <mat-label>Product Name</mat-label>
+            <input matInput formControlName="name"> 
+        </mat-form-field>
 
-    <form class="space-y-6">
-        <div class="grid grid-cols-2 gap-3">
-            <mat-form-field appearance="outline" subscriptSizing="dynamic" class="w-full custom-category-field">
-                <mat-label class="!font-medium !text-slate-600">Category Name</mat-label>
-                <mat-select>
-                    <mat-option>123</mat-option>
-                </mat-select>
-            </mat-form-field>
-            <mat-form-field appearance="outline" subscriptSizing="dynamic" class="w-full custom-category-field">
-                <mat-label class="!font-medium !text-slate-600">Product Name</mat-label>
-                <input matInput placeholder="e.g. Electronics, Fashion, Home" required class="!text-slate-900">
-            </mat-form-field>
-            <mat-form-field appearance="outline" subscriptSizing="dynamic" class="w-full custom-category-field">
-                <mat-label class="!font-medium !text-slate-600">Product Description</mat-label>
-                <input matInput placeholder="e.g. High-quality electronics for your home" required class="!text-slate-900">
-            </mat-form-field>
-            <mat-form-field appearance="outline" subscriptSizing="dynamic" class="w-full custom-category-field">
-                <mat-label class="!font-medium !text-slate-600">Product Old Price</mat-label>
-                <input matInput placeholder="e.g. 29.99" required class="!text-slate-900">
-            </mat-form-field>
-            <mat-form-field appearance="outline" subscriptSizing="dynamic" class="w-full custom-category-field">
-                <mat-label class="!font-medium !text-slate-600">Product Price</mat-label>
-                <input matInput placeholder="e.g. 19.99" required class="!text-slate-900">
-            </mat-form-field>
-            <mat-form-field appearance="outline" subscriptSizing="dynamic" class="w-full custom-category-field">
-                <mat-label class="!font-medium !text-slate-600">Stock Quantity</mat-label>
-                <input matInput placeholder="e.g. 100" required class="!text-slate-900">
-            </mat-form-field>
+        <!-- Category -->
+        <mat-form-field appearance="outline" class="w-full" subscriptSizing="dynamic">
+            <mat-label>Category</mat-label>
+            <input matInput formControlName="category">
+        </mat-form-field>
+
+        <!-- Description -->
+        <mat-form-field appearance="outline" class="w-full col-span-2" subscriptSizing="dynamic">
+            <mat-label>Description</mat-label>
+            <textarea matInput formControlName="description"></textarea>
+        </mat-form-field>
+
+        <div class="col-span-2">
+            <div class="grid grid-cols-3 gap-3">
+                <!-- Old Price -->
+                <mat-form-field appearance="outline" class="w-full" subscriptSizing="dynamic">
+                    <mat-label>Old Price</mat-label>
+                    <input type="number" matInput formControlName="oldPrice">
+                </mat-form-field>
+        
+                <!-- Price -->
+                <mat-form-field appearance="outline" class="w-full" subscriptSizing="dynamic">
+                    <mat-label>Price</mat-label>
+                    <input type="number" matInput formControlName="price">
+                </mat-form-field>
+        
+                <!-- Stock -->
+                <mat-form-field appearance="outline" class="w-full" subscriptSizing="dynamic">
+                    <mat-label>Stock</mat-label>
+                    <input type="number" matInput formControlName="stock">
+                </mat-form-field>
+            </div>
         </div>
 
-        <div class="flex gap-3 pt-2">
-            <button type="button" class="flex-1 h-11 border border-slate-200 text-slate-700 text-sm font-semibold rounded-xl hover:bg-slate-50 transition-colors active:scale-[0.98]">
-                Cancel
-            </button>
-            <button type="submit" class="flex-1 h-11 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-semibold rounded-xl transition-all active:scale-[0.98] shadow-sm shadow-indigo-200 disabled:opacity-50 disabled:cursor-not-allowed">
-                Add Category
+        <!-- Main Image -->
+        <div>
+            <label class="font-semibold block mb-2">
+                Main Image
+            </label>
+            <input type="file" accept="image/*" (change)="onMainImage($event)">
+
+            @if (mainImagePreview) {
+                <div class="mt-3 w-16 h-16 rounded-xl border border-slate-200 bg-slate-50 overflow-hidden">
+                    <img [src]="mainImagePreview" alt="Main image preview" class="w-full h-full object-contain">
+                </div>
+            }
+        </div>
+
+        <!-- Gallery Images -->
+        <div>
+            <label class="font-semibold block mb-2">
+                Gallery Images
+            </label>
+            <input type="file" multiple accept="image/*" (change)="onGalleryImages($event)">
+
+            @if (galleryImagePreviews.length > 0) {
+                <div class="mt-3 flex items-center gap-3">
+                    @for (image of galleryImagePreviews; track image) {
+                        <div class="w-16 h-16 rounded-xl border border-slate-200 bg-slate-50 overflow-hidden">
+                            <img [src]="image" alt="Gallery image preview" class="w-full h-full object-contain">
+                        </div>
+                    }
+                </div>
+            }
+        </div>
+        <div class="mt-10 flex justify-center col-span-2">
+            <button type="submit" [disabled]="productForm.invalid" class="w-max mx-auto px-10 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl font-semibold">
+                {{ isEditMode ? 'Update Product' : 'Add Product' }}
             </button>
         </div>
     </form>

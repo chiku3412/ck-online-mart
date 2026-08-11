@@ -4,7 +4,7 @@
             <div class="product-card shadow-md bg-white rounded-md p-3 group">
                 <div class="product-image rounded-md overflow-hidden mb-3 relative">
                     <div class="product-image bg-gray-50 rounded-md flex items-center justify-center overflow-hidden">
-                        <img [src]="product.image" [alt]="product.name" class="max-w-full max-h-full object-contain transition duration-300 group-hover:scale-110">
+                        <img [src]="'http://localhost:5000' + product.image" class="max-w-full max-h-full object-contain transition duration-300 group-hover:scale-110">
                     </div>
                     <div class="absolute inset-0 bg-black bg-opacity-25 translate-y-full group-hover:-translate-y-0 transition-all duration-1000 flex items-center justify-center gap-3 text-white text-lg">
                         <div [routerLink]="['/shop/product-details', product.id]" class="w-10 h-10 rounded-md bg-black flex items-center justify-center cursor-pointer">
@@ -34,7 +34,6 @@
                                     <i class="fa-regular fa-star text-gray-300"></i>
                                 }                                    
                             }
-                            
                         </div>
                         <span>|</span>
                         <span>5.0</span>

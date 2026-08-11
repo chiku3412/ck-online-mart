@@ -13,27 +13,37 @@
                     <th class="px-6 py-3 font-semibold">Old Price</th>
                     <th class="px-6 py-3 font-semibold">Price</th>
                     <th class="px-6 py-3 font-semibold">Stock</th>
-                    <th class="px-6 py-3 font-semibold text-right">Action</th>
+                    <th class="px-6 py-3 font-semibold text-center">Action</th>
                 </tr>
             </thead>
             <tbody class="divide-y divide-slate-50">
-                <tr class="hover:bg-slate-50/50 transition-colors">
-                    <td class="px-6 py-4 font-medium text-slate-900">#PROD-001</td>
-                    <td class="px-6 py-4">
-                        Aditya Roy
-                    </td>
-                    <td class="px-6 py-4 text-slate-600">Sony WH-1000XM5</td>
-                    <td class="px-6 py-4 font-medium text-slate-900">₹28,999</td>
-                    <td class="px-6 py-4 font-medium text-slate-900">₹28,999</td>
-                    <td class="px-6 py-4 font-medium text-slate-900">100</td>
-                    <td class="px-6 py-4 text-right">
-                        <button matButton [matMenuTriggerFor]="menu" class="text-slate-400 hover:text-slate-600"><i class="fa-solid fa-ellipsis-vertical"></i></button>
-                        <mat-menu #menu="matMenu">
-                            <button mat-menu-item>Item 1</button>
-                            <button mat-menu-item>Item 2</button>
-                        </mat-menu>
-                    </td>
-                </tr>
+                @for(productItem of products; track productItem) {
+                    <tr class="hover:bg-slate-50/50 transition-colors">
+                        <td class="px-6 py-4 font-medium text-slate-900">{{ productItem.productId }}</td>
+                        <td class="px-6 py-4">
+                            <div class="flex gap-2 items-center">
+                                <div class="w-10 h-10 rounded overflow-hidden">
+                                    <img [src]="'http://localhost:5000' + productItem.image" />
+                                </div>
+                                {{ productItem.name }}
+                            </div>
+                        </td>
+                        <td class="px-6 py-4 text-slate-600">{{ productItem.category }}</td>
+                        <td class="px-6 py-4 font-medium text-slate-900">₹ {{ productItem.oldPrice }}</td>
+                        <td class="px-6 py-4 font-medium text-slate-900">₹ {{ productItem.price }}</td>
+                        <td class="px-6 py-4 font-medium text-slate-900">{{ productItem.stock }}</td>
+                        <td class="px-6 py-4">
+                            <div class="flex items-center gap-2 justify-center">
+                                <button [routerLink]="['/admin/products/edit-product', productItem.id]" class="w-10 h-10 rounded-full flex items-center justify-center bg-green-50 border border-green-500 text-green-600">
+                                    <i class="fa-regular fa-pen-to-square"></i>
+                                </button>
+                                <button (click)="deleteProduct(productItem)" class="w-10 h-10 rounded-full flex items-center justify-center bg-red-50 border border-red-500 text-red-600">
+                                    <i class="fa-regular fa-trash-can"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                }
             </tbody>
         </table>
     </div>

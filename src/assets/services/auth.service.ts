@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AuthService {
 
-    private api = 'http://localhost:3000/register';
+    private api = 'http://localhost:5000/user';
 
     constructor(private http: HttpClient) { }
 
@@ -22,13 +22,13 @@ export class AuthService {
 
     // GET USER BY EMAIL FOR CHECKING IF EMAIL ALREADY EXISTS
     getUserByEmail(email: string) {
-        return this.http.get(`${this.api}?email=${email}`);
+        return this.http.get(`${this.api}?email=${encodeURIComponent(email)}`);
     }
 
     // LOGIN
     login(mobileNumber: string, password: string) {
         return this.http.get(
-            `${this.api}?mobileNumber=${mobileNumber}&password=${password}`
+            `${this.api}?mobileNumber=${encodeURIComponent(mobileNumber)}&password=${encodeURIComponent(password)}`
         );
     }
 
