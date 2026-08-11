@@ -14,48 +14,64 @@
     </div>
     <form class="grid grid-cols-2 gap-3" [formGroup]="productForm" (ngSubmit)="onSubmit()">
         <!-- Product Name -->
-        <mat-form-field appearance="outline" class="w-full" subscriptSizing="dynamic">
-            <mat-label>Product Name</mat-label>
-            <input matInput formControlName="name"> 
-        </mat-form-field>
+        <div>
+            <mat-label class="font-semibold block mb-1">Product Name</mat-label>
+            <mat-form-field appearance="outline" class="w-full" subscriptSizing="dynamic">
+                <input matInput formControlName="name"> 
+            </mat-form-field>
+        </div>
 
         <!-- Category -->
-        <mat-form-field appearance="outline" class="w-full" subscriptSizing="dynamic">
-            <mat-label>Category</mat-label>
-            <input matInput formControlName="category">
-        </mat-form-field>
+        <div>
+            <mat-label class="font-semibold block mb-1">Category</mat-label>
+            <mat-form-field appearance="outline" class="w-full" subscriptSizing="dynamic">
+                <mat-select formControlName="category">
+                    @for(category of categoryList; track category) {
+                        <mat-option [value]="category" > {{ category }} </mat-option>
+                    }
+                </mat-select>
+            </mat-form-field>
+        </div>
 
         <!-- Description -->
-        <mat-form-field appearance="outline" class="w-full col-span-2" subscriptSizing="dynamic">
-            <mat-label>Description</mat-label>
-            <textarea matInput formControlName="description"></textarea>
-        </mat-form-field>
+        <div class="col-span-2">
+            <mat-label class="font-semibold block mb-1">Description</mat-label>
+            <mat-form-field appearance="outline" class="w-full" subscriptSizing="dynamic">
+                <textarea matInput rows="5" formControlName="description"></textarea>
+            </mat-form-field>
+        </div>
 
         <div class="col-span-2">
             <div class="grid grid-cols-3 gap-3">
                 <!-- Old Price -->
-                <mat-form-field appearance="outline" class="w-full" subscriptSizing="dynamic">
-                    <mat-label>Old Price</mat-label>
-                    <input type="number" matInput formControlName="oldPrice">
-                </mat-form-field>
+                <div>
+                    <mat-label class="font-semibold block mb-1">Old Price</mat-label>
+                    <mat-form-field appearance="outline" class="w-full" subscriptSizing="dynamic">
+                        <input type="number" matInput formControlName="oldPrice">
+                    </mat-form-field>
+                </div>
         
                 <!-- Price -->
-                <mat-form-field appearance="outline" class="w-full" subscriptSizing="dynamic">
-                    <mat-label>Price</mat-label>
-                    <input type="number" matInput formControlName="price">
-                </mat-form-field>
+                <div>
+                    <mat-label class="font-semibold block mb-1">Price</mat-label>
+                    <mat-form-field appearance="outline" class="w-full" subscriptSizing="dynamic">
+                        <input type="number" matInput formControlName="price">
+                    </mat-form-field>
+                </div>
         
                 <!-- Stock -->
-                <mat-form-field appearance="outline" class="w-full" subscriptSizing="dynamic">
-                    <mat-label>Stock</mat-label>
-                    <input type="number" matInput formControlName="stock">
-                </mat-form-field>
+                <div>
+                    <mat-label class="font-semibold block mb-1">Stock</mat-label>
+                    <mat-form-field appearance="outline" class="w-full" subscriptSizing="dynamic">
+                        <input type="number" matInput formControlName="stock">
+                    </mat-form-field>
+                </div>
             </div>
         </div>
 
         <!-- Main Image -->
         <div>
-            <label class="font-semibold block mb-2">
+            <label class="font-semibold block mb-1">
                 Main Image
             </label>
             <input type="file" accept="image/*" (change)="onMainImage($event)">
@@ -69,7 +85,7 @@
 
         <!-- Gallery Images -->
         <div>
-            <label class="font-semibold block mb-2">
+            <label class="font-semibold block mb-1">
                 Gallery Images
             </label>
             <input type="file" multiple accept="image/*" (change)="onGalleryImages($event)">

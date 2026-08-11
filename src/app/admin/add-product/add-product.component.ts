@@ -23,6 +23,7 @@ export class AddProductComponent implements OnInit {
     mainImagePreview = '';
     galleryImages: File[] = [];
     galleryImagePreviews: string[] = [];
+    categoryList: string[] = []
     isEditMode = false;
     productId = '';
     existingProduct: Product | null = null;
@@ -44,6 +45,7 @@ export class AddProductComponent implements OnInit {
     }
 
     ngOnInit(): void {
+        this.loadCategories();
         this.route.paramMap.subscribe(params => {
             const id = params.get('id');
             // Add Product
@@ -57,13 +59,21 @@ export class AddProductComponent implements OnInit {
             this.loadProduct();
         });
     }
+    
+    loadCategories(): void {
+        this.productService.getProducts().subscribe(products => {
+            this.categoryList = [
+                ...new Set(products.map(product => product.category))
+            ];
+        });
+    }
 
     // =====================================
     // LOAD PRODUCT
     // =====================================
 
     loadProduct(): void {
-    this.productService
+        this.productService
         .getProductById(this.productId)
         .subscribe({
             next: (product) => {
@@ -158,30 +168,30 @@ export class AddProductComponent implements OnInit {
 
         if (this.isEditMode) {
             this.productService
-                .updateProduct(this.productId, formData)
-                .subscribe({
-                    next: () => {
-                        alert('Product Updated Successfully');
-                        this.router.navigate(['/admin/products']);
-                    },
-                    error: (err) => {
-                        console.error('Update Product Error:', err);
-                    }
-                });
+            .updateProduct(this.productId, formData)
+            .subscribe({
+                next: () => {
+                    alert('Product Updated Successfully');
+                    this.router.navigate(['/admin/products']);
+                },
+                error: (err) => {
+                    console.error('Update Product Error:', err);
+                }
+            });
 
             return;
         }
 
         this.productService
-            .addProducts(formData)
-            .subscribe({
-                next: () => {
-                    alert('Product Added Successfully');
-                    this.router.navigate(['/admin/products']);
-                },
-                error: (err) => {
-                    console.error('Add Product Error:', err);
-                }
-            });
+        .addProducts(formData)
+        .subscribe({
+            next: () => {
+                alert('Product Added Successfully');
+                this.router.navigate(['/admin/products']);
+            },
+            error: (err) => {
+                console.error('Add Product Error:', err);
+            }
+        });
     }
 }

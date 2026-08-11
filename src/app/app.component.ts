@@ -31,8 +31,7 @@ export class AppComponent {
                 '/admin/users'
             ];
             const currentUrl = this.router.url;
-            this.hideLayout = hideRoutes.includes(currentUrl) || currentUrl.startsWith('/admin/products/edit-product/');
-            this.hideLayout = hideRoutes.includes(currentUrl) || currentUrl.startsWith('/admin/categories/edit-category/');
+            this.hideLayout = hideRoutes.includes(currentUrl) || currentUrl.startsWith('/admin/products/edit-product/') || currentUrl.startsWith('/admin/categories/edit-category/');
             window.scrollTo({
                 top: 0,
                 behavior: 'smooth'
