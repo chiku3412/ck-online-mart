@@ -28,6 +28,7 @@ export class SideBarComponent {
         { icons: 'fa-solid fa-grid-2', name: 'Dashboard', route: '/admin/dashboard' },
         { icons: 'fa-solid fa-tags', name: 'Categories', route: '/admin/categories' },
         { icons: 'fa-solid fa-box', name: 'Products', route: '/admin/products' },
-        { icons: 'fa-solid fa-shopping-cart', name: 'Orders', route: '/admin/orders' }
+        { icons: 'fa-solid fa-shopping-cart', name: 'Orders', route: '/admin/orders' },
+        { icons: 'fa-solid fa-address-book', name: 'Contact', route: '/admin/contact' }
     ]
 }

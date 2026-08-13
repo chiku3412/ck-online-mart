@@ -41,24 +41,44 @@
             <div class="contact-form rounded-lg shadow-md bg-white p-5">
                 <h6 class="text-2xl leading-none font-bold">Get In Touch</h6>
 
-                <form class="space-y-3 mt-6">
-                    <mat-form-field appearance="outline" subscriptSizing="dynamic" class="w-full">
-                        <mat-label>First Name</mat-label>
-                        <input matInput class="!font-semibold" placeholder="ex. James bones">
-                    </mat-form-field>
-                    <mat-form-field appearance="outline" subscriptSizing="dynamic" class="w-full">
+                <form [formGroup]="contactForm" (ngSubmit)="submitForm()" class="space-y-3 mt-6">
+                    <div>
+                        <mat-label>Name</mat-label>
+                        <mat-form-field appearance="outline" subscriptSizing="dynamic" class="w-full custom-input">
+                            <input matInput formControlName="name" class="!font-semibold" placeholder="ex. James bones">
+                            @if(contactForm.get('name')?.touched && contactForm.get('name')?.invalid) {
+                                <mat-error>Field is required</mat-error>
+                            }
+                        </mat-form-field>
+                    </div>
+                    <div>
                         <mat-label>Email</mat-label>
-                        <input matInput class="!font-semibold" placeholder="ex. jamesbon@gamil.com">
-                    </mat-form-field>
-                    <mat-form-field appearance="outline" subscriptSizing="dynamic" class="w-full">
+                        <mat-form-field appearance="outline" subscriptSizing="dynamic" class="w-full custom-input">
+                            <input matInput formControlName="email" class="!font-semibold" placeholder="ex. jamesbon@gamil.com">
+                            @if(contactForm.get('email')?.touched && contactForm.get('email')?.invalid) {
+                                <mat-error>Field is required</mat-error>
+                            }
+                        </mat-form-field>
+                    </div>
+                    <div>
                         <mat-label>Subject</mat-label>
-                        <input matInput class="!font-semibold" placeholder="ex. Selling product">
-                    </mat-form-field>
-                    <mat-form-field appearance="outline" subscriptSizing="dynamic" class="w-full">
+                        <mat-form-field appearance="outline" subscriptSizing="dynamic" class="w-full custom-input">
+                            <input matInput formControlName="subject" class="!font-semibold" placeholder="ex. Selling product">
+                            @if(contactForm.get('subject')?.touched && contactForm.get('subject')?.invalid) {
+                                <mat-error>Field is required</mat-error>
+                            }
+                        </mat-form-field>
+                    </div>
+                    <div>
                         <mat-label>Message</mat-label>
-                        <textarea matInput class="!font-semibold" rows="5" placeholder="ex. Description"></textarea>
-                    </mat-form-field>
-                    <button class="font-semibold bg-black text-white border border-solid border-black px-5 py-2 rounded-full text-sm flex items-center gap-2 hover:text-black hover:bg-transparent transition-all ease-in-out duration-300">
+                        <mat-form-field appearance="outline" subscriptSizing="dynamic" class="w-full custom-input">
+                            <textarea matInput formControlName="message" class="!font-semibold" rows="5" placeholder="ex. Description"></textarea>
+                            @if(contactForm.get('message')?.touched && contactForm.get('message')?.invalid) {
+                                <mat-error>Field is required</mat-error>
+                            }
+                        </mat-form-field>
+                    </div>
+                    <button type="submit" [class.cursor-not-allowed]="contactForm.invalid" class="font-semibold bg-black text-white border border-solid border-black px-5 py-2 rounded-full text-sm flex items-center gap-2 hover:text-black hover:bg-transparent transition-all ease-in-out duration-300">
                         Submit Now
                         <i class="fa-regular fa-arrow-right-long"></i>
                     </button>

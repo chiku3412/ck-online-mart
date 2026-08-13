@@ -6,8 +6,10 @@
         <table class="w-full text-left text-sm">
             <thead class="bg-slate-50 text-slate-500 text-xs uppercase tracking-wider">
                 <tr>
-                    <th class="px-6 py-3 font-semibold">Order ID</th>
+                    <th class="px-6 py-3 font-semibold">Order ID / Date</th>
                     <th class="px-6 py-3 font-semibold">Customer</th>
+                    <th class="px-6 py-3 font-semibold">Address</th>
+                    <th class="px-6 py-3 font-semibold">Contact No.</th>
                     <th class="px-6 py-3 font-semibold">Product</th>
                     <th class="px-6 py-3 font-semibold">Amount</th>
                     <th class="px-6 py-3 font-semibold">Qty</th>
@@ -19,7 +21,12 @@
             <tbody class="divide-y divide-slate-50">
                 @for(order of orders; track order.orderId) {
                     <tr class="hover:bg-slate-50/50 transition-colors">
-                        <td class="px-6 py-4 font-medium text-slate-900">{{ order.orderId }}</td>
+                        <td class="px-6 py-4 font-medium text-slate-900">
+                            <div class="flex flex-col">
+                                <div>{{ order.orderId }}</div>
+                                <div>{{ order.createdAt | date:'dd MMM yyyy' }}</div>
+                            </div>
+                        </td>
                         <td class="px-6 py-4">
                             <div class="flex items-center gap-2">
                                 <div class="w-6 h-6 rounded-full bg-indigo-100 text-indigo-600 text-[10px] font-bold flex items-center justify-center">
@@ -27,6 +34,12 @@
                                 </div>
                                 {{ order.customer.firstName }} {{ order.customer.LastName }}
                             </div>
+                        </td>
+                        <td class="px-6 py-4">
+                            {{ order.customer.address }} {{ order.customer.city }} {{ order.customer.postalCode }}
+                        </td>
+                        <td class="px-6 py-4">
+                            {{ order.customer.phone }}
                         </td>
                         <td class="px-6 py-4 text-slate-600">
                             @for(product of order.items; track product.productId) {

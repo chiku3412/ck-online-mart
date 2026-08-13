@@ -569,6 +569,52 @@ app.get('/orders', (req, res) => {
     }
 });
 
+// ============================
+// CONTACT FORM
+// ============================
+app.post('/contact', (req, res) => {
+    try {
+        const db = JSON.parse(fs.readFileSync(dbPath, 'utf8'));
+        db.contacts = db.contacts || [];
+        const contact = {
+            id: '#CONT' + (101 + db.contacts.length),
+            ...req.body,
+            createdAt: new Date().toISOString()
+        };
+        db.contacts.push(contact);
+        fs.writeFileSync(
+            dbPath,
+            JSON.stringify(db, null, 4)
+        );
+        res.status(201).json({
+            success: true,
+            message: 'Message submitted successfully',
+            contact
+        });
+
+    } catch (err) {
+        res.status(500).json({
+            success: false,
+            error: err.message
+        });
+    }
+});
+
+// ============================
+// GET CONTACTS
+// ============================
+app.get('/contact', (req, res) => {
+    try {
+        const db = JSON.parse(fs.readFileSync(dbPath, 'utf8'));
+        res.json(db.contacts || []);
+    } catch (err) {
+        res.status(500).json({
+            success: false,
+            error: err.message
+        });
+    }
+});
+
 
 // ============================
 // Start Server

@@ -28,7 +28,8 @@ export class AppComponent {
                 '/admin/categories',
                 '/admin/categories/add-category',
                 '/admin/orders',
-                '/admin/users'
+                '/admin/users',
+                '/admin/contact'
             ];
             const currentUrl = this.router.url;
             this.hideLayout = hideRoutes.includes(currentUrl) || currentUrl.startsWith('/admin/products/edit-product/') || currentUrl.startsWith('/admin/categories/edit-category/');

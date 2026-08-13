@@ -24,6 +24,11 @@ mat-form-field {
             }
         }
     }
+    &.mat-form-field-invalid {
+        .mdc-notched-outline {
+            border-color: red !important;
+        }
+    }
     .mat-mdc-form-field-error-wrapper {
         padding: 0;
     }

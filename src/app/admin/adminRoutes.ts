@@ -56,6 +56,12 @@ export const adminRoutes: Routes = [
             },
 
             {
+                path: 'contact',
+                loadComponent: () =>
+                    import('./contact/contact.component').then(m => m.ContactComponent)
+            },
+
+            {
                 path: 'orders',
                 loadComponent: () =>
                     import('./orders/orders.component').then(m => m.OrdersComponent)
