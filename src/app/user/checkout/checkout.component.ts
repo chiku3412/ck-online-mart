@@ -39,9 +39,9 @@ export class CheckoutComponent implements OnInit {
             lastName: ['', Validators.required],
             address: ['', Validators.required],
             city: ['', Validators.required],
-            postalCode: ['', Validators.required],
-            phone: ['', Validators.required],
-            email: ['', Validators.required],
+            postalCode: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(6)]],
+            phone: ['', [Validators.required, Validators.pattern(/^[0-9]{10}$/)]],
+            email: ['', [Validators.required, Validators.email]],
         })
     }
 

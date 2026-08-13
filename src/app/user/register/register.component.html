@@ -79,10 +79,16 @@
 
                 <mat-form-field appearance="outline" class="w-full shop-input" subscriptSizing="dynamic">
                     <mat-label class="!font-medium !text-gray-500">Mobile Number</mat-label>
-                    <input matInput placeholder="98765 43210" type="tel" formControlName="mobileNumber">
+                    <input matInput placeholder="98765 43210" type="numbers" formControlName="mobileNumber">
                     <mat-icon matPrefix class="!text-gray-400">smartphone</mat-icon>
-                    @if(registerForm.get('mobileNumber')?.invalid && registerForm.get('mobileNumber')?.touched) {
-                        <mat-error>Please enter a valid mobile number</mat-error>
+                    @if(registerForm.get('mobileNumber')?.touched && registerForm.get('mobileNumber')?.invalid) {
+                        <mat-error>
+                            {{
+                                registerForm.get('mobileNumber')?.errors?.['required']
+                                    ? 'Phone number is required'
+                                    : 'Please enter a valid 10-digit phone number'
+                            }}
+                        </mat-error>
                     }
                 </mat-form-field>
 

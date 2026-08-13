@@ -91,7 +91,7 @@
                         <div>
                             <mat-label>Postal code</mat-label>
                             <mat-form-field appearance="outline" class="w-full custom-input" subscriptSizing="dynamic">
-                                <input formControlName="postalCode" matInput placeholder="1001" />
+                                <input type="number" formControlName="postalCode" matInput placeholder="1001" />
                                 @if(checkoutForm.get('postalCode')?.touched && checkoutForm.get('postalCode')?.invalid) {
                                     <mat-error>Field is required</mat-error>
                                 }
@@ -101,9 +101,15 @@
                         <div class="sm:col-span-2">
                             <mat-label>Phone</mat-label>
                             <mat-form-field appearance="outline" class="w-full custom-input" subscriptSizing="dynamic">
-                                <input formControlName="phone" matInput placeholder="" />
+                                <input type="number" formControlName="phone" matInput placeholder="" />
                                 @if(checkoutForm.get('phone')?.touched && checkoutForm.get('phone')?.invalid) {
-                                    <mat-error>Field is required</mat-error>
+                                    <mat-error>
+                                        {{
+                                            checkoutForm.get('phone')?.errors?.['required']
+                                                ? 'Phone number is required'
+                                                : 'Please enter a valid 10-digit phone number'
+                                        }}
+                                    </mat-error>
                                 }
                             </mat-form-field>
                             <p class="mt-1.5 text-xs text-slate-500">For delivery updates only</p>
