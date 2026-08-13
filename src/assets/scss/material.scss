@@ -98,3 +98,18 @@ input:-webkit-autofill,
         }
     }
 }
+
+.custom-input {
+    .mat-mdc-form-field-infix {
+        padding-top: 8px !important;
+        padding-bottom: 8px !important;
+        min-height: auto !important;
+        input,
+        textarea {
+            font-size: 14px !important;
+            &::-webkit-input-placeholder {
+                color: gray !important;
+            }
+        }
+    }
+}

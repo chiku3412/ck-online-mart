@@ -11,27 +11,48 @@
                     <th class="px-6 py-3 font-semibold">Product</th>
                     <th class="px-6 py-3 font-semibold">Amount</th>
                     <th class="px-6 py-3 font-semibold">Qty</th>
+                    <th class="px-6 py-3 font-semibold">Total Product</th>
                     <th class="px-6 py-3 font-semibold">Status</th>
-                    <th class="px-6 py-3 font-semibold text-right">Action</th>
+                    <th class="px-6 py-3 font-semibold text-center">Action</th>
                 </tr>
             </thead>
             <tbody class="divide-y divide-slate-50">
-                <tr class="hover:bg-slate-50/50 transition-colors">
-                    <td class="px-6 py-4 font-medium text-slate-900">#ORD-7829</td>
-                    <td class="px-6 py-4">
-                        <div class="flex items-center gap-2">
-                            <div class="w-6 h-6 rounded-full bg-indigo-100 text-indigo-600 text-[10px] font-bold flex items-center justify-center">AR</div>
-                            Aditya Roy
-                        </div>
-                    </td>
-                    <td class="px-6 py-4 text-slate-600">Sony WH-1000XM5</td>
-                    <td class="px-6 py-4 font-medium text-slate-900">₹28,999</td>
-                    <td class="px-6 py-4 font-medium text-slate-900">1</td>
-                    <td class="px-6 py-4"><span class="px-2.5 py-1 bg-emerald-50 text-emerald-700 text-[10px] font-bold rounded-full uppercase">Delivered</span></td>
-                    <td class="px-6 py-4 text-right">
-                        <button class="text-slate-400 hover:text-slate-600"><i class="fa-solid fa-ellipsis-vertical"></i></button>
-                    </td>
-                </tr>
+                @for(order of orders; track order.orderId) {
+                    <tr class="hover:bg-slate-50/50 transition-colors">
+                        <td class="px-6 py-4 font-medium text-slate-900">{{ order.orderId }}</td>
+                        <td class="px-6 py-4">
+                            <div class="flex items-center gap-2">
+                                <div class="w-6 h-6 rounded-full bg-indigo-100 text-indigo-600 text-[10px] font-bold flex items-center justify-center">
+                                    {{ order.customer.firstName?.charAt(0).toUpperCase() }}{{ order.customer.lastName?.charAt(0).toUpperCase() }}
+                                </div>
+                                {{ order.customer.firstName }} {{ order.customer.LastName }}
+                            </div>
+                        </td>
+                        <td class="px-6 py-4 text-slate-600">
+                            @for(product of order.items; track product.productId) {
+                                <div>{{ product.productName }}</div>
+                            }
+                        </td>
+                        <td class="px-6 py-4 font-medium text-slate-900">₹ {{ order.totalAmount }}</td>
+                        <td class="px-6 py-4 font-medium text-slate-900">{{ order.items.length }}</td>
+                        <td class="px-6 py-4 font-medium text-slate-900">
+                            @for(product of order.items; track product.productId) {
+                                <div>{{ product.quantity }}</div>
+                            }
+                        </td>
+                        <td class="px-6 py-4"><span class="px-2.5 py-1 bg-emerald-50 text-emerald-700 text-[10px] font-bold rounded-full uppercase">Delivered</span></td>
+                        <td class="px-6 py-4">
+                            <div class="flex items-center gap-2 justify-center">
+                                <button class="w-10 h-10 rounded-full flex items-center justify-center bg-green-50 border border-green-500 text-green-600">
+                                    <i class="fa-solid fa-check"></i>
+                                </button>
+                                <button class="w-10 h-10 rounded-full flex items-center justify-center bg-red-50 border border-red-500 text-red-600">
+                                    <i class="fa-solid fa-x"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                }
             </tbody>
         </table>
     </div>

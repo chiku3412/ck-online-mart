@@ -13,7 +13,7 @@
             </div>
             <span class="text-xs font-bold text-emerald-600 bg-emerald-50 px-2 py-1 rounded-full">+12.5%</span>
         </div>
-        <p class="text-2xl font-bold text-slate-900">1,284</p>
+        <p class="text-2xl font-bold text-slate-900">{{ (totalOrders).toLocaleString('en-IN') }}</p>
         <p class="text-xs text-slate-500 mt-0.5">Total Orders</p>
     </div>
 
@@ -24,7 +24,7 @@
             </div>
             <span class="text-xs font-bold text-emerald-600 bg-emerald-50 px-2 py-1 rounded-full">+8.2%</span>
         </div>
-        <p class="text-2xl font-bold text-slate-900">₹4.2L</p>
+        <p class="text-2xl font-bold text-slate-900">₹ {{ totalIncome.toLocaleString('en-IN') }}</p>
         <p class="text-xs text-slate-500 mt-0.5">Total Income</p>
     </div>
 
@@ -35,7 +35,7 @@
             </div>
             <span class="text-xs font-bold text-emerald-600 bg-emerald-50 px-2 py-1 rounded-full">+5.3%</span>
         </div>
-        <p class="text-2xl font-bold text-slate-900">3,642</p>
+        <p class="text-2xl font-bold text-slate-900">{{ (totalCategories).toLocaleString('en-IN') }}</p>
         <p class="text-xs text-slate-500 mt-0.5">Total Categories</p>
     </div>
 
@@ -46,7 +46,7 @@
             </div>
             <span class="text-xs font-bold text-red-600 bg-red-50 px-2 py-1 rounded-full">-2.1%</span>
         </div>
-        <p class="text-2xl font-bold text-slate-900">856</p>
+        <p class="text-2xl font-bold text-slate-900">{{ (totalProducts).toLocaleString('en-IN') }}</p>
         <p class="text-xs text-slate-500 mt-0.5">Total Products</p>
     </div>
 </div>

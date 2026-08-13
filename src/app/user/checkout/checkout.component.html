@@ -1,1 +1,269 @@
-<p>checkout works!</p>
+<div class="checkout-section py-6 md:py-10 lg:py-16">
+    <div class="container mx-auto px-4">
+        <div class="lg:grid lg:grid-cols-12 lg:gap-12">
+            <!-- Left Column: Forms -->
+            <form [formGroup]="checkoutForm" class="lg:col-span-7 space-y-8">
+                <!-- Contact Section -->
+                <div class="border border-slate-800/50 rounded-2xl p-6 backdrop-blur-sm">
+                    <h2 class="font-display font-semibold text-lg flex items-center gap-2 mb-6">
+                        <span class="w-8 h-8 bg-black text-white rounded-lg flex items-center justify-center text-sm">1</span>
+                        Contact Information
+                    </h2>
+                    
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-medium mb-1.5">Email address</label>
+                            <mat-form-field appearance="outline" class="w-full custom-input" subscriptSizing="dynamic">
+                                <input formControlName="email" matInput placeholder="John@xyz.com" />
+                                @if(checkoutForm.get('email')?.touched && checkoutForm.get('email')?.invalid) {
+                                    <mat-error>Field is required</mat-error>
+                                }
+                            </mat-form-field>
+                        </div>
+                        <label class="flex items-center gap-3 cursor-pointer group">
+                            <input type="checkbox" class="w-4 h-4 rounded border-slate-600 bg-slate-800 text-brand-500 focus:ring-brand-500/50 focus:ring-offset-slate-900">
+                            <span class="text-sm transition-colors">Email me with news and offers</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Shipping Section -->
+                <div class="border border-slate-800/50 rounded-2xl p-6 backdrop-blur-sm">
+                    <h2 class="font-display font-semibold text-lg flex items-center gap-2 mb-6">
+                        <span class="w-8 h-8 bg-black text-white rounded-lg flex items-center justify-center text-sm">2</span>
+                        Shipping Address
+                    </h2>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="sm:col-span-2">
+                            <mat-label>Country/Region</mat-label>
+                            <mat-form-field appearance="outline" class="w-full custom-input" subscriptSizing="dynamic">
+                                <mat-select value="india" formControlName="country">
+                                    <mat-option value="india">India</mat-option>
+                                    <mat-option value="Canada">Canada</mat-option>
+                                    <mat-option value="China">China</mat-option>
+                                    <mat-option value="UK">UK</mat-option>
+                                </mat-select>
+                                @if(checkoutForm.get('country')?.touched && checkoutForm.get('country')?.invalid) {
+                                    <mat-error>Field is required</mat-error>
+                                }
+                            </mat-form-field>
+                        </div>
+                        
+                        <div>
+                            <mat-label>First name</mat-label>
+                            <mat-form-field appearance="outline" class="w-full custom-input" subscriptSizing="dynamic">
+                                <input formControlName="firstName" matInput placeholder="John" />
+                                @if(checkoutForm.get('firstName')?.touched && checkoutForm.get('firstName')?.invalid) {
+                                    <mat-error>Field is required</mat-error>
+                                }
+                            </mat-form-field>
+                        </div>
+                        <div>
+                            <mat-label>Last name</mat-label>
+                            <mat-form-field appearance="outline" class="w-full custom-input" subscriptSizing="dynamic">
+                                <input formControlName="lastName" matInput placeholder="Doe" />
+                                @if(checkoutForm.get('lastName')?.touched && checkoutForm.get('lastName')?.invalid) {
+                                    <mat-error>Field is required</mat-error>
+                                }
+                            </mat-form-field>
+                        </div>
+                        
+                        <div class="sm:col-span-2">
+                            <mat-label>Address</mat-label>
+                            <mat-form-field appearance="outline" class="w-full custom-input" subscriptSizing="dynamic">
+                                <textarea formControlName="address" matInput placeholder="123 Main Street, Apt 4B"></textarea>
+                                @if(checkoutForm.get('address')?.touched && checkoutForm.get('address')?.invalid) {
+                                    <mat-error>Field is required</mat-error>
+                                }
+                            </mat-form-field>
+                        </div>
+                        
+                        <div>
+                            <mat-label>City</mat-label>
+                            <mat-form-field appearance="outline" class="w-full custom-input" subscriptSizing="dynamic">
+                                <input formControlName="city" matInput placeholder="surat" />
+                                @if(checkoutForm.get('city')?.touched && checkoutForm.get('city')?.invalid) {
+                                    <mat-error>Field is required</mat-error>
+                                }
+                            </mat-form-field>
+                        </div>
+                        <div>
+                            <mat-label>Postal code</mat-label>
+                            <mat-form-field appearance="outline" class="w-full custom-input" subscriptSizing="dynamic">
+                                <input formControlName="postalCode" matInput placeholder="1001" />
+                                @if(checkoutForm.get('postalCode')?.touched && checkoutForm.get('postalCode')?.invalid) {
+                                    <mat-error>Field is required</mat-error>
+                                }
+                            </mat-form-field>
+                        </div>
+                        
+                        <div class="sm:col-span-2">
+                            <mat-label>Phone</mat-label>
+                            <mat-form-field appearance="outline" class="w-full custom-input" subscriptSizing="dynamic">
+                                <input formControlName="phone" matInput placeholder="" />
+                                @if(checkoutForm.get('phone')?.touched && checkoutForm.get('phone')?.invalid) {
+                                    <mat-error>Field is required</mat-error>
+                                }
+                            </mat-form-field>
+                            <p class="mt-1.5 text-xs text-slate-500">For delivery updates only</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Shipping Method -->
+                <section class="border border-slate-800/50 rounded-2xl p-6 backdrop-blur-sm">
+                    <h2 class="font-display font-semibold text-lg flex items-center gap-2 mb-6">
+                        <span class="w-8 h-8 bg-black text-white rounded-lg flex items-center justify-center text-sm">3</span>
+                        Shipping Method
+                    </h2>
+                    
+                    <div class="space-y-3">
+                        <label class="relative flex items-center gap-4 p-4 rounded-xl border border-slate-700 bg-gray-800 cursor-pointer hover:border-slate-600 transition-all-300 group">
+                            <input type="radio" name="shipping" class="w-4 h-4 text-brand-500 border-slate-600 bg-slate-800 focus:ring-brand-500/50 focus:ring-offset-slate-900" checked>
+                            <div class="flex-1">
+                                <div class="flex items-center justify-between">
+                                    <span class="text-sm font-medium text-white">Standard Shipping</span>
+                                    <span class="text-sm font-semibold text-white">Free</span>
+                                </div>
+                                <p class="text-xs text-slate-400 mt-0.5">5-7 business days</p>
+                            </div>
+                        </label>
+                    </div>
+                </section>
+
+                <!-- Billing Toggle -->
+                <section class="flex items-start gap-3 p-4">
+                    <input type="checkbox" id="billing-same" class="mt-0.5 w-4 h-4 rounded border-slate-600 bg-slate-800 text-brand-500 focus:ring-brand-500/50 focus:ring-offset-slate-900" checked>
+                    <label for="billing-same" class="text-sm text-slate-400 cursor-pointer select-none">
+                        Billing address is the same as shipping address
+                    </label>
+                </section>
+
+                <!-- Submit Button -->
+                <button (click)="placeOrder()" type="submit" [class.cursor-not-allowed]="checkoutForm.invalid" class="font-semibold bg-black text-white border border-solid border-black px-24 py-2 w-full rounded-lg text-sm flex items-center justify-center gap-2 hover:text-black hover:bg-transparent transition-all ease-in-out duration-300">
+                    <span>Place Order</span>
+                    <svg class="w-5 h-5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                    </svg>
+                </button>
+                
+                <p class="text-center text-xs text-slate-500 flex items-center justify-center gap-1.5">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+                    </svg>
+                    Encrypted and secure checkout powered by Stripe
+                </p>
+            </form>
+
+            <!-- Right Column: Order Summary -->
+            <div class="lg:col-span-5 mt-8 lg:mt-0">
+                <div class="lg:sticky lg:top-24 space-y-6">
+                    
+                    <!-- Summary Card -->
+                    <div class="border border-slate-800/50 rounded-2xl backdrop-blur-xl overflow-hidden">
+                        <div class="p-6 border-b border-slate-800/50">
+                            <h3 class="font-display font-semibold text-lg leading-none">Order Summary</h3>
+                            <p class="text-sm">{{ totalProducts }} items in your cart</p>
+                        </div>
+                        
+                        <!-- Cart Items -->
+                        <div class="p-6 space-y-5">
+                            @for(item of cartItem; track item) {
+                                <div class="flex gap-4 group">
+                                    <div class="relative w-20 h-20 rounded-xl bg-slate-800 border border-slate-700 flex-shrink-0">
+                                        <div class="absolute inset-0 rounded-xl overflow-hidden bg-gradient-to-br from-slate-700 to-slate-800 flex items-center justify-center">
+                                            <img [src]="'http://localhost:5000' + item.image" [alt]="item.name" />
+                                        </div>
+                                        <span class="absolute -top-2 -right-2 w-6 h-6 bg-slate-700 rounded-full flex items-center justify-center text-xs font-medium text-white border-2 border-slate-900">{{ (item.quantity).toLocaleString('en-IN') }}</span>
+                                    </div>
+                                    <div class="flex-1 min-w-0">
+                                        <h4 class="text-sm font-medium truncate">{{ item.name }}</h4>
+                                        <p class="text-xs mt-0.5">{{ item.category }}</p>
+                                        <p class="text-sm font-semibold text-gray-600">Price: ₹ <span class="text-black">{{ (item.price).toLocaleString('en-IN') }}</span></p>
+                                        <div class="mt-2 flex items-center gap-3">
+                                            <span class="text-sm font-semibold">₹ {{ (item.price * item.quantity).toLocaleString('en-IN') }}</span>
+                                            <button class="text-xs text-slate-500 hover:text-red-400 transition-colors">Remove</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+
+                        
+                        <!-- Totals -->
+                        <div class="border-t border-slate-800/50 p-6 space-y-3">
+                            <div class="flex gap-2">
+                                <div class="flex-1 relative">
+                                    <i class="fa-solid fa-tag absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-xs"></i>
+                                    <input [(ngModel)]="promoCode" type="text" id="promoInput" placeholder="Promo code" class="w-full pl-9 pr-3 py-2.5 text-sm border border-gray-200 rounded-xl outline-none focus:border-gray-900 transition-colors placeholder-gray-400">
+                                </div>
+                                <button (click)="applyPromo()" class="w-max font-semibold bg-black text-white border border-solid border-black px-10 py-2 rounded-lg text-sm flex items-center gap-2 hover:text-black hover:bg-transparent transition-all ease-in-out duration-300">
+                                    Apply
+                                </button>
+                            </div>
+                            @if(promoMessage) {
+                                <p class="text-sm" [class.text-green-600]="promoApplied" [class.text-red-500]="!promoApplied">
+                                    {{ promoMessage }}
+                                </p>
+                            }
+                            <div class="flex justify-between text-sm">
+                                <span class="">Subtotal</span>
+                                <span class=" font-medium">₹ {{ (subtotal).toLocaleString('en-IN') }}</span>
+                            </div>
+                            <div class="flex justify-between text-sm">
+                                <span class="">Shipping</span>
+                                <span class="text-brand-400 font-medium">Free</span>
+                            </div>
+                            <div class="flex justify-between text-sm">
+                                <span class="">Taxes (18%)</span>
+                                <span class="font-medium">₹ {{ (tax).toLocaleString('en-IN') }}</span>
+                            </div>
+                            @if(discount > 0) {
+                                <div class="flex justify-between text-sm text-green-600">
+                                    <span>Discount ({{ promoCodeApplied }})</span>
+                                    <span class="font-medium">
+                                        -₹ {{ discount.toLocaleString('en-IN') }}
+                                    </span>
+                                </div>
+                            }
+                            <div class="pt-3 border-t border-slate-800/50 flex justify-between items-end">
+                                <span class="text-base font-display font-semibold">Total</span>
+                                <span class="text-2xl font-display font-bold">₹ {{ (subtotal + tax - discount).toLocaleString('en-IN') }}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Trust Badges -->
+                    <div class="grid grid-cols-3 gap-3">
+                        <div class="border border-slate-800/50 rounded-xl p-3 flex items-center justify-center flex-col gap-2">
+                            <i class="fa-regular fa-shield-check"></i>
+                            <span class="text-xs text-slate-400 font-medium uppercase tracking-wider">Secure</span>
+                        </div>
+                        <div class="border border-slate-800/50 rounded-xl p-3 flex items-center justify-center flex-col gap-2">
+                            <i class="fa-regular fa-arrows-rotate"></i>
+                            <span class="text-xs text-slate-400 font-medium uppercase tracking-wider">Returns</span>
+                        </div>
+                        <div class="border border-slate-800/50 rounded-xl p-3 flex items-center justify-center flex-col gap-2">
+                            <i class="fa-regular fa-headset"></i>
+                            <span class="text-xs text-slate-400 font-medium uppercase tracking-wider">Support</span>
+                        </div>
+                    </div>
+
+                    <!-- Guarantee -->
+                    <div class="bg-gradient-to-r from-brand-900/30 to-slate-900/30 border border-brand-500/20 rounded-2xl p-5">
+                        <div class="flex items-start gap-3">
+                            <div class="w-10 h-10 bg-black text-white rounded-full flex items-center justify-center flex-shrink-0">
+                                <i class="fa-regular fa-circle-check"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-semibold mb-1">30-Day Money Back</h4>
+                                <p class="text-xs text-slate-400 leading-relaxed">Not satisfied? Return your order within 30 days for a full refund. No questions asked.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

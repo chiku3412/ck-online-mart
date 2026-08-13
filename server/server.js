@@ -523,6 +523,54 @@ app.put('/products/:id',
 );
 
 // ============================
+// CREATE ORDER
+// ============================
+app.post('/orders', (req, res) => {
+    try {
+        const db = JSON.parse(fs.readFileSync(dbPath, 'utf8'));
+        db.orders = db.orders || [];
+        const order = {
+            ...req.body,
+            id: '#ORD' + (101 + db.orders.length),
+            createdAt: new Date().toISOString(),
+            status: 'Pending'
+        };
+        db.orders.push(order);
+        fs.writeFileSync(
+            dbPath,
+            JSON.stringify(db, null, 4)
+        );
+        res.status(201).json({
+            success: true,
+            message: 'Order placed successfully',
+            order
+        });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({
+            success: false,
+            error: err.message
+        });
+    }
+});
+
+// ============================
+// GET ORDER
+// ============================
+app.get('/orders', (req, res) => {
+    try {
+        const db = JSON.parse(fs.readFileSync(dbPath, 'utf8'));
+        res.json(db.orders || []);
+    } catch (err) {
+        res.status(500).json({
+            success: false,
+            error: err.message
+        });
+    }
+});
+
+
+// ============================
 // Start Server
 // ============================
 

@@ -1,4 +1,4 @@
-<div class="py-16">
+<div class="cart-section py-6 md:py-10 lg:py-16">
     <div class="container mx-auto px-4">
         <!-- Cart Banner -->
         <div class="bg-gray-900 rounded-2xl overflow-hidden relative mb-16">
@@ -132,29 +132,12 @@
             <div class="lg:w-96 flex-shrink-0">
                 <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 sticky top-24">
                     <h2 class="text-lg font-bold text-gray-900 mb-6">Order Summary</h2>
-
-                    <div class="flex gap-2">
-                        <div class="flex-1 relative">
-                            <i class="fa-solid fa-tag absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-xs"></i>
-                            <input [(ngModel)]="promoCode" type="text" id="promoInput" placeholder="Promo code" class="w-full pl-9 pr-3 py-2.5 text-sm border border-gray-200 rounded-xl outline-none focus:border-gray-900 transition-colors placeholder-gray-400">
-                        </div>
-                        <button (click)="applyPromo()" class="w-max font-semibold bg-black text-white border border-solid border-black px-10 py-2 rounded-lg text-sm flex items-center gap-2 hover:text-black hover:bg-transparent transition-all ease-in-out duration-300">
-                            Apply
-                        </button>
-                    </div>
-                    <p *ngIf="promoMessage" class="mt-1 text-sm" [class.text-green-600]="promoApplied" [class.text-red-500]="!promoApplied">
-                        {{ promoMessage }}
-                    </p>
                     <p id="promoMessage" class="text-xs text-emerald-600 font-medium mb-4 hidden"><i class="fa-solid fa-check mr-1"></i> Code SAVE20 applied! -₹3,400</p>
 
                     <div class="space-y-3 my-6">
                         <div class="flex justify-between text-sm">
                             <span class="text-gray-500">Subtotal</span>
                             <span class="font-medium text-gray-900" id="subtotal">₹ {{ (subtotal).toLocaleString('en-IN') }}</span>
-                        </div>
-                        <div class="flex justify-between text-sm">
-                            <span class="text-gray-500">Discount</span>
-                            <span class="font-medium text-emerald-600" id="discount">-₹ {{ (discount).toLocaleString('en-IN') }}</span>
                         </div>
                         <div class="flex justify-between text-sm">
                             <span class="text-gray-500">Shipping</span>
@@ -176,7 +159,7 @@
                         <span class="text-2xl font-bold text-gray-900" id="total">₹ {{ (total).toLocaleString('en-IN') }}</span>
                     </div>
 
-                    <button class="w-full font-semibold bg-black text-white border border-solid border-black px-24 py-2 rounded-lg text-sm flex items-center gap-2 hover:text-black hover:bg-transparent transition-all ease-in-out duration-300">
+                    <button (click)="checkout()" class="w-full font-semibold bg-black text-white border border-solid border-black px-24 py-2 rounded-lg text-sm hover:text-black hover:bg-transparent transition-all ease-in-out duration-300">
                         Checkout Now
                     </button>
                     <div class="flex gap-3 mt-3">
