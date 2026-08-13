@@ -191,7 +191,7 @@
             "id": "#PROD111",
             "productId": "#PROD111",
             "name": "Apple AirPods Pro (2nd Gen)",
-            "category": "Mobile Accessories",
+            "category": "Accessories",
             "image": "/uploads/products/airpods-pro.png",
             "images": [
                 "/uploads/products/airpods-pro.png",
@@ -210,7 +210,7 @@
             "id": "#PROD112",
             "productId": "#PROD112",
             "name": "Samsung 25W Fast Charger",
-            "category": "Mobile Accessories",
+            "category": "Accessories",
             "image": "/uploads/products/samsung-charger.png",
             "images": [
                 "/uploads/products/samsung-charger.png",
@@ -229,7 +229,7 @@
             "id": "#PROD113",
             "productId": "#PROD113",
             "name": "Anker USB-C Charging Cable",
-            "category": "Mobile Accessories",
+            "category": "Accessories",
             "image": "/uploads/products/type-c-cable.png",
             "images": [
                 "/uploads/products/type-c-cable.png",
@@ -248,7 +248,7 @@
             "id": "#PROD114",
             "productId": "#PROD114",
             "name": "Spigen Crystal Clear iPhone Case",
-            "category": "Mobile Accessories",
+            "category": "Accessories",
             "image": "/uploads/products/iphone-case.png",
             "images": [
                 "/uploads/products/iphone-case.png",
@@ -571,11 +571,39 @@
     "categories": [
         {
             "id": "#CAT101",
-            "name": "Fashion"
+            "name": "Fashion Style"
         },
         {
             "id": "#CAT102",
             "name": "Snacks"
+        },
+        {
+            "id": "#CAT103",
+            "name": "Electronics"
+        },
+        {
+            "id": "#CAT104",
+            "name": "Chocolates"
+        },
+        {
+            "id": "#CAT105",
+            "name": "Accessories"
+        },
+        {
+            "id": "#CAT106",
+            "name": "Fruits"
+        },
+        {
+            "id": "#CAT106",
+            "name": "Cold Drinks"
+        },
+        {
+            "id": "#CAT107",
+            "name": "Dairy Products"
+        },
+        {
+            "id": "#CAT108",
+            "name": "Goggles"
         }
     ],
     "admin": [
@@ -677,6 +705,36 @@
             "status": "Pending",
             "id": "#ORD102",
             "createdAt": "2026-08-13T09:02:14.065Z"
+        },
+        {
+            "orderId": "ORD-1786618687417",
+            "customer": {
+                "country": "india",
+                "firstName": "Yash",
+                "lastName": "Sutariya",
+                "address": "Dabholi",
+                "city": "Surat",
+                "postalCode": 395004,
+                "phone": 9874563208,
+                "email": "chiragoffice941@gmail.com"
+            },
+            "items": [
+                {
+                    "productId": "#PROD110",
+                    "productName": "Kinder Joy",
+                    "quantity": 1
+                }
+            ],
+            "subtotal": 50,
+            "shipping": 0,
+            "tax": 9,
+            "discount": 5,
+            "promoCode": "SAVE10",
+            "totalAmount": 59,
+            "orderDate": "2026-08-13T10:58:07.417Z",
+            "status": "Pending",
+            "id": "#ORD103",
+            "createdAt": "2026-08-13T10:58:07.429Z"
         }
     ],
     "contacts": [

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
@@ -8,6 +8,10 @@ import { RouterModule } from '@angular/router';
     imports: [CommonModule, RouterModule],
     templateUrl: './footer.component.html'
 })
-export class FooterComponent {
+export class FooterComponent implements OnInit {
+    isLogin = false;
 
+    ngOnInit(): void {
+        this.isLogin = !localStorage.getItem('user');
+    }
 }

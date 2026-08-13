@@ -50,11 +50,6 @@ const routes: Routes = [
             import('./user/wish-list/wish-list.component').then(m => m.WishListComponent)
     },
     {
-        path: 'compare',
-        loadComponent: () =>
-            import('./user/compare/compare.component').then(m => m.CompareComponent)
-    },
-    {
         path: 'checkout',
         loadComponent: () =>
             import('./user/checkout/checkout.component').then(m => m.CheckoutComponent)

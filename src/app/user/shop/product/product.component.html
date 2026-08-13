@@ -10,9 +10,6 @@
                         <div [routerLink]="['/shop/product-details', product.id]" class="w-10 h-10 rounded-md bg-black flex items-center justify-center cursor-pointer">
                             <i class="fa-solid fa-eye"></i>
                         </div>
-                        <div class="w-10 h-10 rounded-md bg-black flex items-center justify-center cursor-pointer">
-                            <i class="fa-solid fa-arrow-right-arrow-left"></i>
-                        </div>
                         <div (click)="toggleWishlist(product)" class="w-10 h-10 rounded-md bg-black flex items-center justify-center cursor-pointer">
                             <i [ngClass]="isWishlist(product) ? 'fa-solid' : 'fa-regular'" class="fa-heart"></i>
                         </div>

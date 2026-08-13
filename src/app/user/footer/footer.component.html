@@ -89,8 +89,10 @@
                 <span routerLink="/terms-condition" class="cursor-pointer shrink-0">Terms of service</span>
                 <span class="hidden sm:block">|</span>
                 <span routerLink="privacy-policy" class="cursor-pointer shrink-0">Privacy policy</span>
-                <span class="hidden sm:block">|</span>
-                <span routerLink="/register" class="cursor-pointer shrink-0">Login & Register</span>
+                @if(isLogin) {
+                    <span class="hidden sm:block">|</span>
+                    <span routerLink="/register" class="cursor-pointer shrink-0">Login & Register</span>
+                }
             </div>
         </div>
 
