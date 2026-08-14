@@ -56,6 +56,24 @@ export const adminRoutes: Routes = [
             },
 
             {
+                path: 'blog-list',
+                loadComponent: () =>
+                    import('./blog-list/blog-list.component').then(m => m.BlogListComponent)
+            },
+
+            {
+                path: 'blog-list/add-blog',
+                loadComponent: () =>
+                    import('./add-blog/add-blog.component').then(m => m.AddBlogComponent)
+            },
+
+            {
+                path: 'blog-list/edit-blog/:id',
+                loadComponent: () =>
+                    import('./add-blog/add-blog.component').then(m => m.AddBlogComponent)
+            },
+
+            {
                 path: 'contact',
                 loadComponent: () =>
                     import('./contact/contact.component').then(m => m.ContactComponent)

@@ -18,9 +18,9 @@ app.use(express.json());
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // ============================
-// Multer Storage
+// Multer Product Storage
 // ============================
-const storage = multer.diskStorage({
+const productStorage  = multer.diskStorage({
     destination: (req, file, cb) => {
         cb(null, path.join(__dirname, 'uploads/products'));
     },
@@ -28,8 +28,23 @@ const storage = multer.diskStorage({
         cb(null, Date.now() + '-' + file.originalname);
     }
 });
-const upload = multer({
-    storage
+const productUpload = multer({
+    storage: productStorage
+});
+
+// ============================
+// Multer Blog Storage
+// ============================
+const blogStorage  = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, path.join(__dirname, 'uploads/blogs'));
+    },
+    filename: (req, file, cb) => {
+        cb(null, Date.now() + '-' + file.originalname);
+    }
+});
+const blogUpload = multer({
+    storage: blogStorage
 });
 
 // ============================
@@ -107,14 +122,12 @@ app.get('/categories/:id', (req, res) => {
         const category = db.categories.find(
             item => String(item.id) === id
         );
-
         if (!category) {
             return res.status(404).json({
                 success: false,
                 message: 'Category not found'
             });
         }
-
         res.json(category);
     } catch (err) {
         console.log(err);
@@ -134,7 +147,6 @@ app.post('/categories', (req, res) => {
             id: req.body.id,
             name: req.body.name
         };
-
         db.categories.push(category);
         fs.writeFileSync(dbPath, JSON.stringify(db, null, 4));
         res.json(category);
@@ -156,19 +168,16 @@ app.put('/categories/:id', (req, res) => {
         const categoryIndex = db.categories.findIndex(
             item => String(item.id) === id
         );
-
         if (categoryIndex === -1) {
             return res.status(404).json({
                 success: false,
                 message: 'Category not found'
             });
         }
-
         const updatedCategory = {
             ...db.categories[categoryIndex],
             name: req.body.name
         };
-
         db.categories[categoryIndex] = updatedCategory;
         fs.writeFileSync(dbPath, JSON.stringify(db, null, 4));
         res.json(updatedCategory);
@@ -190,14 +199,12 @@ app.delete('/categories/:id', (req, res) => {
         const categoryIndex = db.categories.findIndex(
             item => String(item.id) === id
         );
-
         if (categoryIndex === -1) {
             return res.status(404).json({
                 success: false,
                 message: 'Category not found'
             });
         }
-
         const category = db.categories[categoryIndex];
         db.categories.splice(categoryIndex, 1);
         fs.writeFileSync(dbPath, JSON.stringify(db, null, 4));
@@ -222,25 +229,21 @@ app.get('/user', (req, res) => {
         const db = JSON.parse(fs.readFileSync(dbPath, 'utf8'));
         let users = db.user || [];
         const { email, mobileNumber, password } = req.query;
-
         if (email) {
             users = users.filter(
                 user => String(user.email || '').toLowerCase() === String(email).toLowerCase()
             );
         }
-
         if (mobileNumber) {
             users = users.filter(
                 user => String(user.mobileNumber) === String(mobileNumber)
             );
         }
-
         if (password) {
             users = users.filter(
                 user => String(user.password) === String(password)
             );
         }
-
         res.json(users);
     } catch (err) {
         console.log(err);
@@ -260,36 +263,28 @@ app.post('/user', (req, res) => {
         const body = req.body || {};
         const email = String(body.email || '').trim();
         const mobileNumber = String(body.mobileNumber || '').trim();
-
         if (!body.fullName || !email || !mobileNumber || !body.password) {
             return res.status(400).json({
                 success: false,
                 message: 'Full name, email, mobile number and password are required'
             });
         }
-
-        const emailExists = db.user.some(
-            user => String(user.email || '').toLowerCase() === email.toLowerCase()
-        );
-
+        const emailExists = db.user.some(user => String(user.email || '').toLowerCase() === email.toLowerCase());
         if (emailExists) {
             return res.status(409).json({
                 success: false,
                 message: 'Email already exists'
             });
         }
-
         const mobileExists = db.user.some(
             user => String(user.mobileNumber) === mobileNumber
         );
-
         if (mobileExists) {
             return res.status(409).json({
                 success: false,
                 message: 'Mobile number already exists'
             });
         }
-
         const user = {
             ...body,
             email,
@@ -313,7 +308,7 @@ app.post('/user', (req, res) => {
 // Add Product
 // ============================
 app.post('/products',
-    upload.fields([
+    productUpload.fields([
         {
             name: 'image',
             maxCount: 1
@@ -338,15 +333,9 @@ app.post('/products',
                 name: body.name,
                 category: body.category,
                 description: body.description,
-                oldPrice: Number(
-                    body.oldPrice
-                ),
-                price: Number(
-                    body.price
-                ),
-                stock: Number(
-                    body.stock
-                ),
+                oldPrice: Number(body.oldPrice),
+                price: Number(body.price),
+                stock: Number(body.stock),
                 rating: 5,
                 image: mainImage,
                 images: galleryImages
@@ -443,7 +432,7 @@ app.delete('/products/:id', (req, res) => {
 // UPDATE PRODUCT
 // ============================
 app.put('/products/:id',
-    upload.fields([
+    productUpload.fields([
         {
             name: 'image',
             maxCount: 1
@@ -456,9 +445,7 @@ app.put('/products/:id',
     (req, res) => {
         try {
             const db = JSON.parse(fs.readFileSync(dbPath, 'utf8'));
-            const id = decodeURIComponent(
-                req.params.id
-            );
+            const id = decodeURIComponent(req.params.id);
             const productIndex = db.products.findIndex(p => String(p.id) === id || String(p.productId) === id);
             if (productIndex === -1) {
                 return res.status(404).json({
@@ -490,15 +477,9 @@ app.put('/products/:id',
                 name: body.name,
                 category: body.category,
                 description: body.description,
-                oldPrice: Number(
-                    body.oldPrice
-                ),
-                price: Number(
-                    body.price
-                ),
-                stock: Number(
-                    body.stock
-                ),
+                oldPrice: Number(body.oldPrice),
+                price: Number(body.price),
+                stock: Number(body.stock),
                 image: mainImage,
                 images: galleryImages
             };
@@ -615,6 +596,155 @@ app.get('/contact', (req, res) => {
     }
 });
 
+// ============================
+// ADD BLOG
+// ============================
+app.post('/blogs', blogUpload.single('featuredImage'), (req, res) => {
+    try {
+        const db = JSON.parse(
+            fs.readFileSync(dbPath, 'utf8')
+        );
+        db.blogs = db.blogs || [];
+        const body = req.body;
+        const featuredImage = req.file
+            ? '/uploads/blogs/' + req.file.filename
+            : '';
+        const blog = {
+            id: '#BLOG' + (101 + db.blogs.length),
+            title: body.title,
+            category: body.category,
+            author: body.author,
+            readingTime: body.readingTime,
+            contentOne: body.contentOne,
+            shortDescription: body.shortDescription,
+            category: body.category,
+            otherTitle: body.otherTitle,
+            blockQuote: body.blockQuote,
+            featuredImage,
+            createdAt: new Date().toISOString()
+        };
+        db.blogs.push(blog);
+        fs.writeFileSync(
+            dbPath,
+            JSON.stringify(db, null, 4)
+        );
+        res.status(201).json({
+            success: true,
+            message: 'Blog added successfully',
+            blog
+        });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({
+            success: false,
+            error: err.message
+        });
+    }
+});
+
+// ============================
+// GET BLOGS
+// ============================
+app.get('/blogs', (req, res) => {
+    try {
+        const db = JSON.parse(
+            fs.readFileSync(dbPath, 'utf8')
+        );
+        res.json(db.blogs || []);
+    } catch (err) {
+        res.status(500).json({
+            success: false,
+            error: err.message
+        });
+    }
+});
+
+
+// ============================
+// UPDATE BLOG
+// ============================
+app.put('/blogs/:id', blogUpload.single('featuredImage'), (req, res) => {
+    try {
+        const db = JSON.parse(fs.readFileSync(dbPath, 'utf8'));
+        const id = decodeURIComponent(req.params.id);
+        const blogIndex = db.blogs.findIndex(blog => String(blog.id) === id);
+        if (blogIndex === -1) {
+            return res.status(404).json({
+                success: false,
+                message: 'Blog not found'
+            });
+        }
+        const oldBlog = db.blogs[blogIndex];
+        const body = req.body;
+        let featuredImage = oldBlog.featuredImage || '';
+        if (req.file) {
+            // Delete old image
+            if (oldBlog.featuredImage) {
+                const oldImagePath = path.join(
+                    __dirname,
+                    oldBlog.featuredImage
+                );
+                if (fs.existsSync(oldImagePath)) {
+                    fs.unlinkSync(oldImagePath);
+                }
+            }
+            featuredImage =
+                '/uploads/blogs/' + req.file.filename;
+        }
+        const updatedBlog = {
+            ...oldBlog,
+            title: body.title,
+            category: body.category,
+            author: body.author,
+            readingTime: body.readingTime,
+            contentOne: body.contentOne,
+            shortDescription: body.shortDescription,
+            category: body.category,
+            otherTitle: body.otherTitle,
+            blockQuote: body.blockQuote,
+            featuredImage
+        };
+        db.blogs[blogIndex] = updatedBlog;
+        fs.writeFileSync(
+            dbPath,
+            JSON.stringify(db, null, 4)
+        );
+        res.json({
+            success: true,
+            message: 'Blog updated successfully',
+            blog: updatedBlog
+        });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({
+            success: false,
+            error: err.message
+        });
+    }
+});
+
+// ============================
+// BLOG GET BY ID
+// ============================
+app.get('/blogs/:id', (req, res) => {
+    try {
+        const db = JSON.parse(fs.readFileSync(dbPath, 'utf8'));
+        const id = decodeURIComponent(req.params.id);
+        const blog = db.blogs.find(item => String(item.id) === id);
+        if (!blog) {
+            return res.status(404).json({
+                success: false,
+                message: 'Blog not found'
+            });
+        }
+        res.json(blog);
+    } catch (err) {
+        res.status(500).json({
+            success: false,
+            error: err.message
+        });
+    }
+});
 
 // ============================
 // Start Server

@@ -118,3 +118,15 @@ input:-webkit-autofill,
         }
     }
 }
+
+// Table CSS
+.mat-mdc-table {
+    .mat-mdc-header-row {
+        height: auto;
+        background-color: #000;
+        th {
+            padding: 10px 16px;
+            color: #fff;
+        }
+    }
+}

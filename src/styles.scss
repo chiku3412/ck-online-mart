@@ -16,11 +16,12 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 /* Scrollbar */
 ::-webkit-scrollbar {
     width: 4px;
+    height: 4px;
 }
 ::-webkit-scrollbar-track {
-    background: rgba(22, 163, 74, 0.3);
+    background: rgba(0, 0, 0, 0.3);
 }
 ::-webkit-scrollbar-thumb {
-    background: #16a34a;
+    background: #000;
     border-radius: 4px;
 }

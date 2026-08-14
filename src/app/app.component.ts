@@ -29,10 +29,12 @@ export class AppComponent {
                 '/admin/categories/add-category',
                 '/admin/orders',
                 '/admin/users',
-                '/admin/contact'
+                '/admin/contact',
+                '/admin/blog-list',
+                '/admin/blog-list/add-blog'
             ];
             const currentUrl = this.router.url;
-            this.hideLayout = hideRoutes.includes(currentUrl) || currentUrl.startsWith('/admin/products/edit-product/') || currentUrl.startsWith('/admin/categories/edit-category/');
+            this.hideLayout = hideRoutes.includes(currentUrl) || currentUrl.startsWith('/admin/products/edit-product/') || currentUrl.startsWith('/admin/categories/edit-category/') || currentUrl.startsWith('/admin/blog-list/edit-blog/');
             window.scrollTo({
                 top: 0,
                 behavior: 'smooth'

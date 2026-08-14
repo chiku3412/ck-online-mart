@@ -754,5 +754,21 @@
             "message": "test",
             "createdAt": "2026-08-13T10:06:55.371Z"
         }
+    ],
+    "blogs": [
+        {
+            "id": "#BLOG101",
+            "title": "Best smartwatch 2024: the top wearables you can buy today",
+            "author": "Sugar Rosie",
+            "readingTime": "8 mins read",
+            "content": "Helping everyone live happier, healthier lives at home through their kitchen. Kitchn is a daily food magazine on the Web celebrating life in the kitchen through home cooking and kitchen intelligence.\r\n\r\nWe've reviewed and ranked all of the best smartwatches on the market right now, and we've made a definitive list of the top 10 devices you can buy today. One of the 10 picks below may just be your perfect next smartwatch.\r\n\r\nThose top-end wearables span from the Apple Watch to Fitbits, Garmin watches to Tizen-sporting Samsung watches. There's also Wear OS which is Google's own wearable operating system in the vein of Apple's watchOS - you’ll see it show up in a lot of these devices.",
+            "featuredImage": "/uploads/blogs/1786691050516-blog-19.png",
+            "createdAt": "2026-08-14T07:04:10.525Z",
+            "category": "Recipes",
+            "contentOne": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet id enim, libero sit. Est donec lobortis cursus amet, cras elementum libero convallis feugiat. Nulla faucibus facilisi tincidunt a arcu, sem donec sed sed. Tincidunt morbi scelerisque lectus non. At leo mauris, vel augue. Facilisi diam consequat amet, commodo lorem nisl, odio malesuada cras. Tempus lectus sed libero viverra ut. Facilisi rhoncus elit sit sit.",
+            "shortDescription": "Tortor, lobortis semper viverra ac, molestie tortor laoreet amet euismod et diam quis aliquam consequat porttitor integer a nisl, in faucibus nunc et aenean turpis dui dignissim nec scelerisque ullamcorper eu neque, augue quam quis lacus pretium eros est amet turpis nunc in turpis massa et eget facilisis ante molestie penatibus dolor volutpat, porta pellentesque scelerisque at ornare dui tincidunt cras feugiat tempor lectus",
+            "otherTitle": "sdsdsdsdsds",
+            "blockQuote": "undefineddsdsdsdsdsdsds"
+        }
     ]
 }
