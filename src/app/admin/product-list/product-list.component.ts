@@ -1,16 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatTableModule } from '@angular/material/table';
 import { Router, RouterModule } from '@angular/router';
 import { Product, ProductService } from 'src/assets/services/product-service';
 
 @Component({
     selector: 'app-product-list',
     standalone: true,
-    imports: [RouterModule, MatMenuModule],
+    imports: [RouterModule, MatMenuModule, MatTableModule],
     templateUrl: './product-list.component.html'
 })
 export class ProductListComponent implements OnInit {
     products: Product[] = [];
+    displayedColumns: string[] = ['productId', 'name', 'category', 'oldPrice', 'price', 'stock', 'action'];
 
     constructor(
         private productService: ProductService,
