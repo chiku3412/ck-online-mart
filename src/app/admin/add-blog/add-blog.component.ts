@@ -22,7 +22,11 @@ export class AddBlogComponent implements OnInit {
     otherTitle: string = '';
     category: string = '';
     featuredImage: File | null = null;
+    image: File | null = null;
     imagePreview: string | null = null;
+    imagePre: string | null = null;
+    featuredFileName = '';
+    imageFileName = '';
 
     constructor(
         private fb: FormBuilder,
@@ -46,12 +50,28 @@ export class AddBlogComponent implements OnInit {
     onImageSelect(event: Event): void {
         const input = event.target as HTMLInputElement;
         if (input.files && input.files.length > 0) {
-            this.featuredImage = input.files[0];
+            const file = input.files[0];
+            this.featuredImage = file;
+            this.featuredFileName = file.name;
             const reader = new FileReader();
             reader.onload = () => {
                 this.imagePreview = reader.result as string;
             };
-            reader.readAsDataURL(this.featuredImage);
+            reader.readAsDataURL(file);
+        }
+    }
+
+    onBlogImageSelect(event: Event): void {
+        const input = event.target as HTMLInputElement;
+        if (input.files?.length) {
+            const file = input.files[0];
+            this.image = file; // MUST be set
+            this.imageFileName = file.name;
+            const reader = new FileReader();
+            reader.onload = () => {
+                this.imagePre = reader.result as string;
+            };
+            reader.readAsDataURL(file);
         }
     }
 
@@ -76,6 +96,12 @@ export class AddBlogComponent implements OnInit {
                 this.featuredImage
             );
         }
+        if (this.image) {
+            formData.append(
+                'image',
+                this.image
+            );
+        }
         if (this.isEditMode) {
             this.blogService
             .updateBlog(this.blogId, formData)
@@ -96,7 +122,9 @@ export class AddBlogComponent implements OnInit {
                     alert('Blog Added Successfully');
                     this.blogForm.reset();
                     this.featuredImage = null;
+                    this.image = null;
                     this.imagePreview = null;
+                    this.imagePre = null;
                     Object.keys(this.blogForm.controls).forEach(key => {
                         this.blogForm.get(key)?.setErrors(null);
                         this.blogForm.get(key)?.markAsPristine();
@@ -129,7 +157,12 @@ export class AddBlogComponent implements OnInit {
                             otherTitle: blog.otherTitle,
                             blockQuote: blog.blockQuote
                         });
-                        this.imagePreview = blog.featuredImage;
+                        // this.imagePreview = blog.featuredImage;
+                        // this.imagePre = blog.image;
+                        this.imagePreview = blog.featuredImage ? `http://localhost:5000${blog.featuredImage}` : null;
+                        this.imagePre = blog.image ? `http://localhost:5000${blog.image}` : null;
+                        this.featuredFileName = blog.featuredImage?.split('/').pop() || '';
+                        this.imageFileName = blog.image?.split('/').pop() || '';
                     }
                 }
             },

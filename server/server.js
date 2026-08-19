@@ -599,48 +599,40 @@ app.get('/contact', (req, res) => {
 // ============================
 // ADD BLOG
 // ============================
-app.post('/blogs', blogUpload.single('featuredImage'), (req, res) => {
-    try {
+app.post(
+    '/blogs',
+    blogUpload.fields([
+        { name: 'featuredImage', maxCount: 1 },
+        { name: 'image', maxCount: 1 }
+    ]),
+    (req, res) => {
         const db = JSON.parse(
             fs.readFileSync(dbPath, 'utf8')
         );
-        db.blogs = db.blogs || [];
-        const body = req.body;
-        const featuredImage = req.file
-            ? '/uploads/blogs/' + req.file.filename
-            : '';
-        const blog = {
-            id: '#BLOG' + (101 + db.blogs.length),
-            title: body.title,
-            category: body.category,
-            author: body.author,
-            readingTime: body.readingTime,
-            contentOne: body.contentOne,
-            shortDescription: body.shortDescription,
-            category: body.category,
-            otherTitle: body.otherTitle,
-            blockQuote: body.blockQuote,
-            featuredImage,
+        const newId = db.blogs.length > 0 ? Math.max(...db.blogs.map(blog => Number(blog.id) || 0)) + 1 : 1;
+        const featuredImageFile = req.files?.featuredImage?.[0];
+        const imageFile = req.files?.image?.[0];
+        const newBlog = {
+            id: req.body.id,
+            title: req.body.title,
+            author: req.body.author,
+            readingTime: req.body.readingTime,
+            content: req.body.content,
+            contentOne: req.body.contentOne,
+            shortDescription: req.body.shortDescription,
+            category: req.body.category,
+            otherTitle: req.body.otherTitle,
+            blockQuote: req.body.blockQuote,
+            featuredImage: featuredImageFile ? '/uploads/blogs/' + featuredImageFile.filename : '',
+            image: imageFile ? '/uploads/blogs/' + imageFile.filename : '',
             createdAt: new Date().toISOString()
         };
-        db.blogs.push(blog);
-        fs.writeFileSync(
-            dbPath,
-            JSON.stringify(db, null, 4)
-        );
-        res.status(201).json({
-            success: true,
-            message: 'Blog added successfully',
-            blog
-        });
-    } catch (err) {
-        console.error(err);
-        res.status(500).json({
-            success: false,
-            error: err.message
-        });
+
+        db.blogs.push(newBlog);
+        fs.writeFileSync(dbPath, JSON.stringify(db, null, 4));
+        res.json({ success: true, blog: newBlog });
     }
-});
+);
 
 // ============================
 // GET BLOGS
@@ -663,74 +655,82 @@ app.get('/blogs', (req, res) => {
 // ============================
 // UPDATE BLOG
 // ============================
-app.put('/blogs/:id', blogUpload.single('featuredImage'), (req, res) => {
-    try {
-        const db = JSON.parse(fs.readFileSync(dbPath, 'utf8'));
-        const id = decodeURIComponent(req.params.id);
-        const blogIndex = db.blogs.findIndex(blog => String(blog.id) === id);
-        if (blogIndex === -1) {
-            return res.status(404).json({
+app.put(
+    '/blogs/:id',
+    blogUpload.fields([
+        { name: 'featuredImage', maxCount: 1 },
+        { name: 'image', maxCount: 1 }
+    ]),
+    (req, res) => {
+        try {
+            const db = JSON.parse(fs.readFileSync(dbPath, 'utf8'));
+            const id = decodeURIComponent(req.params.id);
+            const blogIndex = db.blogs.findIndex(
+                blog => blog.id === id
+            );
+            if (blogIndex === -1) {
+                return res.status(404).json({
+                    success: false,
+                    message: 'Blog not found'
+                });
+            }
+            const oldBlog = db.blogs[blogIndex];
+            const body = req.body;
+            const featuredImageFile = req.files?.featuredImage?.[0];
+            const imageFile = req.files?.image?.[0];
+            let featuredImage = oldBlog.featuredImage || '';
+            let image = oldBlog.image || '';
+
+            if (featuredImageFile) {
+                featuredImage = '/uploads/blogs/' + featuredImageFile.filename;
+            }
+            if (imageFile) {
+                image = '/uploads/blogs/' + imageFile.filename;
+            }
+
+            const updatedBlog = {
+                ...oldBlog,
+                title: body.title,
+                category: body.category,
+                author: body.author,
+                readingTime: body.readingTime,
+                content: body.content,
+                contentOne: body.contentOne,
+                shortDescription: body.shortDescription,
+                otherTitle: body.otherTitle,
+                blockQuote: body.blockQuote,
+                featuredImage,
+                image
+            };
+
+            db.blogs[blogIndex] = updatedBlog;
+
+            fs.writeFileSync(dbPath, JSON.stringify(db, null, 4));
+
+            res.json({
+                success: true,
+                message: 'Blog updated successfully',
+                blog: updatedBlog
+            });
+
+        } catch (err) {
+            console.error(err);
+            res.status(500).json({
                 success: false,
-                message: 'Blog not found'
+                error: err.message
             });
         }
-        const oldBlog = db.blogs[blogIndex];
-        const body = req.body;
-        let featuredImage = oldBlog.featuredImage || '';
-        if (req.file) {
-            // Delete old image
-            if (oldBlog.featuredImage) {
-                const oldImagePath = path.join(
-                    __dirname,
-                    oldBlog.featuredImage
-                );
-                if (fs.existsSync(oldImagePath)) {
-                    fs.unlinkSync(oldImagePath);
-                }
-            }
-            featuredImage =
-                '/uploads/blogs/' + req.file.filename;
-        }
-        const updatedBlog = {
-            ...oldBlog,
-            title: body.title,
-            category: body.category,
-            author: body.author,
-            readingTime: body.readingTime,
-            contentOne: body.contentOne,
-            shortDescription: body.shortDescription,
-            category: body.category,
-            otherTitle: body.otherTitle,
-            blockQuote: body.blockQuote,
-            featuredImage
-        };
-        db.blogs[blogIndex] = updatedBlog;
-        fs.writeFileSync(
-            dbPath,
-            JSON.stringify(db, null, 4)
-        );
-        res.json({
-            success: true,
-            message: 'Blog updated successfully',
-            blog: updatedBlog
-        });
-    } catch (err) {
-        console.error(err);
-        res.status(500).json({
-            success: false,
-            error: err.message
-        });
     }
-});
+);
 
 // ============================
-// BLOG GET BY ID
+// GET BLOG BY ID
 // ============================
 app.get('/blogs/:id', (req, res) => {
     try {
         const db = JSON.parse(fs.readFileSync(dbPath, 'utf8'));
         const id = decodeURIComponent(req.params.id);
-        const blog = db.blogs.find(item => String(item.id) === id);
+        const blog = db.blogs.find(item => item.id === id);
         if (!blog) {
             return res.status(404).json({
                 success: false,

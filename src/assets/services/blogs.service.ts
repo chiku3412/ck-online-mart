@@ -14,6 +14,7 @@ export interface Blog {
     shortDescription: string;
     readingTime: string;
     featuredImage: string;
+    image: string;
 }
 
 @Injectable({
